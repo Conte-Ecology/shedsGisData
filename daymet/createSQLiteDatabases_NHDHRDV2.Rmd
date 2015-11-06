@@ -1,0 +1,120 @@
+# Daymet Download & Processing
+
+## This script completes the following:
+
+1. Install the Daymet processing package
+2. Download Daymet climate data (NetCDF-4 format) mosaics across North America
+3. Spatially averages the climate records for all catchments in the shapefiles, utilizing the tiling function to save memory. The processing and results are split up by hydrologic region, specified by the region identifier.
+4. Writes the data into a SQLite database
+
+
+## Required Preprocessing
+The catchment shapefiles should be projected into the Daymet spatial reference (Lambert Conformal Conic) as defined on their website. Shapefile names currently follow the format: "Catchments[HYDRO REGION ID]_Daymet.shp"
+
+---
+##Load Libraries
+```{r Libraries}
+rm(list=ls())
+
+library(maptools) # For reading spatial objects
+library(devtools) # For installing package
+
+install_github("Conte-Ecology/zonalDaymet")
+library(zonalDaymet)
+```
+
+
+---
+## Enter Inputs
+```{r Inputs}
+
+# Define the projections of the shapefiles and Daymet data (Lambert Conformal Conic).
+proj4.Lambert <- "+proj=lcc +ellps=WGS84 +datum=WGS84 +lat_1=25 +lat_2=60 +lat_0=42.5 +lon_0=-100 +x_0=0 +y_0=0"  # Projected Coordinate System
+proj4.WGS <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0"                                    # Geographic Coordinate System
+
+# Temporal range
+START_YEAR <- 1980
+END_YEAR <- 2014
+
+# List of hydrologic region identifer (used to indicate catchments layer and output database name)
+HYDRO_REGIONS <- c("01", "02", "03", "04", "05", "06")
+
+# Variables
+VARIABLES <- c("tmax", "tmin", "prcp", "dayl", "srad", "vp", "swe")
+
+# Directory containing all of the raw Daymet mosaic NetCDF files
+DAYMET_DIRECTORY <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/daymet/Daily"
+
+# Name of the database with Daymet data paired to NHDPlus catchments. The hydrologic region ID will be appended to this name.
+DATABASE_PATH <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/daymet/NHDHRDV2"
+TABLE_NAME <- "climateRecord"
+
+ZONE_FIELD <- "FEATUREID"
+
+```
+
+---
+## Download the Daymet Mosaics
+```{r Download Daymet}
+
+downloadMosaic(years = START_YEAR:END_YEAR,
+                variables = VARIABLES,
+                destinationFolder = file.path(DAYMET_DIRECTORY),
+                retryFailedDownloads = TRUE)
+```
+
+
+
+---
+## Average the Daymet Records
+```{r Average Daymet by catchment}
+
+# Variables and years to average and add to database
+B <- proc.time()[3]
+
+
+for (r in seq_along(HYDRO_REGIONS)) {
+
+  # Read the catchments shapefile
+  ZONES_SHAPEFILE <- readShapePoly(paste0("//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/daymetShapefiles/Catchments", HYDRO_REGIONS[r], "_Daymet.shp"), 
+                                    proj4string=CRS(proj4.Lambert))
+
+
+
+  # Transform the shapefile into the coordinate system so the units are in lat/lon. 
+  #   This makes the shapefile comparable to the coordinates provided by Daymet NetCDFs in WGS.
+  transformShapefile <- spTransform(ZONES_SHAPEFILE,
+                                      CRS(proj4.WGS),
+                                      class = "SpatialPolygonsDataFrame")
+  
+  # Break up the spatial object to avoid memory errors during spatial averaging
+  tiledShapefile <- tileShapefile(shapefile = transformShapefile,
+                                    tileDegree = 2)
+  
+  # Free up memory
+  rm(ZONES_SHAPEFILE, transformShapefile)
+
+  # Loop through the shapefile tiles
+  for (t in 1:length(tiledShapefile)) {
+    
+    print(paste0("Processing tile #", t, " of ", length(tiledShapefile), "."))
+    
+    # Write the results to the database
+    assignZonalRecordsToDatabase(zonesShapefile = tiledShapefile[[t]],
+                                  zoneField = ZONE_FIELD,
+                                  zoneFieldType = "integer",
+                                  mosaicDirectory = DAYMET_DIRECTORY,
+                                  variables = VARIABLES, 
+                                  years = START_YEAR:END_YEAR,
+                                  databaseFilePath = paste0(DATABASE_PATH, "_", HYDRO_REGIONS[r]), 
+                                  databaseTableName = TABLE_NAME)
+  }# End tile loop
+  
+  # Free up memory
+  rm(tiledShapefile)
+  
+}# End region loop
+
+E <- proc.time()[3]
+print(paste0("Total time: ", (E - B)/3600, " hours."))
+```

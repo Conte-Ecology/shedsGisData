@@ -1,0 +1,35 @@
+Class,Value,forest,forest_decid,forest_evgrn,forest_mixed,undev_forest,herbaceous,agriculture,developed,devel_opn,devel_low,devel_med,devel_hi,wetland,water
+Open Water,11,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+Perennial Ice/Snow,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Developed, Open Space",21,0,0,0,0,-9999,0,0,1,1,0,0,0,0,0
+"Developed, Low Intensity",22,0,0,0,0,-9999,0,0,1,0,1,0,0,0,0
+"Developed, Medium Intensity",23,0,0,0,0,-9999,0,0,1,0,0,1,0,0,0
+"Developed, High Intensity",24,0,0,0,0,-9999,0,0,1,0,0,0,1,0,0
+Barren Land (Rock/Sand/Clay),31,0,0,0,0,-9999,0,0,0,0,0,0,0,0,0
+Unconsolidated Shore/Quarries/Gravel Pits/Strip Mines,32,0,0,0,0,-9999,0,0,1,0,0,0,0,0,0
+Transitional,33,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Deciduous Forest,41,1,1,0,0,1,0,0,0,0,0,0,0,0,0
+Evergreen Forest,42,1,0,1,0,1,0,0,0,0,0,0,0,0,0
+Mixed Forest,43,1,0,0,1,1,0,0,0,0,0,0,0,0,0
+Dwarf Scrub,51,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Shrub/Scrub,52,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Orchards/Vineyards,61,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Grassland/Herbaceous,71,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Sedge/Herbaceous,72,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Lichens,73,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Moss,74,0,0,0,0,0,1,0,0,0,0,0,0,0,0
+Pasture/Hay,81,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Cultivated Crops - row crops,82,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Cultivated Crops - small grains,83,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Fallow,84,0,0,0,0,0,0,1,0,0,0,0,0,0,0
+Urban/Recreational Grasses,85,0,0,0,0,0,1,0,1,0,0,0,0,0,0
+Woody Wetlands,90,1,0,0,1,1,0,0,0,0,0,0,0,1,0
+Palustrine Forested Wetland*,91,1,0,0,1,1,0,0,0,0,0,0,0,1,0
+Palustrine Scrub/Shrub Wetland*,92,0,0,0,0,0,1,0,0,0,0,0,0,1,0
+Estuarine Forested Wetland*,93,1,0,0,1,1,0,0,0,0,0,0,0,1,0
+Estuarine Scrub/Shrub Wetland*,94,0,0,0,0,0,1,0,0,0,0,0,0,1,0
+Emergent Herbaceous Wetlands,95,0,0,0,0,0,1,0,0,0,0,0,0,1,0
+Palustrine Emergent Wetland (Persistent)*,96,0,0,0,0,0,1,0,0,0,0,0,0,1,0
+Estuarine Emergent Wetland*,97,0,0,0,0,0,1,0,0,0,0,0,0,1,0
+Palustrine Aquatic Bed*,98,0,0,0,0,0,0,0,0,0,0,0,0,1,0
+Estuarine Aquatic Bed*,99,0,0,0,0,0,0,0,0,0,0,0,0,1,0
