@@ -1,0 +1,18 @@
+# Name of the run
+outputName = "NHDHRDV2"
+
+# Catchments shapefile name
+catchmentsFileNames = c("riparianBufferDetailed50ft_01", "riparianBufferDetailed50ft_02", "riparianBufferDetailed50ft_03", "riparianBufferDetailed50ft_04", "riparianBufferDetailed50ft_05", "riparianBufferDetailed50ft_06", "riparianBufferDetailed100ft_01", "riparianBufferDetailed100ft_02", "riparianBufferDetailed100ft_03", "riparianBufferDetailed100ft_04", "riparianBufferDetailed100ft_05", "riparianBufferDetailed100ft_06", "riparianBufferDetailed200ft_01", "riparianBufferDetailed200ft_02", "riparianBufferDetailed200ft_03", "riparianBufferDetailed200ft_04", "riparianBufferDetailed200ft_05", "riparianBufferDetailed200ft_06")
+
+# Zone field
+zoneField = "FEATUREID"
+
+# Statistics to calculate
+statType = "MEAN"
+
+# Rasters to run
+discreteRasters = c("alloffnet", "allonnet", "openoffnet", "openonnet", "fwsopenwater", "fwswetlands", "agriculture", "devel_hi", "devel_low", "devel_med", "devel_opn", "developed", "forest", "forest_decid", "forest_evgrn", "forest_mixed", "herbaceous", "undev_forest", "water", "wetland", "drainageclass", "hydrogroup_a", "hydrogroup_ab", "hydrogroup_cd", "hydrogroup_d1", "hydrogroup_d4", "percent_sandy", "surfcoarse")
+continuousRasters = c("elevation", "slope_pcnt", "impervious", "tree_canopy")
+
+# Output directory
+baseDirectory = "C:/KPONEIL/GitHub/projects/basinCharacteristics/zonalStatistics"

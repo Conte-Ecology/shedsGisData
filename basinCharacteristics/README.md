@@ -37,21 +37,21 @@ The steps below outline an example workflow to create basin characteristics for 
 
 3. Repeat steps 1 and 2 for any other spatial layers outside of the `\fwsWetlands` repo to be calculated for catchments shapefile.
 
-4. Copy the externally created catchments shapefile (`NortheastHRD_AllCatchments.shp`) to the `\basinCharacteristics\zonalStatistics\gisFiles\vectors` directory.
+4. Copy all of the externally created catchments shapefiles (`Catchments01.shp`) to the `\basinCharacteristics\zonalStatistics\gisFiles\vectors` directory.
 
 5. Navigate to the `\basinCharacteristics\zonalStatistics` sub-repo. The `README` file in this repo contains specific information on running the spatial averaging scripts. 
 
 6. Open the `\scripts` subfolder
 
-7. Specify the version-specific inputs in the `basinCharacteristics\zonalStatistics\scripts\HRD_INPUTS.txt` file.
+7. Specify the version-specific inputs in the `basinCharacteristics\zonalStatistics\scripts\INPUTS_NHDHRDV2.txt` file.
 
-8. Run the `HRD1_zonalStatisticsProcessing.py` script in ArcPython. This script calculates the statistics for each spatial layer within the zones of the catchments shapefile.
+8. Run the `NHDHRDV2_1_zonalStatisticsProcessing.py` script in ArcPython. This script calculates the statistics for each spatial layer within the zones of the catchments shapefile.
 
-9. Run the `HRD2_delineateUpstreamCatchments.R` script in R, generating a list of upstream catchments for each individual catchment in the shapefile. This script only needs to be run once initially and is specific to the the catchments shapefile.
+9. Run the `NHDHRDV2_2_delineateUpstreamCatchments.R` script in R, generating a list of upstream catchments for each individual catchment in the shapefile. This script only needs to be run once initially and is specific to the the catchments shapefile.
 
-10. Run the `HRD3_calculateUpstreamStatistics.R` script in R, calculating the upstream average of the spatial data variables for each catchment.
+10. Run the `NHDHRDV2_3_calculateUpstreamStatistics.R` script in R, calculating the upstream average of the spatial data variables for each catchment.
 
-11. Run the `HRD4_statsFileGenerator.R` script in R, formatting and converting basin characteristics for output.
+11. Run the `NHDHRDV2_4_statsFileGenerator.R` script in R, formatting and converting basin characteristics for output.
 
 
 # Contact Info

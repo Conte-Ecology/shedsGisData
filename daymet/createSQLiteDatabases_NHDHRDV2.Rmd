@@ -59,7 +59,7 @@ ZONE_FIELD <- "FEATUREID"
 
 downloadMosaic(years = START_YEAR:END_YEAR,
                 variables = VARIABLES,
-                destinationFolder = file.path(DAYMET_DIRECTORY),
+                destinationDirectory = file.path(DAYMET_DIRECTORY),
                 retryFailedDownloads = TRUE)
 ```
 

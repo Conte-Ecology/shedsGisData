@@ -1,76 +1,67 @@
-Data Layer,Description,Name,Group,Data Source,Source Resolution,Layer Development GitHub Repo,Raw Units,Conversion Factor,Final Units,Layer Classification,Loaded to Web System,Automated Raster Prep,Local,Upstream,High Res Delineation Range,50 ft Riparian Buffers (HRD Range),100 ft Riparian Buffers (HRD Range),200 ft Riparian Buffers (HRD Range),CT,DC,DE,MA,MD,ME,NJ,NY,PA,VA,VT,WV,
-Atmospheric Deposition of NO3 (2011 Total),The total wet atmoshpheric deposition of nitrate ion in 2011 spatially averaged over the catchment area.,dep_no3_2011,Human Impacts,National Atmospheric Deposition Program (NADP),~2.3km,/Conte-Ecology/basinCharacteristics/atmosphericDeposition,kg/ha,1,kg/ha,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Atmospheric Deposition of SO4 (2011 Total),The total wet atmoshpheric deposition of sulfate ion in 2011 spatially averaged over the catchment area.,dep_so4_2011,Human Impacts,National Atmospheric Deposition Program (NADP),~2.3km,/Conte-Ecology/basinCharacteristics/atmosphericDeposition,kg/ha,1,kg/ha,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average April Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in April spatially averaged over the catchment area.,apr_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average August Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in August spatially averaged over the catchment area.,aug_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average December Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in December spatially averaged over the catchment area.,dec_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average February Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in February spatially averaged over the catchment area.,feb_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average January Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in January spatially averaged over the catchment area.,jan_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average July Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in July spatially averaged over the catchment area.,jul_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average June Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in June spatially averaged over the catchment area.,jun_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average March Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in March spatially averaged over the catchment area.,mar_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average Maximum Annual  Temperature,The 30-year (1981 - 2010) average annual maximum temperature spatially averaged over the catchment area.,ann_tmax_c,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,degrees C,1,degrees C,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average May Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in May spatially averaged over the catchment area.,may_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average Minimum Annual  Temperature,The 30-year (1981 - 2010) average annual minimum temperature spatially averaged over the catchment area.,ann_tmin_c,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,degrees C,1,degrees C,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average November Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in November spatially averaged over the catchment area.,nov_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average October Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in October spatially averaged over the catchment area.,oct_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Average September Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in September spatially averaged over the catchment area.,sep_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Basin Elevation,The landscape elevation spatially averaged over the catchment area.,elevation,Topography,National Elevation Dataset (NED) -  processed by UMass,30m,/Conte-Ecology/basinCharacteristics/topography,m,1,m,Raster Value,Y,NA,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Basin Slope,The slope of the landscape spatially averaged over the catchment area.,slope_pcnt,Topography,National Elevation Dataset (NED) -  processed by UMass,30m,/Conte-Ecology/basinCharacteristics/topography,%,1,%,Raster Value,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Hydrologic Unit Code 10,The HUC10 code associated with the centroid of the catchment.,HUC10,NA,USGS Watershed Boundary Dataset (WBD),Spatial Polygons,/Conte-Ecology/basinCharacteristics/hucs,HUC code,1,HUC code,"""HUC10"" Column",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Hydrologic Unit Code 12,The HUC12 code associated with the centroid of the catchment.,HUC12,NA,USGS Watershed Boundary Dataset (WBD),Spatial Polygons,/Conte-Ecology/basinCharacteristics/hucs,HUC code,1,HUC code,"""HUC12"" Column",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Hydrologic Unit Code 4,The HUC4 code associated with the centroid of the catchment.,HUC4,NA,USGS Watershed Boundary Dataset (WBD),Spatial Polygons,/Conte-Ecology/basinCharacteristics/hucs,HUC code,1,HUC code,"""HUC4"" Column",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Hydrologic Unit Code 6,The HUC6 code associated with the centroid of the catchment.,HUC6,NA,USGS Watershed Boundary Dataset (WBD),Spatial Polygons,/Conte-Ecology/basinCharacteristics/hucs,HUC code,1,HUC code,"""HUC6"" Column",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Hydrologic Unit Code 8,The HUC8 code associated with the centroid of the catchment.,HUC8,NA,USGS Watershed Boundary Dataset (WBD),Spatial Polygons,/Conte-Ecology/basinCharacteristics/hucs,HUC code,1,HUC code,"""HUC8"" Column",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Off Stream Network Open Water,The percentage of the catchment area that is covered by lakes or ponds that do not intersect the high resolution stream netowork.,openoffnet,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/basinCharacteristics/impoundedArea,fraction,100,%,"""WETLAND_TYPE"" = 
+Data Layer,Description,Name,Group,Data Source,Source Resolution,Layer Development GitHub Repo,Raw Units,Conversion Factor,Final Units,Layer Classification,Loaded to Web System,Automated Raster Prep,Local,Upstream,High Res Delineation Range,50 ft Riparian Buffers (HRD Range),100 ft Riparian Buffers (HRD Range),200 ft Riparian Buffers (HRD Range),
+Off Stream Network Open Water,The percentage of the catchment area that is covered by lakes or ponds that do not intersect the high resolution stream netowork.,openoffnet,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/shedsData/basinCharacteristics/impoundedArea,fraction,100,%,"""WETLAND_TYPE"" = 
 ""Freshwater Pond"", or 
-""Lake"", ",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Off Stream Network Water Bodies,"The percentage of the catchment area that is covered by wetlands, lakes, or ponds that do not intersect the high resolution stream netowork.",alloffnet,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/basinCharacteristics/impoundedArea,fraction,100,%,"""WETLAND_TYPE"" = 
+""Lake"", ",Y,Y,Y,Y,Y,Y,Y,Y,
+Off Stream Network Water Bodies,"The percentage of the catchment area that is covered by wetlands, lakes, or ponds that do not intersect the high resolution stream netowork.",alloffnet,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/shedsData/basinCharacteristics/impoundedArea,fraction,100,%,"""WETLAND_TYPE"" = 
 ""Freshwater Emergent Wetland"", 
 ""Freshwater Forested/Shrub Wetland"", ""Freshwater Pond"", 
 ""Lake"", or 
-""Other""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-On Stream Network  Open Water,The percentage of the catchment area that is covered by lakes or ponds that intersect the high resolution stream netowork.,openonnet,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/basinCharacteristics/impoundedArea,fraction,100,%,"""WETLAND_TYPE"" = 
+""Other""",Y,Y,Y,Y,Y,Y,Y,Y,
+On Stream Network  Open Water,The percentage of the catchment area that is covered by lakes or ponds that intersect the high resolution stream netowork.,openonnet,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/shedsData/basinCharacteristics/impoundedArea,fraction,100,%,"""WETLAND_TYPE"" = 
 ""Freshwater Pond"", or 
-""Lake"", ",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-On Stream Network Water Bodies,"The percentage of the catchment area that is covered by wetlands, lakes, or ponds that intersect the high resolution stream netowork.",allonnet,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/basinCharacteristics/impoundedArea,fraction,100,%,"""WETLAND_TYPE"" = 
+""Lake"", ",Y,Y,Y,Y,Y,Y,Y,Y,
+On Stream Network Water Bodies,"The percentage of the catchment area that is covered by wetlands, lakes, or ponds that intersect the high resolution stream netowork.",allonnet,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/shedsData/basinCharacteristics/impoundedArea,fraction,100,%,"""WETLAND_TYPE"" = 
 ""Freshwater Emergent Wetland"", 
 ""Freshwater Forested/Shrub Wetland"", ""Freshwater Pond"", 
 ""Lake"", or 
-""Other""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Agriculture,"The percentage of the catchment area that is covered by agricultural land (e.g. cultivated crops, orchards, and pasture) including fallow land.",agriculture,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Other""",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Open Water,"The percentage of the catchment areacovered by ponds, lakes, or deep estuary/marine water.",fwsopenwater,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/shedsData/basinCharacteristics/fwsWetlands,fraction,100,%,"""WETLAND_TYPE"" =  
+""Estuarine and Marine Deepwater"", 
+""Freshwater Pond"", or 
+""Lake""",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Wetland,The percentage of the catchment area that is classified as any type of wetland.,fwswetlands,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/shedsData/basinCharacteristics/fwsWetlands,fraction,100,%,"""WETLAND_TYPE"" =  
+""Estuarine and Marine Wetland"", 
+""Freshwater Emergent Wetland"", or 
+""Freshwater Forested/Shrub Wetland""",Y,Y,Y,Y,Y,Y,Y,Y,
+Total Drainage Area,The contributing drainage area to the downstream point of the catchment.,AreaSqKM,Topography,High Resolution Delineation,30m,-,km2,1,km2,AreaSqKM,Y,NA,Y,Y,Y,Y,Y,Y,
+Atmospheric Deposition of NO3 (2011 Total),The total wet atmoshpheric deposition of nitrate ion in 2011 spatially averaged over the catchment area.,dep_no3_2011,Human Impacts,National Atmospheric Deposition Program (NADP),~2.3km,/Conte-Ecology/shedsData/basinCharacteristics/atmosphericDeposition,kg/ha,1,kg/ha,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Atmospheric Deposition of SO4 (2011 Total),The total wet atmoshpheric deposition of sulfate ion in 2011 spatially averaged over the catchment area.,dep_so4_2011,Human Impacts,National Atmospheric Deposition Program (NADP),~2.3km,/Conte-Ecology/shedsData/basinCharacteristics/atmosphericDeposition,kg/ha,1,kg/ha,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Basin Elevation,The landscape elevation spatially averaged over the catchment area.,elevation,Topography,National Elevation Dataset (NED) -  processed by UMass,30m,/Conte-Ecology/shedsData/basinCharacteristics/topography,m,1,m,Raster Value,Y,NA,Y,Y,Y,Y,Y,Y,
+Basin Slope,The slope of the landscape spatially averaged over the catchment area.,slope_pcnt,Topography,National Elevation Dataset (NED) -  processed by UMass,30m,/Conte-Ecology/shedsData/basinCharacteristics/topography,%,1,%,Raster Value,Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Impervious,The percentage of the contributing drainage area that is classified as impervious surface.,impervious,Land Cover,National Land Cover Database (NLCD) - Impervious,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdImpervious,%,1,%,Raster Value,Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Agriculture,"The percentage of the catchment area that is covered by agricultural land (e.g. cultivated crops, orchards, and pasture) including fallow land.",agriculture,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
 ""Orchards/Vineyards"" (61),
 ""Pasture/Hay"" (81),
 ""Cultivated Crops - row crops"" (82),
 ""Cultivated Crops - small grains"" (83), or 
-""Fallow"" (84)",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Deciduous Forest,The percentage of the catchment area that is covered by trees taller than 5 meters and dominated by species that lose their foliage in repsonse to season change.,forest_decid,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
-""Deciduous Forest"" (41)",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Developed,The percentage of the catchment area that has been developed by human activity to any extent.,developed,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) = 
+""Fallow"" (84)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Deciduous Forest,The percentage of the catchment area that is covered by trees taller than 5 meters and dominated by species that lose their foliage in repsonse to season change.,forest_decid,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Deciduous Forest"" (41)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Developed,The percentage of the catchment area that has been developed by human activity to any extent.,developed,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) = 
 ""Developed, Open Space"" (21), 
 ""Developed, Low Intensity"" (22), 
 ""Developed, Medium Intensity"" (23), 
 ""Developed, High Intensity"" (24), 
 ""Unconsolidated Shore/Quarries/Gravel Pits/Strip Mines"" (32),  or 
-""Urban/Recreational Grasses"" (85)",Y,Y,Y,Y,Y,Y,Y,Y,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-"Percent Developed, High Intensity",The percentage of the catchment area covered by places where people work or live in high numbers. These areas are typically covered by more than 80% impervious surface.,devel_hi,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
-""Developed, High Intensity"" (24)",Y,Y,Y,Y,Y,Y,Y,Y,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-"Percent Developed, Low Intensity","The percentage of the catchment area that is covered by areas with a mixture of vegetation and constructed materials, such as single family housing units. These areas are typically covered by 20% - 49% impervious surface.",devel_low,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
-""Developed, Low Intensity"" (22)",Y,Y,Y,Y,Y,Y,Y,Y,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-"Percent Developed, Medium Intensity","The percentage of the catchment area that is covered by areas with a mixture of vegetation and constructed materials, such as single family housing units. These areas are typically covered by 50% - 79% impervious surface.",devel_med,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
-""Developed, Medium Intensity"" (23)",Y,Y,Y,Y,Y,Y,Y,Y,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-"Percent Developed, Open","The percentage of the catchment area that is covered by some constructed materials, but mostly lawn grass vegetation such as parks, golf courses, and single family housing units on large lots. These areas are typically covered by less than 20% impervious surface.",devel_opn,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
-""Developed, Open Space"" (21)",Y,Y,Y,Y,Y,Y,Y,Y,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Evergreen Forest,The percentage of the catchment area that is covered by trees taller than 5 meters and dominated by species that maintain foliage year-round.,forest_evgrn,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
-""Evergreen Forest"" (42)",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Forest,The percentage of the catchment area made up of any trees taller than 5 meters.,forest,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class)  = 
+""Urban/Recreational Grasses"" (85)",Y,Y,Y,Y,Y,Y,Y,Y,
+"Percent Developed, High Intensity",The percentage of the catchment area covered by places where people work or live in high numbers. These areas are typically covered by more than 80% impervious surface.,devel_hi,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Developed, High Intensity"" (24)",Y,Y,Y,Y,Y,Y,Y,Y,
+"Percent Developed, Low Intensity","The percentage of the catchment area that is covered by areas with a mixture of vegetation and constructed materials, such as single family housing units. These areas are typically covered by 20% - 49% impervious surface.",devel_low,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Developed, Low Intensity"" (22)",Y,Y,Y,Y,Y,Y,Y,Y,
+"Percent Developed, Medium Intensity","The percentage of the catchment area that is covered by areas with a mixture of vegetation and constructed materials, such as single family housing units. These areas are typically covered by 50% - 79% impervious surface.",devel_med,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Developed, Medium Intensity"" (23)",Y,Y,Y,Y,Y,Y,Y,Y,
+"Percent Developed, Open","The percentage of the catchment area that is covered by some constructed materials, but mostly lawn grass vegetation such as parks, golf courses, and single family housing units on large lots. These areas are typically covered by less than 20% impervious surface.",devel_opn,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Developed, Open Space"" (21)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Evergreen Forest,The percentage of the catchment area that is covered by trees taller than 5 meters and dominated by species that maintain foliage year-round.,forest_evgrn,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Evergreen Forest"" (42)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Forest,The percentage of the catchment area made up of any trees taller than 5 meters.,forest,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class)  = 
 ""Deciduous Forest"" (41), 
 ""Evergreen Forest"" (42), 
 ""Mixed Forest"" (43), 
 ""Woody Wetlands"" (90), 
 ""Palustrine Forested Wetland"" (91), or 
-""Estuarine Forested Wetland"" (93)",Y,Y,Y,Y,Y,Y,Y,Y,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Herbaceous,The percentage of the catchment area that is dominated by herbaceous vegetation not intensively managed.,herbaceous,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Estuarine Forested Wetland"" (93)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Herbaceous,The percentage of the catchment area that is dominated by herbaceous vegetation not intensively managed.,herbaceous,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
 ""Transitional"" (33), 
 ""Dwarf Scrub"" (51), 
 ""Shrub/Scrub"" (52),
@@ -83,24 +74,15 @@ Percent Herbaceous,The percentage of the catchment area that is dominated by her
 ""Estuarine Scrub/Shrub Wetland"" (94),
 ""Emergent Herbaceous Wetlands"" (95), 
 ""Palustrine Emergent Wetland (Persistent)"" (96), or
-""Estuarine Emergent Wetland"" (97)",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Impervious,The percentage of the contributing drainage area that is classified as impervious surface.,impervious,Land Cover,National Land Cover Database (NLCD) - Impervious,30m,/Conte-Ecology/basinCharacteristics/nlcdImpervious,%,1,%,Raster Value,Y,Y,Y,Y,Y,Y,Y,Y,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Mixed Forest,The percentage of the catchment area that is covered by trees taller than 5 meters and not dominated by either evergreen or deciduous.,forest_mixed,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Estuarine Emergent Wetland"" (97)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Mixed Forest,The percentage of the catchment area that is covered by trees taller than 5 meters and not dominated by either evergreen or deciduous.,forest_mixed,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
 ""Mixed Forest"" (43), 
 ""Woody Wetlands"" (90), 
 ""Palustrine Forested Wetland"" (91), 
-""Estuarine Forested Wetland"" (93)",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Open Water,"The percentage of the catchment areacovered by ponds, lakes, or deep estuary/marine water.",fwsopenwater,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/basinCharacteristics/fwsWetlands,fraction,100,%,"""WETLAND_TYPE"" =  
-""Estuarine and Marine Deepwater"", 
-""Freshwater Pond"", or 
-""Lake""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Open Water,The percentage of the catchment area covered by open water.,water,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
-""Open Water"" (11)",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Sandy,"The percentage of the catchment area that is covered by a perent soil material with texture described as ""sandy"".",percent_sandy,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,366",/Conte-Ecology/basinCharacteristics/percentSandy,fraction,100,%,"Component Parent Material (""copm"") table:
-Textural Modifier (""pmmodifier"") = 
-""Sandy""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Tree Canopy,The vertical projection of the percentage of the catchment area that is covered by tree canopy.,tree_canopy,Land Cover,National Land Cover Database (NLCD) - Tree Canopy,30m,/Conte-Ecology/basinCharacteristics/nlcdTreeCanopy,%,1,%,Raster Value,Y,Y,Y,Y,Y,Y,Y,Y,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Undeveloped Forest,The percentage of the catchment area that is classified as forested land with developed land treated as missing data. This layer serves as an attempt to avoid high correlation between forested and impervious surface in the northeastern U.S.,undev_forest,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) = 
+""Estuarine Forested Wetland"" (93)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Open Water,The percentage of the catchment area covered by open water.,water,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Open Water"" (11)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Undeveloped Forest,The percentage of the catchment area that is classified as forested land with developed land treated as missing data. This layer serves as an attempt to avoid high correlation between forested and impervious surface in the northeastern U.S.,undev_forest,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) = 
 ""Deciduous Forest"" (41), 
 ""Evergreen Forest"" (42), 
 ""Mixed Forest"" (43), 
@@ -114,12 +96,8 @@ IN addition, the following get reclassified as NA (-9999):
 ""Developed, Medium Intensity"" (23), 
 ""Developed, High Intensity"" (24), 
 ""Barren Land (Rock/Sand/Clay)"" (31), and
-""Unconsolidated Shore/Quarries/Gravel Pits/Strip Mines"" (32)",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Wetland,The percentage of the catchment area that is classified as any type of wetland.,fwswetlands,Land Cover,Fish & Wildlife Service (FWS) Nat ional Wetlands Inventory,1:24k polygons,/Conte-Ecology/basinCharacteristics/fwsWetlands,fraction,100,%,"""WETLAND_TYPE"" =  
-""Estuarine and Marine Wetland"", 
-""Freshwater Emergent Wetland"", or 
-""Freshwater Forested/Shrub Wetland""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Percent Wetland,The percentage of the catchment area that is classified as any type of wetland.,wetland,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
+""Unconsolidated Shore/Quarries/Gravel Pits/Strip Mines"" (32)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Wetland,The percentage of the catchment area that is classified as any type of wetland.,wetland,Land Cover,National Land Cover Database (NLCD) - Land Cover,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdLandCover,fraction,100,%,"""Land_Cover"" (Land Cover Class) =  
 ""Woody Wetlands"" (90), 
 ""Palustrine Forested Wetland"" (91), 
 ""Palustrine Scrub/Shrub Wetland"" (92),
@@ -129,8 +107,34 @@ Percent Wetland,The percentage of the catchment area that is classified as any t
 ""Palustrine Emergent Wetland (Persistent)"" (96), 
 ""Estuarine Emergent Wetland"" (97), 
 ""Palustrine Aquatic Bed"" (98), or 
-""Estuarine Aquatic Bed"" (99)",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Soil Drainage Class,The numerical average of the rank of seven drainage class categories over the catchment area. These categories describe the natural drainage conditions of the soil referring to frequency and duration of wet periods. Values range from 1 (Excessively drained) to 7 (Very poorly drained).,drainageclass,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,360",/Conte-Ecology/basinCharacteristics/soilDrainageClass,Categorical Average (1-7),1,Categorical Average (1-7),"Component (""component"") table:
+""Estuarine Aquatic Bed"" (99)",Y,Y,Y,Y,Y,Y,Y,Y,
+Percent Tree Canopy,The vertical projection of the percentage of the catchment area that is covered by tree canopy.,tree_canopy,Land Cover,National Land Cover Database (NLCD) - Tree Canopy,30m,/Conte-Ecology/shedsData/basinCharacteristics/nlcdTreeCanopy,%,1,%,Raster Value,Y,Y,Y,Y,Y,Y,Y,Y,
+Average April Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in April spatially averaged over the catchment area.,apr_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average August Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in August spatially averaged over the catchment area.,aug_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average December Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in December spatially averaged over the catchment area.,dec_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average February Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in February spatially averaged over the catchment area.,feb_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average January Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in January spatially averaged over the catchment area.,jan_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average July Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in July spatially averaged over the catchment area.,jul_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average June Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in June spatially averaged over the catchment area.,jun_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average March Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in March spatially averaged over the catchment area.,mar_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average Maximum Annual  Temperature,The 30-year (1981 - 2010) average annual maximum temperature spatially averaged over the catchment area.,ann_tmax_c,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,degrees C,1,degrees C,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average May Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in May spatially averaged over the catchment area.,may_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average Minimum Annual  Temperature,The 30-year (1981 - 2010) average annual minimum temperature spatially averaged over the catchment area.,ann_tmin_c,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,degrees C,1,degrees C,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average November Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in November spatially averaged over the catchment area.,nov_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average October Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in October spatially averaged over the catchment area.,oct_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+Average September Precipitation,The 30-year (1981 - 2010) mean monthly precipitation in September spatially averaged over the catchment area.,sep_prcp_mm,Climate,PRISM Climate Group,800m,/Conte-Ecology/shedsData/basinCharacteristics/prism,mm,1,mm,Raster Value,Y,Y,Y,Y,Y,N,N,N,
+TNC Dams - All Degrees of Barrier,The total number of dams in the catchment area.,deg_barr_all,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/shedsData/basinCharacteristics/tncDams,count,1,%,NA,Y,Y,Y,Y,Y,N,N,N,
+TNC Dams - Degree Barrier 1,The number of complete barriers to all fish (greater than 12 feet) in the catchment area.,deg_barr_1,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/shedsData/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 1 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,
+TNC Dams - Degree Barrier 2,The number of small dam barriers (1 - 12 feet) in the catchment area.,deg_barr_2,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/shedsData/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 2 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,
+TNC Dams - Degree Barrier 3,The number of partially breached dams in the catchment area.,deg_barr_3,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/shedsData/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 3 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,
+TNC Dams - Degree Barrier 4,The number of barriers with a fish ladder in the catchment area.,deg_barr_4,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/shedsData/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 4 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,
+TNC Dams - Degree Barrier 5,"The number fully breached, unlikely barriers in the catchment area.",deg_barr_5,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/shedsData/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 5 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,
+TNC Dams - Degree Barrier 6,"The number unknown, but assumd full barriers in the catchment area.",deg_barr_6,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/shedsData/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 6 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,
+TNC Dams - Degree Barrier 7,The number of locks in the catchment area.,deg_barr_7,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/shedsData/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 7 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,
+Percent Sandy,"The percentage of the catchment area that is covered by a perent soil material with texture described as ""sandy"".",percent_sandy,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,366",/Conte-Ecology/shedsData/basinCharacteristics/percentSandy,fraction,100,%,"Component Parent Material (""copm"") table:
+Textural Modifier (""pmmodifier"") = 
+""Sandy""",Y,Y,Y,Y,Y,Y,Y,Y,
+Soil Drainage Class,The numerical average of the rank of seven drainage class categories over the catchment area. These categories describe the natural drainage conditions of the soil referring to frequency and duration of wet periods. Values range from 1 (Excessively drained) to 7 (Very poorly drained).,drainageclass,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,360",/Conte-Ecology/shedsData/basinCharacteristics/soilDrainageClass,Categorical Average (1-7),1,Categorical Average (1-7),"Component (""component"") table:
 Drainage Class (""drainagecl"") column:
 ""Excessively drained"" = 1
 ""Somewhat excessively drained"" = 2
@@ -138,33 +142,24 @@ Drainage Class (""drainagecl"") column:
 ""Moderately well drained"" = 4
 ""Somewhat poorly drained"" = 5
 ""Poorly drained"" = 6
-""Very poorly drained"" = 7",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Soil Hydrologic Group A,The percentage of the catchment area with soil classified as hydrologic group A. These soils have a low runoff potential and high infiltration and water transmission rates.,hydrogroup_a,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,361",/Conte-Ecology/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
+""Very poorly drained"" = 7",Y,Y,Y,Y,Y,Y,Y,Y,
+Soil Hydrologic Group A,The percentage of the catchment area with soil classified as hydrologic group A. These soils have a low runoff potential and high infiltration and water transmission rates.,hydrogroup_a,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,361",/Conte-Ecology/shedsData/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
 Hydrologic Group (""hydgrp"") = 
-""A""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Soil Hydrologic Group A & B,The percentage of the catchment area with soil classified as hydrologic groups A or B. These soils have moderate to high infiltration and water transmission rates.,hydrogroup_ab,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,362",/Conte-Ecology/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
+""A""",Y,Y,Y,Y,Y,Y,Y,Y,
+Soil Hydrologic Group A & B,The percentage of the catchment area with soil classified as hydrologic groups A or B. These soils have moderate to high infiltration and water transmission rates.,hydrogroup_ab,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,362",/Conte-Ecology/shedsData/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
 Hydrologic Group (""hydgrp"") = 
-""A"" or ""B""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Soil Hydrologic Group C &D,The percentage of the catchment area with soil classified as hydrologic groups C or D. These soils have low to very low infiltration and water transmission rates.,hydrogroup_cd,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,363",/Conte-Ecology/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
+""A"" or ""B""",Y,Y,Y,Y,Y,Y,Y,Y,
+Soil Hydrologic Group C &D,The percentage of the catchment area with soil classified as hydrologic groups C or D. These soils have low to very low infiltration and water transmission rates.,hydrogroup_cd,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,363",/Conte-Ecology/shedsData/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
 Hydrologic Group (""hydgrp"") = 
-""C"", ""D"", or ""C/D""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Soil Hydrologic Group D (All),"The percentage of the catchment area with soil classified as hydrologic group D, including soils described as group A, B, or C but have a high water table putting them in the D group. These soils have high runoff potential and very low infiltration and water transmission rates. ",hydrogroup_d4,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,365",/Conte-Ecology/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
+""C"", ""D"", or ""C/D""",Y,Y,Y,Y,Y,Y,Y,Y,
+Soil Hydrologic Group D (All),"The percentage of the catchment area with soil classified as hydrologic group D, including soils described as group A, B, or C but have a high water table putting them in the D group. These soils have high runoff potential and very low infiltration and water transmission rates. ",hydrogroup_d4,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,365",/Conte-Ecology/shedsData/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
 Hydrologic Group (""hydgrp"") = 
-""A/D"", ""B/D"", ""C/D"", or ""D""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Soil Hydrologic Group D (Only),The percentage of the catchment area with soil classified as hydrologic group D. These soils have high runoff potential and very low infiltration and water transmission rates.,hydrogroup_d1,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,364",/Conte-Ecology/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
+""A/D"", ""B/D"", ""C/D"", or ""D""",Y,Y,Y,Y,Y,Y,Y,Y,
+Soil Hydrologic Group D (Only),The percentage of the catchment area with soil classified as hydrologic group D. These soils have high runoff potential and very low infiltration and water transmission rates.,hydrogroup_d1,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,364",/Conte-Ecology/shedsData/basinCharacteristics/soilHydrologicGroup,fraction,100,%,"Component (""component"") table:
 Hydrologic Group (""hydgrp"") = 
-""D""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Surficial Coarseness,"The percentage of the catchment area that is covered by a perent soil material with texture described as ""sandy"", ""gravelly"", or a combination of the two.",surfcoarse,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,367",/Conte-Ecology/basinCharacteristics/surficialCoarseness,fraction,100,%,"Component Parent Material (""copm"") table:
+""D""",Y,Y,Y,Y,Y,Y,Y,Y,
+Surficial Coarseness,"The percentage of the catchment area that is covered by a perent soil material with texture described as ""sandy"", ""gravelly"", or a combination of the two.",surfcoarse,Geology,USDA National Resources Conservation Sciences (NRCS) - Soil Survey Geographic Database (SSURGO),"1:12,000 to 1:63,367",/Conte-Ecology/shedsData/basinCharacteristics/surficialCoarseness,fraction,100,%,"Component Parent Material (""copm"") table:
 Textural Modifier (""pmmodifier"") = 
 ""Sandy"", 
 ""Sandy and gravelly"", or 
-""Gravelly""",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-TNC Dams - All Degrees of Barrier,The total number of dams in the catchment area.,deg_barr_all,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/basinCharacteristics/tncDams,count,1,%,NA,Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-TNC Dams - Degree Barrier 1,The number of complete barriers to all fish (greater than 12 feet) in the catchment area.,deg_barr_1,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 1 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-TNC Dams - Degree Barrier 2,The number of small dam barriers (1 - 12 feet) in the catchment area.,deg_barr_2,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 2 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-TNC Dams - Degree Barrier 3,The number of partially breached dams in the catchment area.,deg_barr_3,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 3 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-TNC Dams - Degree Barrier 4,The number of barriers with a fish ladder in the catchment area.,deg_barr_4,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 4 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-TNC Dams - Degree Barrier 5,"The number fully breached, unlikely barriers in the catchment area.",deg_barr_5,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 5 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-TNC Dams - Degree Barrier 6,"The number unknown, but assumd full barriers in the catchment area.",deg_barr_6,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 6 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-TNC Dams - Degree Barrier 7,The number of locks in the catchment area.,deg_barr_7,Human Impacts,TNC Dams dataset snapped to high res flowlines (Umass Land Eco Lab),Spatial Points,/Conte-Ecology/basinCharacteristics/tncDams,count,1,%,"""deg_barr"" = 7 & ""Use"" = 1",Y,Y,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
-Total Drainage Area,The contributing drainage area to the downstream point of the catchment.,AreaSqKM,Topography,High Resolution Delineation,30m,-,km2,1,km2,AreaSqKM,Y,NA,Y,Y,Y,N,N,N,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,HRD,
+""Gravelly""",Y,Y,Y,Y,Y,Y,Y,Y,
