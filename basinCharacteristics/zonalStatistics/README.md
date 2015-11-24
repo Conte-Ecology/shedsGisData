@@ -8,9 +8,6 @@ This repo stores the necessary scripts and files to calculate basin characterist
 Each version will have a series of scripts that must be run in the specified order. Scripts are named by the version grouping, a number indicating the order in the series, and the title of the script preceded by an underscore. For exmple, `NHDHRDV2_1_zonalStatisticsProcessing.py` is the first script in the High Resolution Delineation Versoin 2 (NHDHRDV2) series and its main prupose is to process the raw layers and run them through the "Zonal Statistics" tool in ArcPython. Each series is described below in depth in the "Current Versions" section. Each time a new version is added, this README file should be updated. 
 
 
-======================
-Prior to running any scripts, two spatial data directories must be created. One directory holds the the rasters to calculate stats for and the other holds the polygon shapefiles specifying the zones to calculate stats over. It is suggested practice to create these directories in a `zonalStatistics\gisFiles` sub-folder with the names `rasters` and `vactors`. Each version will point to these directories for spatial data. The rasters should be copied from the `\outputFolder` directories from other repos in the `\basinCharacteristics` parent directory. If this is the case, no pre-processing is necessary for the spatial files.  All other folders are created within the scripts.
-======================
 
 ## NHD High Resolution Delineation - Version 2
 
@@ -36,6 +33,9 @@ In addition to the values for each catchment, the percent of the catchment area 
 
 ### **Catchments**
 
+This process defines some layers that will be used in other sections and should be executed first. Typically for large layers the ArcPy script may take a few days to run due to some computationally intensive GIS procedures.
+
+
 #### Steps to Run
 1.  The text file used to specify common user inputs is created. This file will be used across all scripts in the series. See the current `INPUTS_NHDHRDV2.txt` in the `zonalStatistics` repo for sample formatting. The table below describes the vairables to be changed. Do not add extra lines or change the structure of this file other than changing the variable values.
  
@@ -51,7 +51,7 @@ In addition to the values for each catchment, the percent of the catchment area 
  
 2. **NHDHRDV2_1_zonalStatisticsProcessing.py** - Script to calculate statistics on the specified raster(s) for each of the catchments in the polygon shapefile. 
 
-  Open this script and set the `inputsFilePath` variable to the path of the inputs `.txt` file created in Step 1. Set the `raster_directory` variable to the path to the folder containing all of the value rasters. Set the `vector_directory` variable to the path to the folder containing all of the polygon shapefiles representing the zones. Run the script in Arc Python. Allow script to run completely  before moving on to the next script. This script does the following:
+  Open this script and set the `inputsFilePath` variable to the path of the inputs `.txt` file created in Step 1. Set the `raster_directory` variable to the path to the folder containing all of the value rasters. The rasters should be copied from the `\outputFolder` directories from repos in the `\rasterPrep` directory. Set the `vector_directory` variable to the path to the folder containing all of the polygon shapefiles representing the zones. Run the script in Arc Python. Allow script to run completely  before moving on to the next script. This script does the following:
     1. Reads user-specified inputs from Step 1  
     2. Sets up the folder structure used by the rest of the scripts in the series  
     3. Projects & resamples the rasters to match the zone layer (catchments) ensuing consistency of spatial references
@@ -179,8 +179,7 @@ While this section may be altered to run independently from the previous "Catchm
 
 4. **NHDHRDV2_3R_calculateUpstreamStatistics_RIPARIAN.R** - Script that calculates the upstream average of all basin characteristics for the riparian buffers.
 
-Running this script is the same as running the similar script from step 4 in the "Catchments" section. The script itself contains some minor differences to account for the network delineation.
-
+  Running this script is the same as running the similar script from step 4 in the "Catchments" section. The script itself contains some minor differences to account for the network delineation.
 
 
 5. **NHDHRDV2_4_statsFileGenerator.R** - Script that generates useable `.RData` files of basin characteristics values
