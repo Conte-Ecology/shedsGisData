@@ -27,15 +27,15 @@ same format as it is downloaded.
  (See "Notes" section")
  - `sourceFolder` is the path to the folder containing the deposition rasters in .tif 
  format
- - `version` is the name that will be associated with this particular run of the tool 
- (e.g. "NHDHRDV2" for all High Resolution Catchments)
+ - `outputName` is the name that will be associated with this particular run of the 
+ tool (e.g. "NHDHRDV2" for all High Resolution Catchments)
 
 3. Run the script in ArcPython. It does the following:
    - Sets up the folder structure in the specified directory
    - Generates the processing boundary from the specified shapefile and clips the source 
    raster to this range
    - Trims the raw raster to the spatial boundary
-   - Outputs the raster to the `atmosphericDeposition\gisFiles\[version]\outputFiles` 
+   - Outputs the raster to the `atmosphericDeposition\gisFiles\[outputName]\outputFiles` 
    directory
 
 

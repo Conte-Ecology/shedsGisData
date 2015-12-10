@@ -8,7 +8,7 @@ from arcpy import env
 baseDirectory      = "C:/KPONEIL/GitHub/projects/basinCharacteristics/atmosphericDeposition"
 catchmentsFilePath = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/hydrography.gdb/regionBoundary"
 sourceFolder       = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/deposition/nadp/spatial"
-version            = "NHDHRDV2"
+outputName         = "NHDHRDV2"
 
 
 # ---------------
@@ -20,7 +20,7 @@ gisFilesDir = baseDirectory + "/gisFiles"
 if not arcpy.Exists(gisFilesDir): arcpy.CreateFolder_management(baseDirectory, "gisFiles")
 
 # Create version folder
-versionDir = gisFilesDir + "/" + version
+versionDir = gisFilesDir + "/" + outputName
 if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, version)
 
 # Create version database
