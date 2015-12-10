@@ -10,17 +10,19 @@ wetlandsFolder = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/land/fwsWetlan
 statesFile = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/political/states/States.shp"
 
 
-# Set the run database. Create one if it doesn't exist.
+# ==================
+# Create tidal layer
+# ==================
 working_db = baseDirectory + "/processingFiles.gdb"
 if not arcpy.Exists(working_db): arcpy.CreateFileGDB_management (baseDirectory, "processingFiles", "CURRENT")
-
-
-
 
 # Create list of rasters to be mosaicked
 tidalZones = []
 	
+# Loop through the states
 for s in range(len(states)):
+
+	# Create layer of just the tidal polygons
 	arcpy.FeatureClassToFeatureClass_conversion (wetlandsFolder + "/" + states[s] + "_wetlands.gdb/" + states[s] + "_Wetlands",
 																working_db,
 																"tidal_" + states[s],
@@ -38,19 +40,19 @@ for s in range(len(states)):
 																	(ATTRIBUTE NOT LIKE '%/%' AND ATTRIBUTE LIKE 'P__%S%') OR
 																	ATTRIBUTE LIKE 'P%/__%R%' OR 
 																	ATTRIBUTE LIKE 'P%/__%S%' """)
-																	
+	
+	# Append the state tidal layer to list for further processing
 	tidalZones.append(working_db + "/tidal_" + states[s])													
 						
-
+# Join the state polygons into the final layer
 mergedPolygons = arcpy.Merge_management(tidalZones, 
 										working_db + "/tidal_All")
-						
-						
-arcpy.Dissolve_management(mergedPolygons, 
-							baseDirectory + "/tidalZones.shp",
-							"", "", 
-							"SINGLE_PART", 
-							"")	
+											
+#arcpy.Dissolve_management(mergedPolygons, 
+#							baseDirectory + "/tidalZones.shp",
+#							"", "", 
+#							"SINGLE_PART", 
+#							"")	
 							
 arcpy.Dissolve_management(mergedPolygons, 
 							baseDirectory + "/tidalZonesMulti.shp",
