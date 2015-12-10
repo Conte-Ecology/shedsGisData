@@ -1,18 +1,25 @@
 Wetland & Open Water Area
 =========================
 
-This script produces the spatial datasets of "Open Water" and "Wetland" land coverage, based on the USFWS National Wetlands Inventory. In each raster, a value of 1 represents the presence the specified land cover classification and a 0 represents the absence.
+This script produces the spatial datasets of "Open Water" and "Wetland" land 
+coverage, based on the USFWS National Wetlands Inventory. In each raster, a 
+value of 1 represents the presence the specified land cover classification and 
+a 0 represents the absence.
 
 
 ## Data Sources
-| Layer            | Source                                                 | Link                                                                         |
-|:-----:           | ------                                                 | ----                                                                         |
-| Wetlands Layer   | U.S. Fish & Wildlife National Wetlands Inventory       | http://www.fws.gov/wetlands/Data/Data-Download.html                          |
-| State Boundaries | National Atlas of the United States                    | http://dds.cr.usgs.gov/pub/data/nationalatlas/statesp010g.shp_nt00938.tar.gz |
+| Layer            | Source                                           | Link                                                                         |
+|:-----:           | ------                                           | ----                                                                         |
+| Wetlands Layer   | U.S. Fish & Wildlife National Wetlands Inventory | 
+http://www.fws.gov/wetlands/Data/Data-Download.html                          |
+| State Boundaries | National Atlas of the United States              | 
+http://dds.cr.usgs.gov/pub/data/nationalatlas/statesp010g.shp_nt00938.tar.gz |
 
 ## Steps to Run:
 
-The folder structure is set up within the scripts. In general, the existing structure in the repo should be followed. Raw data should be kept in the same format as it is downloaded (unzip the state boundaries layer)
+The folder structure is set up within the scripts. In general, the existing 
+structure in the repo should be followed. Raw data should be kept in the same 
+format as it is downloaded (unzip the state boundaries layer)
 
 1. Open the script `fwsWetlands.py`
 
