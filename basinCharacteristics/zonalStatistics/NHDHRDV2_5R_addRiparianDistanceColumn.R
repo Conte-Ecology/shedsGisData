@@ -6,15 +6,15 @@ rm(list=ls())
 
 directory <- "C:/KPONEIL/GitHub/projects/basinCharacteristics/zonalStatistics/versions/NHDHRDV2/completedStats"
 
-fileNames <- c("zonalStatsForDB_Catchments01",
-               "zonalStatsForDB_Catchments02",
-               "zonalStatsForDB_Catchments03",
-               "zonalStatsForDB_Catchments04",
-               "zonalStatsForDB_Catchments05",
-               "zonalStatsForDB_Catchments06")
+fileNames <- c("zonalStatsForDB_riparianBufferDetailed50ft_01",
+               "zonalStatsForDB_riparianBufferDetailed50ft_02",
+               "zonalStatsForDB_riparianBufferDetailed50ft_03",
+               "zonalStatsForDB_riparianBufferDetailed50ft_04",
+               "zonalStatsForDB_riparianBufferDetailed50ft_05",
+               "zonalStatsForDB_riparianBufferDetailed50ft_06")
 
 
-bufferValue <- NA
+bufferValue <- 50
 
 
 # ============

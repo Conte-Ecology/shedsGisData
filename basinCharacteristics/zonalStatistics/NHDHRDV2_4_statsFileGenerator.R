@@ -7,7 +7,7 @@ library(reshape2)
 # ======
 # Inputs 
 # ======
-inputsFilePath <- "C:/KPONEIL/GitHub/projects/shedsData/basinCharacteristics/zonalStatistics/INPUTS_NHDHRDV2.txt"
+inputsFilePath <- "C:/KPONEIL/GitHub/projects/shedsData/basinCharacteristics/zonalStatistics/INPUTS_NHDHRDV2_RIPARIAN.txt"
 
 # There are 3 options for specifying the variables to output:
 #   1) "ALL" will include all of the variables present in the folder
@@ -39,7 +39,7 @@ names(conversionFactors) <- c("variable", "factor")
 # ======================
 # Group stats for output
 # ======================
-
+options(scipen=999)
 
 for (catchmentsFileName in catchmentsFileNames) {
 
@@ -178,6 +178,7 @@ for (catchmentsFileName in catchmentsFileNames) {
   # make sure columns are correctly named and ordered
   stopifnot(all(names(dbStats) == c('featureid', 'variable', 'value', 'zone')))
   
+  dbStats$featureid <-format(dbStats$featureid, scientific = FALSE) 
   
   write.csv(dbStats, 
               file = file.path(baseDirectory, "versions", outputName, "completedStats", paste0("zonalStatsForDB_", catchmentsFileName,".csv") ),
