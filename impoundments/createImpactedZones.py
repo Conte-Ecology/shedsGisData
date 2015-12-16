@@ -385,24 +385,53 @@ while int(arcpy.GetCount_management("confluence_tbl").getOutput(0)) > 0:
 mergedZones = arcpy.Merge_management(toMerge, 
 										workingDirectory + "/allZones")
 
-finalZones = arcpy.Dissolve_management(mergedZones, 
-										baseDirectory + "/impoundedZones" + str(zoneDistM) + "m.shp",
-										"", "", 
-										"MULTI_PART", 
-										"DISSOLVE_LINES")
+#finalZones = arcpy.Dissolve_management(mergedZones, 
+#										baseDirectory + "/impoundedZones" + str(zoneDistM) + "m.shp",
+#										"", "", 
+#										"MULTI_PART", 
+#										"DISSOLVE_LINES")
 
 finalZones = arcpy.Dissolve_management(mergedZones, 
-										workingDirectory + "/impoundedZones" + str(zoneDistM) + "m",
+										workingDirectory + "/impoundedZones",
 										"", "", 
-										"MULTI_PART", 
+										"SINGLE_PART", 
 										"DISSOLVE_LINES")
 										
 										
 
-
+# ========================
 # Join all connected areas
+# ========================
+I did the following in the end:
+
+#1. Created a very small buffer polygon around the lines (0.1 metres) to make sure there was crossover between the lines that were connected.
+
+bufferedZones = arcpy.Buffer_analysis(finalZones, 
+										workingDirectory + "/impoundedZonesBuffer", 
+										"0.1 METER", 
+										"FULL", 
+										"ROUND", 
+										"NONE")
 
 
+#2. Use the dissolve tool with the Unsplit option checked. This created individual polygons for each of the connected line groups.
+
+finalZones = arcpy.Dissolve_management(bufferedZones, 
+										workingDirectory + "/impoundedZonesDissolveBuffer",
+										"", "", 
+										"SINGLE_PART")
+
+#3. Create a unique ID for each polygon.
+arcpy.AddField_management(finalZones, "UniqueID", "LONG")
+arcpy.CalculateField_management (finalZones, "UniqueID", "!OBJECTID!", "PYTHON_9.3")
+										
+										
+										
+
+
+#4. Use the spatial join tool to add the unique polygon ids to each line that intersects or is within the polygons.
+
+#5. Use the dissolve tool again to dissolve the lines based on the unique ID.
 
 
 
