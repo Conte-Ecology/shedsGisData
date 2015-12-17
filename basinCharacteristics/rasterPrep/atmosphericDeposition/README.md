@@ -7,11 +7,11 @@ deposition in kg/ha.
 
 
 ## Data Sources
-|    Layer           | Source                                  | Link              |
-|   :-----:          | ------                                  | ----              |
+|    Layer           | Source                                  | Link |
+|   :-----:          | ------                                  | ---- |
 | Deposition Rasters | National Atmospheric Deposition Program | 
-http://nadp.sws.uiuc.edu/ntn/annualmapsByYear.aspx#2011    |
-| Catchments         | Conte Ecology Group                     | NA                |
+http://nadp.sws.uiuc.edu/ntn/annualmapsByYear.aspx#2011 |
+| Catchments         | Conte Ecology Group  - NHDHRDV2         | NA   |
 
 ## Steps to Run
 
@@ -22,21 +22,21 @@ same format as it is downloaded.
 1. Open the script `atmosphericDeposition.py`
 
 2. Change the values in the "Specify inputs" section of the script
- - `baseDirectory` is the path to the `atmosphericDeposition` folder
+ - `baseDirectory` is the path to the folder where results are written
  - `catchmentsFilePath` is the file path to the catchments polygons shapefile. 
  (See "Notes" section")
  - `sourceFolder` is the path to the folder containing the deposition rasters in .tif 
  format
  - `outputName` is the name that will be associated with this particular run of the 
- tool (e.g. "NHDHRDV2" for all High Resolution Catchments)
+ tool (e.g. "NHDHRDV2")
 
 3. Run the script in ArcPython. It does the following:
-   - Sets up the folder structure in the specified directory
-   - Generates the processing boundary from the specified shapefile and clips the source 
-   raster to this range
-   - Trims the raw raster to the spatial boundary
-   - Outputs the raster to the `atmosphericDeposition\gisFiles\[outputName]\outputFiles` 
-   directory
+ - Sets up the folder structure in the specified directory
+ - Generates the processing boundary from the specified shapefile and clips the source 
+ raster to this range
+ - Trims the raw raster to the spatial boundary
+ - Outputs the raster to the 
+ `[baseDirectory]\gisFiles\[outputName]\outputFiles` directory
 
 
 ## Output Rasters

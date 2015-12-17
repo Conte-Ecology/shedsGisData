@@ -8,7 +8,7 @@ from arcpy import env
 baseDirectory      = "C:/KPONEIL/GitHub/projects/basinCharacteristics/nlcdImpervious"
 catchmentsFilePath = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/hydrography.gdb/regionBoundary"
 rasterFilePath     = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/land/nlcd/spatial/nlcd_2006_impervious_2011_edition_2014_10_10/nlcd_2006_impervious_2011_edition_2014_10_10.img"
-version            = "NHDHRDV2"
+outputName         = "NHDHRDV2"
 
 
 # ===============
@@ -20,8 +20,8 @@ gisFilesDir = baseDirectory + "/gisFiles"
 if not arcpy.Exists(gisFilesDir): arcpy.CreateFolder_management(baseDirectory, "gisFiles")
 
 # Create version folder
-versionDir = gisFilesDir + "/" + version
-if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, version)
+versionDir = gisFilesDir + "/" + outputName
+if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, outputName)
 
 # Create version database
 geoDatabase = versionDir + "/workingFiles.gdb"
