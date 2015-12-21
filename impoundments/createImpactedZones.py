@@ -130,6 +130,7 @@ arcpy.CalculateField_management (segmentedLines, "LengthM", "!Shape_Length!", "P
 # Linear Referencing
 # ==================
 
+# For editing: 
 #mergedDams = networkDirectory + "/impoundments"
 #segmentedLines = networkDirectory + "/flowlines_segmented"
 
@@ -182,7 +183,43 @@ arcpy.AddField_management("locations_tbl", "zoneM", "DOUBLE")
 
 
 
+with arcpy.da.UpdateCursor("impoundmentLocations", ["FMEAS", "routeLengthM"]) as cursor:
+	for row in cursor:
+		if row[0] >= row[1] - 1:
+			row[0] = row[1] - 1
+		cursor.updateRow(row)	
+		
 
+# =======================================================
+# FIXING THE OFFSET START POINT FOR SOME ZONES
+# =======================================================
+
+incompleteZones = arcpy.FeatureClassToFeatureClass_conversion(currentZone, 
+																	workingDirectory, 
+																	"incompleteZones" + "_" + str(count),
+																	""" "totalZoneM" < """ + str(zoneDistM))
+	
+	# Create points at end of zones for marking against confluence locations	
+	zoneEndPoint = arcpy.FeatureVerticesToPoints_management(incompleteZones,
+																workingDirectory + "/zoneEndPoint" + "_" + str(count), 
+																"END")
+		
+	# Calculate the length of the zone to mark (zone distance - current running total)
+	arcpy.CalculateField_management (zoneEndPoint, 
+										"zoneM", 
+										str(zoneDistM) + " - !totalZoneM!", "PYTHON_9.3")
+
+	# New FMEAS	starts from the confluence (start of the line, FMEAS = 0)
+	arcpy.CalculateField_management (zoneEndPoint, "FMEAS", 0, "PYTHON_9.3")
+
+
+
+
+# ===========================================================
+# ===========================================================
+# ===========================================================
+
+		
 # A) zoneM is the end point of the route event calculation. For the confluence affected zones,
 #		this is incremental and either equals the total length of the segment or the length 
 #		that will get the total zone length (totalZoneM) to the specified value.
@@ -240,9 +277,9 @@ arcpy.SelectLayerByAttribute_management ("locations_tbl",
 
 # Calculate the route length as the end of the segment
 arcpy.CalculateField_management ("locations_tbl", 
-										"zoneM", 
-										"!routeLengthM!", 
-										"PYTHON_9.3")
+									"zoneM", 
+									"!routeLengthM!", 
+									"PYTHON_9.3")
 		
 confluenceTable = arcpy.TableToTable_conversion ("locations_tbl", 
 													workingDirectory, 
@@ -260,9 +297,6 @@ arcpy.MakeTableView_management("confluence", "confluence_tbl")
 
 
 count = 0
-
-
-
 
 
 # Iterate through confluences
@@ -376,76 +410,110 @@ while int(arcpy.GetCount_management("confluence_tbl").getOutput(0)) > 0:
 	arcpy.MakeTableView_management(nextSegmentsTable, "confluence_tbl")										
 
 
-
-
-# ================
 # Merge zone tiers
-# ================
-
 mergedZones = arcpy.Merge_management(toMerge, 
 										workingDirectory + "/allZones")
 
-#finalZones = arcpy.Dissolve_management(mergedZones, 
-#										baseDirectory + "/impoundedZones" + str(zoneDistM) + "m.shp",
-#										"", "", 
-#										"MULTI_PART", 
-#										"DISSOLVE_LINES")
-
-finalZones = arcpy.Dissolve_management(mergedZones, 
-										workingDirectory + "/impoundedZones",
-										"", "", 
-										"SINGLE_PART", 
-										"DISSOLVE_LINES")
-										
-										
 
 # ========================
 # Join all connected areas
 # ========================
-I did the following in the end:
+# 
+#1. Creat a very small buffer polygon around the lines (0.1 metres) to make sure there was crossover between the lines that were connected.
+#2. Use the dissolve tool with the Unsplit option checked. This created individual polygons for each of the connected line groups.
+#3. Create a unique ID for each polygon.
+#4. Use the spatial join tool to add the unique polygon ids to each line that intersects or is within the polygons.
 
-#1. Created a very small buffer polygon around the lines (0.1 metres) to make sure there was crossover between the lines that were connected.
-
-bufferedZones = arcpy.Buffer_analysis(finalZones, 
-										workingDirectory + "/impoundedZonesBuffer", 
+bufferedZones = arcpy.Buffer_analysis(mergedZones, 
+										workingDirectory + "/allZonesBuffer", 
 										"0.1 METER", 
 										"FULL", 
 										"ROUND", 
 										"NONE")
 
 
-#2. Use the dissolve tool with the Unsplit option checked. This created individual polygons for each of the connected line groups.
 
-finalZones = arcpy.Dissolve_management(bufferedZones, 
-										workingDirectory + "/impoundedZonesDissolveBuffer",
-										"", "", 
-										"SINGLE_PART")
+dissolvedBuffers = arcpy.Dissolve_management(bufferedZones, 
+												workingDirectory + "/allZonesDissolveBuffer",
+												"", "", 
+												"SINGLE_PART")
 
-#3. Create a unique ID for each polygon.
-arcpy.AddField_management(finalZones, "UniqueID", "LONG")
-arcpy.CalculateField_management (finalZones, "UniqueID", "!OBJECTID!", "PYTHON_9.3")
+							
 										
-										
-										
-
+arcpy.AddField_management(dissolvedBuffers, "UniqueID", "LONG")
+arcpy.CalculateField_management (dissolvedBuffers, "UniqueID", "!OBJECTID!", "PYTHON_9.3")
 
 #4. Use the spatial join tool to add the unique polygon ids to each line that intersects or is within the polygons.
 
+groupedZones = arcpy.SpatialJoin_analysis(mergedZones, 
+								dissolvedBuffers, 
+								workingDirectory + "/groupedZones",
+								"JOIN_ONE_TO_ONE")
+
+
 #5. Use the dissolve tool again to dissolve the lines based on the unique ID.
 
+finalZones = arcpy.Dissolve_management(groupedZones, 
+										workingDirectory + "/impoundedZones",
+										"UniqueID", "", 
+										"")
 
+arcpy.AddField_management(finalZones, "LengthM", "DOUBLE")
+arcpy.CalculateField_management (finalZones, "LengthM", "!shape.length@meters!", "PYTHON_9.3")
 
-
-
-
-
-
-
-
+				
+arcpy.FeatureClassToFeatureClass_conversion(finalZones, 
+											baseDirectory, 
+											"impoundedZones" + str(zoneDistM) + "m.shp",
+											""" UniqueID IS NOT NULL """ )							
+										
 
 										
-#arcpy.AddField_management(finalZones, "LengthM", "DOUBLE")
-#arcpy.CalculateField_management (finalZones, "LengthM", "!shape.length@meters!", "PYTHON_9.3")
+										
+# ==============================
+# Impacted Catchment Pour Points
+# ==============================
+
+catsToMerge = []
+
+for region in hydroRegions:
+
+	catchments = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/hydrography.gdb/catchments" + region
+	arcpy.MakeFeatureLayer_management(catchments, "catchments_lyr")
+
+	arcpy.SelectLayerByLocation_management ("catchments_lyr",
+											"CROSSED_BY_THE_OUTLINE_OF",
+											finalZones,
+											"", 
+											"NEW_SELECTION")
+
+	arcpy.SelectLayerByLocation_management ("catchments_lyr",
+											"INTERSECT",
+											mergedDams,
+											"",
+											"SUBSET_SELECTION")
+
+	arcpy.FeatureClassToFeatureClass_conversion("catchments_lyr", 
+												workingDirectory, 
+												"pourPoints_" +  region)												
+												
+
+										
+
+	catsToMerge.append(workingDirectory + "/pourPoints_" +  region)										
+
+	# Delete old location table
+	arcpy.Delete_management("catchments_lyr")	
+
+	
+mergedPourPoints = arcpy.Merge_management(catsToMerge, 
+										workingDirectory + "/impactedPourPoints")
+
+
+	
+arcpy.TableToTable_conversion(mergedPourPoints, 
+									baseDirectory, 
+									"impactedPourPoints" + str(zoneDistM) + "m.dbf")
 
 
 
@@ -455,7 +523,7 @@ arcpy.CalculateField_management (finalZones, "UniqueID", "!OBJECTID!", "PYTHON_9
 
 
 
-
+		
 
 
 # >>>>> Make this a while loop to check for continued conluences in series <<<<<<
