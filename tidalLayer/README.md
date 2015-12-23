@@ -23,3 +23,9 @@ all bodies of water within the SHEDS range that are impacted by tide.
 
 
 
+## Manual Editing
+
+Unfortunately, some categorization errors are present in the raw wetland layers. 
+After the script is run, a handful of errors need to be corrected. These errors 
+exist in the form of small polygons located far enough inland to be sure that 
+they are not actually tidally influenced.

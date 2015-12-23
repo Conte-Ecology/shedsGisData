@@ -48,14 +48,8 @@ for s in range(len(states)):
 mergedPolygons = arcpy.Merge_management(tidalZones, 
 										working_db + "/tidal_All")
 											
-#arcpy.Dissolve_management(mergedPolygons, 
-#							baseDirectory + "/tidalZones.shp",
-#							"", "", 
-#							"SINGLE_PART", 
-#							"")	
-							
 arcpy.Dissolve_management(mergedPolygons, 
-							baseDirectory + "/tidalZonesMulti.shp",
+							baseDirectory + "/tidalZonesAutomated.shp",
 							"", "", 
-							"MULTI_PART", 
-							"")								
+							"SINGLE_PART", 
+							"")	
