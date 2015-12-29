@@ -7,10 +7,10 @@ from arcpy import env
 # ==============
 baseDirectory      = "C:/KPONEIL/GitHub/projects/basinCharacteristics/nlcdLandCover"
 catchmentsFilePath = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/hydrography.gdb/regionBoundary"
-rasterFilePath = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/land/nlcd/spatial/nlcd_2006_landcover_2011_edition_2014_03_31/nlcd_2006_landcover_2011_edition_2014_03_31.img"
-reclassTable = "C:/KPONEIL/GitHub/projects/shedsData/basinCharacteristics/rasterPrep/nlcdLandCover/reclassTable.csv"
-version = "NHDHRDV2"
-keepFiles = "YES"
+rasterFilePath     = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/land/nlcd/spatial/nlcd_2006_landcover_2011_edition_2014_03_31/nlcd_2006_landcover_2011_edition_2014_03_31.img"
+reclassTable       = "C:/KPONEIL/GitHub/projects/shedsData/basinCharacteristics/rasterPrep/nlcdLandCover/reclassTable.csv"
+outputName         = "NHDHRDV2"
+keepFiles          = "YES"
 
 
 # ===========
@@ -21,22 +21,26 @@ keepFiles = "YES"
 # ------------------------------------------
 # Create GIS files folder
 gisFilesDir = baseDirectory + "/gisFiles"
-if not arcpy.Exists(gisFilesDir): arcpy.CreateFolder_management(baseDirectory, "gisFiles")
+if not arcpy.Exists(gisFilesDir): arcpy.CreateFolder_management(baseDirectory, 
+                                                                "gisFiles")
 
 
 # Create run specific folders if they don't exist
 # -----------------------------------------------
 # Create version folder
 versionDir = gisFilesDir + "/" + version
-if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, version)
+if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, 
+                                                               version)
 
 # Create version database
 geoDatabase = versionDir + "/workingFiles.gdb"
-if not arcpy.Exists(geoDatabase): arcpy.CreateFileGDB_management(versionDir, "workingFiles.gdb")
+if not arcpy.Exists(geoDatabase): arcpy.CreateFileGDB_management(versionDir, 
+                                                                  "workingFiles.gdb")
 
 # Create output folder
 outputDir = versionDir + "/outputFiles"
-if not arcpy.Exists(outputDir): arcpy.CreateFolder_management(versionDir, "outputFiles")
+if not arcpy.Exists(outputDir): arcpy.CreateFolder_management(versionDir, 
+                                                               "outputFiles")
 
 
 # =====================
@@ -81,8 +85,8 @@ rasterSpatialRef = arcpy.Describe(rasterFilePath).spatialreference.name
 # Reproject if necessary
 if rasterSpatialRef != catchSpatialRef:	
 	projectedRaster = arcpy.ProjectRaster_management(rangeRaster, 
-														geoDatabase + "/rangeRasterPrj",
-														catchmentsFilePath)
+													 geoDatabase + "/rangeRasterPrj",
+													 catchmentsFilePath)
 else: projectedRaster = rangeRaster
 
 # ==========================
@@ -118,12 +122,14 @@ for i in fieldCount:
 	# Remove cells specified as -9999
 	# -------------------------------
 	# Count number of unique values
-	uniqueValues = arcpy.GetRasterProperties_management(recRaster, "UNIQUEVALUECOUNT")
+	uniqueValues = arcpy.GetRasterProperties_management(recRaster, 
+														"UNIQUEVALUECOUNT")
 
 	# If there are more than 2 unique values (1 & 0), then the others get removed
 	if int(uniqueValues.getOutput(0)) > 2:
 		
-		# There should only be 2 unique values (1 and 0). Any more indicate that other cells need to be removed
+		# There should only be 2 unique values (1 and 0). Any more indicate 
+		#	that other cells need to be removed
 		outCon = Con(recRaster, recRaster, "", "VALUE = 0 OR VALUE = 1")
 		outCon.save(outputDir + "/"+ str(category.name))
 		

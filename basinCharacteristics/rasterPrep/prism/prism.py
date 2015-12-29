@@ -9,7 +9,7 @@ from arcpy import env
 baseDirectory      = "C:/KPONEIL/GitHub/projects/basinCharacteristics/prism"
 catchmentsFilePath = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/hydrography.gdb/regionBoundary"
 sourceFolder       = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/prism/spatial"
-version            = "NHDHRDV2"
+outputName         = "NHDHRDV2"
 
 
 # ---------------
@@ -18,19 +18,23 @@ version            = "NHDHRDV2"
 
 # Create GIS files folder
 gisFilesDir = baseDirectory + "/gisFiles"
-if not arcpy.Exists(gisFilesDir): arcpy.CreateFolder_management(baseDirectory, "gisFiles")
+if not arcpy.Exists(gisFilesDir): arcpy.CreateFolder_management(baseDirectory, 
+                                                                "gisFiles")
 
 # Create version folder
 versionDir = gisFilesDir + "/" + version
-if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, version)
+if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, 
+                                                               version)
 
 # Create version database
 geoDatabase = versionDir + "/workingFiles.gdb"
-if not arcpy.Exists(geoDatabase): arcpy.CreateFileGDB_management(versionDir, "workingFiles.gdb")
+if not arcpy.Exists(geoDatabase): arcpy.CreateFileGDB_management(versionDir, 
+                                                                 "workingFiles.gdb")
 
 # Create output folder
 outputDir = versionDir + "/outputFiles"
-if not arcpy.Exists(outputDir): arcpy.CreateFolder_management(versionDir, "outputFiles")
+if not arcpy.Exists(outputDir): arcpy.CreateFolder_management(versionDir, 
+                                                              "outputFiles")
 
 # List of rasters and their output names
 rasterList =  [ ["PRISM_ppt_30yr_normal_800mM2_01_asc.asc", "jan_prcp_mm"], 

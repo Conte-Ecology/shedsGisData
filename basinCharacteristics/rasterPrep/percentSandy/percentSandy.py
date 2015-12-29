@@ -5,9 +5,9 @@ import arcpy
 # ==============
 
 baseDirectory = "C:/KPONEIL/GitHub/projects/basinCharacteristics/percentSandy"
-states = ["MA", "CT", "RI", "ME", "NH", "VT", "NY", "DE", "MD", "NJ", "PA", "VA", "WV", "DC", "NC", "TN", "KY", "OH"]
-sourceFolder = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/land/nrcsSSURGO/spatial"
-outputName = "NHDHRDV2"
+states        = ["MA", "CT", "RI", "ME", "NH", "VT", "NY", "DE", "MD", "NJ", "PA", "VA", "WV", "DC", "NC", "TN", "KY", "OH"]
+sourceFolder  = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/land/nrcsSSURGO/spatial"
+outputName    = "NHDHRDV2"
 
 
 # ===========

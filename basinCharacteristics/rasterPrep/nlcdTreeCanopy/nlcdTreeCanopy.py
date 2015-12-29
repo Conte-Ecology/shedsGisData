@@ -5,11 +5,10 @@ from arcpy import env
 # ==============
 # Specify inputs
 # ==============
-
 baseDirectory      = "C:/KPONEIL/GitHub/projects/basinCharacteristics/nlcdTreeCanopy"
 catchmentsFilePath = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/hydrography.gdb/regionBoundary"
 rasterFilePath 	   = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/land/nlcd/spatial/nlcd_2011_USFS_tree_canopy_2011_edition_2014_03_31/cartographic_product/nlcd2011_usfs_treecanopy_cartographic_3-31-2014.img"
-version            = "NHDHRDV2"
+outputName         = "NHDHRDV2"
 statesFilePath     = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/political/states/States.shp"
 
 
