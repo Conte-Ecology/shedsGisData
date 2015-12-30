@@ -7,13 +7,12 @@ in mm.
 
 
 ## Data Sources
-| Layer  | Source | Link |
-|:-----: | ------ | ---- |
-| PRISM 30-Year Normal (1981 - 2010) of monthly precipition | PRISM Climate 
-Group | http://www.prism.oregonstate.edu/normals/ |
-| PRISM 30-Year Normal (1981 - 2010) of min & max temperature | PRISM Climate 
-Group | http://www.prism.oregonstate.edu/normals/ |
-| Catchments | Conte Ecology Group - NHDHRDV2 | NA |
+| Layer                                                       | Source |
+|:-----:                                                      | ------ |
+| PRISM 30-Year Normal (1981 - 2010) of monthly precipition   | [PRISM Climate Group](http://www.prism.oregonstate.edu/normals/) |
+| PRISM 30-Year Normal (1981 - 2010) of min & max temperature | [PRISM Climate Group](http://www.prism.oregonstate.edu/normals/) |
+| Catchments                                                  | Conte Ecology Group - NHDHRDV2 |
+
 
 ## Steps to Run:
 
@@ -37,18 +36,18 @@ otherwise kept in the same format as it is downloaded.
  the source raster to this range
  - Trims the raw raster to the spatial boundary 
  - Saves the completed rasters to the 
- `prism\gisFiles\[outputName]\outputFiles` directory
+ `[baseDirectory]\gisFiles\[outputName]\outputFiles` directory
    
 ## Output Rasters
 
 #### Average Minimum Annual Temperature
-Raster name: ann_tmin_c <br>
-Description: This layer represents the 30-year normal (1981-2010) of average 
+*Raster name:* ann_tmin_c <br>
+*Description:* This layer represents the 30-year normal (1981-2010) of average 
 minimum annual temperature.
 
 #### Average Maximum Annual Temperature
-Raster name: ann_tmax_c <br>
-Description: This layer represents the 30-year normal (1981-2010) of average 
+*Raster name:* ann_tmax_c <br>
+*Description:* This layer represents the 30-year normal (1981-2010) of average 
 maximum annual temperature.
 
 #### Average Monthly Precipition (12 rasters)
@@ -59,7 +58,6 @@ Description: These layers represents the 30-year normal (1981-2010) of average
 monthly precipitaion.
 
 
-
 ## Notes
 
 - Typically, the `catchmentsFilePath` variable specifies a shapefile of hydrologic 
@@ -67,6 +65,7 @@ catchments defining the range over which the "Zonal Statistics" tool will be
 applied. It is possible to enter another polygon shapefile, such as state or town 
 boundaries, as this variable. The primary purpose of this layer is to trim the 
 original raster, which represents the continental US, to a manageable size.
+
 
 ## Next Steps
 

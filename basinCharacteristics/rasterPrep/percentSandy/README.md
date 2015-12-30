@@ -8,11 +8,9 @@ absence.
 
 
 ## Data Sources
-| Layer   | Source | Link |
-|:-----:  | ------ | ---- |
-| SSURGO  | USDA-NRCS (download through Geospatial Data Gateway) | 
-http://datagateway.nrcs.usda.gov/GDGOrder.aspx?order=QuickState Select: 
-"2014 Gridded Soil Survey Geographic (gSSURGO) by State or Conterminous U.S." |
+| Layer   | Source | 
+|:-----:  | ------ |
+| SSURGO  | [USDA-NRCS](http://datagateway.nrcs.usda.gov/GDGOrder.aspx?order=QuickState) Select: "2014 Gridded Soil Survey Geographic (gSSURGO) by State or Conterminous U.S." |
 
 ## Steps to Run:
 
@@ -39,13 +37,13 @@ otherwise kept in the same format as it is downloaded.
  - Loops through the state polygons, creating state rasters of the sandy category
  - Mosaicks all of the state raster and the full range empty raster
  - Saves the completed rasters to the 
- `percentSandy\gisFiles\[outputName]\outputFiles` directory
+ `[baseDirectory]\gisFiles\[outputName]\outputFiles` directory
 
 ## Output Rasters
 
 #### Percent Sandy
-Raster name: sandy <br>
-Description: This layer represents the soil parent material that is described as 
+*Raster name:* sandy <br>
+*Description:* This layer represents the soil parent material that is described as 
 "sandy". This classification is defined as a soil whose parent material texture 
 is sandy and is defined in SSURGO's "Component Parent Material" table ("copm") 
 by features in the column "Textural Modifier" ("pmmodifier") = "Sandy". 

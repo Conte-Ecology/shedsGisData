@@ -8,11 +8,10 @@ spatial averaging.
 
 
 ## Data Sources
-| Layer   | Source | Link |
-|:-----:  | ------ | ---- |
-| SSURGO  | USDA-NRCS (download through Geospatial Data Gateway) | 
-http://datagateway.nrcs.usda.gov/GDGOrder.aspx?order=QuickState Select: "2014 
-Gridded Soil Survey Geographic (gSSURGO) by State or Conterminous U.S."|
+| Layer   | Source | 
+|:-----:  | ------ | 
+| SSURGO  | [USDA-NRCS](http://datagateway.nrcs.usda.gov/GDGOrder.aspx?order=QuickState) Select: "2014 Gridded Soil Survey Geographic (gSSURGO) by State or Conterminous U.S."|
+
 
 ## Steps to Run:
 
@@ -41,7 +40,7 @@ format as it is downloaded.
  table in the next section
  - Mosaicks all of the state rasters to output a single raster
  - Saves the completed rasters to the 
- `soilDrainageClass\gisFiles\[outputName]\outputFiles` directory
+ `[baseDirectory]\gisFiles\[outputName]\outputFiles` directory
  
  
 ## Reclassification Values
@@ -60,8 +59,8 @@ format as it is downloaded.
 ## Output Rasters
 
 #### Soil Drainage Class
-Raster name: drainageclass <br>
-Description: This layer is a numeric representation of the soil drainage class. 
+*Raster name:* drainageclass <br>
+*Description:* This layer is a numeric representation of the soil drainage class. 
 This category is defined in the Drainage Class ("drainagecl") column of 
 SSURGO's Component table ("component").
 

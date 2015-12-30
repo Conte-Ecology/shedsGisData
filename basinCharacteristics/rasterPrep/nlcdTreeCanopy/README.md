@@ -7,12 +7,11 @@ Dataset. Raster values range from 1 to 100.
 
 
 ## Data Sources
-| Layer              | Source                              | Link  |
-|:-----:             | ------                              | ----  |
-| Tree Canopy Raster | National Land Cover Dataset         | http://www.mrlc.gov/ |
-| Catchments         | Conte Ecology Group   - NHDHRDV2    | NA |
-| State Boundaries   | National Atlas of the United States | 
-http://dds.cr.usgs.gov/pub/data/nationalatlas/statesp010g.shp_nt00938.tar.gz |
+| Layer              | Source                                                                                                              |
+|:-----:             | ------                                                                                                              |
+| Tree Canopy Raster | [National Land Cover Dataset](http://www.mrlc.gov/)                                                                 |
+| Catchments         | Conte Ecology Group   - NHDHRDV2                                                                                    |
+| State Boundaries   | [National Atlas of the United States](http://dds.cr.usgs.gov/pub/data/nationalatlas/statesp010g.shp_nt00938.tar.gz) |
 
 
 ## Steps to Run:
@@ -40,14 +39,14 @@ otherwise kept in the same format as it is downloaded.
  are used to create the boundary (see "Notes")
  - Trims the raw raster to the spatial boundary and removes the missing data
  - Saves the completed rasters to the 
- `nlcdTreeCanopy\gisFiles\[outputName]\outputFiles` directory
+ `[baseDirectory]\gisFiles\[outputName]\outputFiles` directory
 
 
 ## Output Rasters 
 
 #### Tree Canopy
-Raster name: tree_canopy <br>
-Description: This layer represents the percentage of the raster cell area that 
+*Raster name:* tree_canopy <br>
+*Description:* This layer represents the percentage of the raster cell area that 
 is covered by a vertical projection of tree canopy.
 
 

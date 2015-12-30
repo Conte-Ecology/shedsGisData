@@ -11,11 +11,9 @@ creating poor drainage.
 
 
 ## Data Sources
-| Layer | Source | Link |
-|:----: | ------ | ---- |
-| SSURGO  | USDA-NRCS (download through Geospatial Data Gateway) | 
-http://datagateway.nrcs.usda.gov/GDGOrder.aspx?order=QuickState  Select: "2014 
-Gridded Soil Survey Geographic (gSSURGO) by State or Conterminous U.S." |
+| Layer  | Source | 
+|:----:  | ------ | 
+| SSURGO | [USDA-NRCS](http://datagateway.nrcs.usda.gov/GDGOrder.aspx?order=QuickState) Select: "2014 Gridded Soil Survey Geographic (gSSURGO) by State or Conterminous U.S." |
 
 ## Steps to Run:
 
@@ -47,38 +45,38 @@ format as it is downloaded.
  coarseness category
  - Mosaicks all of the state raster and the full range empty raster
  - Saves the completed rasters to the 
- `soilHydrologicGroup\gisFiles\[outputName]\outputFiles` directory
+ `[baseDirectory]\gisFiles\[outputName]\outputFiles` directory
 
 
 ## Output Rasters
 
 #### Soil Hydrologic Group A
-Raster name: hydrogroup_a <br>
-Description: The layer represents the soil hydrolic group A. This category is 
+*Raster name:* hydrogroup_a <br>
+*Description:* The layer represents the soil hydrolic group A. This category is 
 defined by features where Hydrologic Group ("hydgrp") = "A" in SSURGO's 
 Component ("component") table.
 
 #### Soil Hydrologic Group A & B
-Raster name: hydrogroup_ab <br>
-Description: The layer represents the soil hydrolic groups A & B. This category 
+*Raster name:* hydrogroup_ab <br>
+*Description:* The layer represents the soil hydrolic groups A & B. This category 
 is defined by features where Hydrologic Group ("hydgrp") = "A" or "B" in SSURGO's 
 Component ("component") table.
 
 #### Soil Hydrologic Group C & D
-Raster name: hydrogroup_cd <br>
-Description: The layer represents the soil hydrolic groups C & D. This category 
+*Raster name:* hydrogroup_cd <br>
+*Description:* The layer represents the soil hydrolic groups C & D. This category 
 is defined by features where Hydrologic Group ("hydgrp") = "C" or "D" in SSURGO's 
 Component ("component") table.
 
 #### Soil Hydrologic Group D (Only)
-Raster name: hydrogroup_d1 <br>
-Description: The layer represents the soil hydrolic group D and only D. This 
+*Raster name:* hydrogroup_d1 <br>
+*Description:* The layer represents the soil hydrolic group D and only D. This 
 category is defined by features where Hydrologic Group ("hydgrp") = "D" in 
 SSURGO's Component ("component") table.
 
 #### Soil Hydrologic Group D (All)
-Raster name: hydrogroup_d4 <br>
-Description: The layer represents the soil hydrolic group D where any 
+*Raster name:* hydrogroup_d4 <br>
+*Description:* The layer represents the soil hydrolic group D where any 
 combination including group D is included. This category is defined by features 
 where Hydrologic Group ("hydgrp") = "A/D", "B/D", "C/D", or "D" in SSURGO's 
 Component ("component") table.

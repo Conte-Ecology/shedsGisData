@@ -7,10 +7,10 @@ presence the specified land cover classification and a 0 represents the absence.
 
 
 ## Data Sources
-| Layer           | Source                          | Link                 |
-|:-----:          | ------                          | ----                 |
-| Land Use Raster | National Land Cover Dataset     | http://www.mrlc.gov/ |
-| Catchments      | Conte Ecology Group - NHDHRDV2  | NA                   |
+| Layer           | Source                                              |
+|:-----:          | ------                                              |
+| Land Use Raster | [National Land Cover Dataset](http://www.mrlc.gov/) |
+| Catchments      | Conte Ecology Group - NHDHRDV2                      |
 
 ## Steps to Run:
 
@@ -56,7 +56,7 @@ otherwise kept in the same format as it is downloaded.
  - Creates the individual categorical rasters based on the reclassification 
  table
  - Saves the completed rasters to the 
- `nlcdLandCover\gisFiles\[outputName]\outputFiles` directory
+ `[baseDirectory]\gisFiles\[outputName]\outputFiles` directory
 
 ## Output Rasters
 
@@ -67,59 +67,59 @@ rasters will receive the same name as the column name. Be sure to adhere to
 on ArcGrid file names. Currently, the created rasters are:
 
 #### Percent Forest
-Raster name: forest <br>
-Description: This layer represents the NLCD land cover defined as forested 
+*Raster name:* forest <br>
+*Description:* This layer represents the NLCD land cover defined as forested 
 (where "Land_Cover" = "Deciduous Forest", "Evergreen Forest", "Mixed Forest", 
 "Woody Wetlands", "Palustrine Forested Wetland", or "Estuarine Forested 
 Wetland").
 
 #### Percent Developed
-Raster name: developed <br>
-Description: This layer represents the NLCD land cover defined as developed 
+*Raster name:* developed <br>
+*Description:* This layer represents the NLCD land cover defined as developed 
 (where "Land_Cover" = "Developed, Open Space", "Developed, Low Intensity", 
 "Developed, Medium Intensity", "Developed, High Intensity", "Unconsolidated 
 Shore/Quarries/Gravel Pits/Strip Mines", or "Urban/Recreational Grasses").
 
 #### Percent Developed, High Intensity
-Raster name: devel_hi <br>
-Description: This layer represents the NLCD land cover defined as high 
+*Raster name:* devel_hi <br>
+*Description:* This layer represents the NLCD land cover defined as high 
 intensity development (where "Land_Cover" = "Developed, High Intensity").
 
 #### Percent Developed, Medium Intensity
-Raster name: devel_med <br>
-Description: This layer represents the NLCD land cover defined as medium 
+*Raster name:* devel_med <br>
+*Description:* This layer represents the NLCD land cover defined as medium 
 intensity development (where "Land_Cover" = "Developed, Medium Intensity").
 
 #### Percent Developed, Low Intensity
-Raster name: devel_low <br>
-Description: This layer represents the NLCD land cover defined as low intensity 
+*Raster name:* devel_low <br>
+*Description:* This layer represents the NLCD land cover defined as low intensity 
 development (where "Land_Cover" = "Developed, Low Intensity").
 
 #### Percent Developed, Open
-Raster name: devel_opn <br>
-Description: This layer represents the NLCD land cover defined as developed 
+*Raster name:* devel_opn <br>
+*Description:* This layer represents the NLCD land cover defined as developed 
 land that is open space (where "Land_Cover" = "Developed, Open Space").
 
 #### Percent Deciduous Forest
-Raster name: forest_decid <br>
-Description: This layer represents the NLCD land cover defined as deciduous 
+*Raster name:* forest_decid <br>
+*Description:* This layer represents the NLCD land cover defined as deciduous 
 forest (where "Land_Cover" = "Deciduous Forest").
 
 #### Percent Evergreen Forest
-Raster name: forest_evgrn <br>
-Description: This layer represents the NLCD land cover defined as evergreen 
+*Raster name:* forest_evgrn <br>
+*Description:* This layer represents the NLCD land cover defined as evergreen 
 forest (where "Land_Cover" = "Evergreen Forest").
 
 #### Percent Mixed Forest
-Raster name: forest_mixed <br>
-Description: This layer represents the NLCD land cover defined as mixed forest, 
+*Raster name:* forest_mixed <br>
+*Description:* This layer represents the NLCD land cover defined as mixed forest, 
 not defined in the previous two layers (where "Land_Cover" = "Mixed Forest", 
 "Woody Wetlands", "Palustrine Forested Wetland", or "Estuarine Forested 
 Wetland").
 
 #### Percent Wetland
-Raster name: wetland <br>
-Description: This layer represents the NLCD land cover defined as wetlands 
+*Raster name:* wetland <br>
+*Description:* This layer represents the NLCD land cover defined as wetlands 
 (where "Land_Cover" = "Woody Wetlands", "Palustrine Forested Wetland", 
 "Palustrine Scrub/Shrub Wetland", "Estuarine Forested Wetland", "Estuarine 
 Scrub/Shrub Wetland", "Emergent Herbaceous Wetlands", "Palustrine Emergent
@@ -127,13 +127,13 @@ Wetland (Persistent)", "Estuarine Emergent Wetland", "Palustrine Aquatic
 Bed", or "Estuarine Aquatic Bed").
 
 #### Percent Open Water
-Raster name: wetland <br>
-Description: This layer represents the NLCD land cover defined as open water 
+*Raster name:* wetland <br>
+*Description:* This layer represents the NLCD land cover defined as open water 
 (where "Land_Cover" = "Open Water").
 
 #### Percent Herbaceous
-Raster name: herbaceous <br>
-Description: This layer represents the NLCD land cover defined as herbaceous 
+*Raster name:* herbaceous <br>
+*Description:* This layer represents the NLCD land cover defined as herbaceous 
 (where "Land_Cover" = "Transitional", "Dwarf Scrub", "Shrub/Scrub", 
 "Grassland/Herbaceous", "Sedge/Herbaceous", "Lichens", "Moss", 
 "Urban/Recereational Grasses", "Palustrine Scrub/Shrub Wetland", "Estuarine 
@@ -141,14 +141,14 @@ Scrub/Shrub Wetland", "Emergent Herbaceous Wetlands", "Palustrine Emergent
 Wetland (Persistent)", or "Estuarine Emergent Wetland").
 
 #### Percent Agriculture
-Raster name: agriculture <br>
-Description: This layer represents the NLCD land cover defined as agricultural 
+*Raster name:* agriculture <br>
+*Description:* This layer represents the NLCD land cover defined as agricultural 
 land (where "Land_Cover" = "Orchards/Vineyards", "Pasture/Hay", "Cultivated 
 Crops - row crops", "Cultivated Crops - small grains", or "Fallow").
 
 #### Percent Undeveloped Forest
-Raster name: undev_forest <br>
-Description: This layer represents the NLCD land cover defined as land that is 
+*Raster name:* undev_forest <br>
+*Description:* This layer represents the NLCD land cover defined as land that is 
 forested. (where "Land_Cover" = "Deciduous Forest", "Evergreen Forest", "Mixed 
 Forest", "Woody Wetlands", "Palustrine Forested Wetland", "Estuarine Forested 
 Wetland"). Additionally, land defined as being developed (where "Land_Cover" = 
