@@ -45,7 +45,7 @@ format as it is downloaded.
  
 ## Reclassification Values
 |        Drainage Class       | Assigned Value |
-|:---------------------------:| -------------- |
+|:---------------------------:|:--------------:|
 | Excessively drained         |      1         |
 | Somewhat excessively drained|      2         |
 | Well drained                |      3         |
