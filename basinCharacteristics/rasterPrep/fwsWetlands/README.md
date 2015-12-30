@@ -48,13 +48,13 @@ otherwise kept in the same format as it is downloaded.
 ## Output Rasters
 
 #### Open Water 
-Raster name: fwsOpenWater <br>
-Description: This layer represents the FWS wetlands defined as "open water" (where 
+*Raster name:* fwsOpenWater <br>
+*Description:* This layer represents the FWS wetlands defined as "open water" (where 
 "WETLAND_TYPE" = "Freshwater Pond", "Lake", or "Estuarine and Marine Deepwater").
 
 #### Wetlands
-Raster name: fwsWetlands <br>
-Description: This layer represents the FWS wetlands defined as "open water" (where 
+*Raster name:* fwsWetlands <br>
+*Description:* This layer represents the FWS wetlands defined as "open water" (where 
 "WETLAND_TYPE" = "Estuarine and Marine Wetland", "Freshwater Emergent Wetland", or 
 "Freshwater Forested/Shrub Wetland").
 

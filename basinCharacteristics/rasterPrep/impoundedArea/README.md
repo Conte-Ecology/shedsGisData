@@ -52,27 +52,27 @@ otherwise kept in the same format as it is downloaded.
 ## Output Rasters
 
 #### Open Water On Stream Network
-Raster name: openOnNet <br>
-Description: This layer represents the FWS wetlands defined as "open water" 
+*Raster name:* openOnNet <br>
+*Description:* This layer represents the FWS wetlands defined as "open water" 
 (where "WETLAND_TYPE" = "Freshwater Pond" or "Lake") that intersect the stream 
 network.
 
 #### Open Water Off Stream Network
-Raster name: openOffNet <br>
-Description: This layer represents the FWS wetlands defined as "open water" 
+*Raster name:* openOffNet <br>
+*Description:* This layer represents the FWS wetlands defined as "open water" 
 (where "WETLAND_TYPE" = "Freshwater Pond" or "Lake") that are not intersected 
 by the stream network.
 
 #### All Water Bodies On Stream Network
-Raster name: allOnNet <br>
-Description: This layer represents the FWS wetlands defined as "all water 
+*Raster name:* allOnNet <br>
+*Description:* This layer represents the FWS wetlands defined as "all water 
 bodies" (where "WETLAND_TYPE" = "Freshwater Emergent Wetland", "Freshwater 
 Forested/Shrub Wetland", "Freshwater Pond", "Lake", or "Other") that intersect 
 the stream network.
 
 #### All Water Bodies Off Stream Network
-Raster name: allOffNet <br>
-Description: This layer represents the FWS wetlands defined as "all water 
+*Raster name:* allOffNet <br>
+*Description:* This layer represents the FWS wetlands defined as "all water 
 bodies" (where "WETLAND_TYPE" = "Freshwater Emergent Wetland", "Freshwater 
 Forested/Shrub Wetland", "Freshwater Pond", "Lake", or "Other") that are not 
 intersected by the stream network.

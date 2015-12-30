@@ -41,12 +41,12 @@ same format as it is downloaded.
 ## Output Rasters
 
 #### Nitrate Ion (NO3) Deposition
-Raster name: dep_no3_2011 <br>
-Description: This layer represents the total annual wet deposition of nitrate (NO3) in 2011.
+*Raster name:* dep_no3_2011 <br>
+*Description:* This layer represents the total annual wet deposition of nitrate (NO3) in 2011.
 
 #### Sulfate Ion (SO4) Deposition
-Raster name: dep_so4_2011 <br>
-Description: This layer represents the total annual wet deposition of sulfate (SO4) in 2011.
+*Raster name:* dep_so4_2011 <br>
+*Description:* This layer represents the total annual wet deposition of sulfate (SO4) in 2011.
 
 
 

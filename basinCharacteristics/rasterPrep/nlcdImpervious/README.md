@@ -40,7 +40,7 @@ otherwise kept in the same format as it is downloaded.
 
 #### Impervious
 *Raster name:* impervious <br>
-*Description*: This layer represents the percentage of the area that is covered 
+*Description:* This layer represents the percentage of the area that is covered 
 by impervious surface.
 
 
