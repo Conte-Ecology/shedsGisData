@@ -35,7 +35,7 @@ same format as it is downloaded.
  raster to this range
  - Trims the raw raster to the spatial boundary
  - Outputs the raster to the 
- `[baseDirectory]\gisFiles\[outputName]\outputFiles` directory
+ "`baseDirectory`\gisFiles\`outputName`\outputFiles" directory
 
 
 ## Output Rasters
