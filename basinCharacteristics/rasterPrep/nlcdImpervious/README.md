@@ -7,10 +7,10 @@ values range from 1 to 100.
 
 
 ## Data Sources
-| Layer           | Source                          | Link                    |
-|:-----:          | ------                          | ----                    |
-| Land Use Raster | National Land Cover Dataset     | http://www.mrlc.gov/    |
-| Catchments      | Conte Ecology Group  - NHDHRDV2 | NA                      |
+| Layer           | Source                                              |
+|:-----:          | ------                                              |
+| Land Use Raster | [National Land Cover Dataset](http://www.mrlc.gov/) |
+| Catchments      | Conte Ecology Group  - NHDHRDV2                     |
 
 ## Steps to Run:
 
