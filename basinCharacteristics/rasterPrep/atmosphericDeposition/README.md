@@ -9,7 +9,8 @@ deposition in kg/ha.
 ## Data Sources
 |    Layer           | Source                                  | 
 |   :-----:          | ------                                  | 
-| Deposition Rasters | [National Atmospheric Deposition Program](http://nadp.sws.uiuc.edu/ntn/annualmapsByYear.aspx#2011) |
+| Deposition Rasters | [National Atmospheric Deposition 
+Program](http://nadp.sws.uiuc.edu/ntn/annualmapsByYear.aspx#2011) |
 | Catchments         | Conte Ecology Group  - NHDHRDV2         |
 
 ## Steps to Run
@@ -35,7 +36,7 @@ same format as it is downloaded.
  raster to this range
  - Trims the raw raster to the spatial boundary
  - Outputs the raster to the 
- "`baseDirectory`\gisFiles\`outputName`\outputFiles" directory
+ `[baseDirectory]\gisFiles\[outputName]\outputFiles` directory
 
 
 ## Output Rasters
