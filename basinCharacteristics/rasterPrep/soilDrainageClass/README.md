@@ -44,15 +44,15 @@ format as it is downloaded.
  
  
 ## Reclassification Values
-   |        Drainage Class       | Assigned Value |
-   |:---------------------------:| -------------- |
-   | Excessively drained         |      1         |
-   | Somewhat excessively drained|      2         |
-   | Well drained                |      3         |
-   | Moderately well drained     |      4         |
-   | Somewhat poorly drained     |      5         |
-   | Poorly drained              |      6         |
-   | Very poorly drained         |      7         |
+|        Drainage Class       | Assigned Value |
+|:---------------------------:| -------------- |
+| Excessively drained         |      1         |
+| Somewhat excessively drained|      2         |
+| Well drained                |      3         |
+| Moderately well drained     |      4         |
+| Somewhat poorly drained     |      5         |
+| Poorly drained              |      6         |
+| Very poorly drained         |      7         |
 
 
 ## Output Rasters
