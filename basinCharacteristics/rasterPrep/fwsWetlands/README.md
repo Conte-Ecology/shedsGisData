@@ -8,12 +8,10 @@ a 0 represents the absence.
 
 
 ## Data Sources
-| Layer            | Source                                           | Link |
-|:-----:           | ------                                           | ---- |
-| Wetlands Layer   | U.S. Fish & Wildlife National Wetlands Inventory | 
-http://www.fws.gov/wetlands/Data/Data-Download.html                          |
-| State Boundaries | National Atlas of the United States              | 
-http://dds.cr.usgs.gov/pub/data/nationalatlas/statesp010g.shp_nt00938.tar.gz |
+| Layer            | Source                                                                                                              | 
+|:-----:           | ------                                                                                                              | 
+| Wetlands Layer   | [U.S. Fish & Wildlife National Wetlands Inventory](http://www.fws.gov/wetlands/Data/Data-Download.html)             |
+| State Boundaries | [National Atlas of the United States](http://dds.cr.usgs.gov/pub/data/nationalatlas/statesp010g.shp_nt00938.tar.gz) |
 
 ## Steps to Run:
 

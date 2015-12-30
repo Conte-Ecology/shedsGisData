@@ -7,11 +7,10 @@ deposition in kg/ha.
 
 
 ## Data Sources
-|    Layer           | Source                                  | 
-|   :-----:          | ------                                  | 
-| Deposition Rasters | [National Atmospheric Deposition 
-Program](http://nadp.sws.uiuc.edu/ntn/annualmapsByYear.aspx#2011) |
-| Catchments         | Conte Ecology Group  - NHDHRDV2         |
+|    Layer           | Source                                                                                             | 
+|   :-----:          | ------                                                                                             | 
+| Deposition Rasters | [National Atmospheric Deposition Program](http://nadp.sws.uiuc.edu/ntn/annualmapsByYear.aspx#2011) |
+| Catchments         | Conte Ecology Group  - NHDHRDV2                                                                    |
 
 ## Steps to Run
 
