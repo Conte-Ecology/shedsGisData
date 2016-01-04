@@ -6,7 +6,7 @@
 baseDirectory = "C:/KPONEIL/GitHub/projects/basinCharacteristics/tncDams"
 polygonsFile = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/hydrography.gdb/Catchments"
 damsFile = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/connectivity/tnc/TNC Dams - High Resolution Flowlines/Dams_ALL_highres.shp"
-version = "NHDHRDV2"
+outputName = "NHDHRDV2"
 zoneField = "FEATUREID"
 
 # ===============
@@ -22,8 +22,8 @@ outputTablesDir = baseDirectory + "/outputTables"
 if not arcpy.Exists(outputTablesDir): arcpy.CreateFolder_management(baseDirectory, "outputTables")
 
 # Create version folder
-versionDir = gisFilesDir + "/" + version
-if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, version)
+versionDir = gisFilesDir + "/" + outputName
+if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, outputName)
 
 # Create version database
 geoDatabase = versionDir + "/processingFiles.gdb"
@@ -114,4 +114,4 @@ for barF in barrierFields:
 # Create output table readable into R
 arcpy.TableToTable_conversion(finalStats, 
 								outputTablesDir, 
-								"barrierStats_" + version + ".dbf")
+								"barrierStats_" + outputName + ".dbf")

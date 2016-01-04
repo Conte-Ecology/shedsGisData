@@ -7,7 +7,7 @@ from arcpy import env
 # ==============
 baseDirectory  = "C:/KPONEIL/GitHub/projects/basinCharacteristics/topography"
 demFilePath = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/topography/NHDHRDV2/dem"
-version = "NHDHRDV2"
+outputName = "NHDHRDV2"
 
 
 # ---------------
@@ -19,8 +19,8 @@ gisFilesDir = baseDirectory + "/gisFiles"
 if not arcpy.Exists(gisFilesDir): arcpy.CreateFolder_management(baseDirectory, "gisFiles")
 
 # Create version folder
-versionDir = gisFilesDir + "/" + version
-if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, version)
+versionDir = gisFilesDir + "/" + outputName
+if not arcpy.Exists(versionDir): arcpy.CreateFolder_management(gisFilesDir, outputName)
 
 # Create output folder
 outputDir = versionDir + "/outputFiles"
