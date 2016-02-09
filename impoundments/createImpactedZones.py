@@ -383,17 +383,17 @@ mergedZonesCleaned = arcpy.FeatureClassToFeatureClass_conversion(mergedZones,
 																	""" "dropZone" = 0 """)
 
 																	
-# ========================
-# Join all connected areas
-# ========================
+# ====================
+# Join Connected Areas
+# ====================
 # 
-#1. Creat a very small buffer polygon around the lines (0.1 metres) to make sure there was crossover between the lines that were connected.
+#1. Create a very small buffer polygon around the lines (0.1 metres) to ensure crossover between the connected lines
 #2. Use the dissolve tool with the Unsplit option checked. This created individual polygons for each of the connected line groups.
 #3. Create a unique ID for each polygon.
 #4. Use the spatial join tool to add the unique polygon ids to each line that intersects or is within the polygons.
 #5. Use the dissolve tool again to dissolve the lines based on the unique ID.
 
-
+# Ensure crossover between the connected lines
 bufferedZones = arcpy.Buffer_analysis(mergedZonesCleaned, 
 										workingDirectory + "/allZonesBuffer", 
 										"0.1 METER", 
@@ -401,27 +401,29 @@ bufferedZones = arcpy.Buffer_analysis(mergedZonesCleaned,
 										"ROUND", 
 										"NONE")
 
-
+# Create individual polygons for each connected line group
 dissolvedBuffers = arcpy.Dissolve_management(bufferedZones, 
 												workingDirectory + "/allZonesDissolveBuffer",
 												"", "", 
 												"SINGLE_PART")
 
+# Add unique IDs to the connected line groups
 arcpy.AddField_management(dissolvedBuffers, "UniqueID", "LONG")
 arcpy.CalculateField_management (dissolvedBuffers, "UniqueID", "!OBJECTID!", "PYTHON_9.3")
 
-
+# Add the unique group IDs to each line that intersects the group polygons
 groupedZones = arcpy.SpatialJoin_analysis(mergedZonesCleaned, 
 											dissolvedBuffers, 
 											workingDirectory + "/groupedZones",
 											"JOIN_ONE_TO_ONE")
 
-
+# Join the separate lines based on the common group IDs
 finalZones = arcpy.Dissolve_management(groupedZones, 
 										workingDirectory + "/impoundedZones",
 										"UniqueID", "", 
 										"")
 
+# Clean up the final layer
 arcpy.AddField_management(finalZones, "LengthM", "DOUBLE")
 arcpy.CalculateField_management (finalZones, "LengthM", "!shape.length@meters!", "PYTHON_9.3")
 
@@ -490,18 +492,6 @@ arcpy.DeleteField_management(finalTable,
 
 arcpy.AddField_management(finalTable, "zoneDistM", "LONG")
 arcpy.CalculateField_management (finalTable, "zoneDistM", zoneDistanceM, "PYTHON_9.3")
-
-
-
-		
-
-
-# >>>>> Make this a while loop to check for continued conluences in series <<<<<<
-
-# 1. Select all streams that intersect the "impoundedZones" points that fall onto confluences (i.e. zone is too short)
-# 2. Create points at the start of these lines using "Feature Vertices to Points" tool
-# 3. Select the "impoundedZones" points that intersect these "start points"
-# 4. Use this connection, along with the zoneM - FMEAS value to determine how much to add on. 
 
 
 

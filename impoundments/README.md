@@ -1,27 +1,23 @@
 Impoundments: Downstream Impacted Area
 ======================================
 
-This script produces the spatial datasets of "Open Water" and "Wetland" land 
-coverage, based on the USFWS National Wetlands Inventory. In each raster, a 
-value of 1 represents the presence the specified land cover classification and 
-a 0 represents the absence.
+This script produces a polyline layer representing river segments of a specified 
+length immediately downstream of impoundments. 
 
 
 ## Data Sources
-| Layer            | Source                                           | Link |
-|:-----:           | ------                                           | ---- |
-| Wetlands Layer   | U.S. Fish & Wildlife National Wetlands Inventory | 
-http://www.fws.gov/wetlands/Data/Data-Download.html                          |
-| State Boundaries | National Atlas of the United States              | 
-http://dds.cr.usgs.gov/pub/data/nationalatlas/statesp010g.shp_nt00938.tar.gz |
+| Layer                         | Source                               |
+|:-----:                        | ------                               |
+| dams shapefile                | UMass Land Ecology Lab - DSL Project |
+| NHD High Resolution Flowlines | Conte Ecology Group - NHDHRDV2       |
+
 
 ## Steps to Run:
 
 The folder structure is set up within the scripts. In general, the existing 
-structure in the repo should be followed. Raw data should be kept in the same 
-format as it is downloaded (unzip the state boundaries layer)
+structure in the repo should be followed.
 
-1. Open the script `fwsWetlands.py`
+1. Open the script `createImpactedZones.py`
 
 2. Change the values in the "Specify Inputs" section of the script
  - `baseDirectory` is the path to the `\fwsWetlands` folder on GitHub
@@ -34,29 +30,24 @@ format as it is downloaded (unzip the state boundaries layer)
 3. Run the script in ArcPython. It creates the following:
 
 
-
 ## Process Description:
 The processing of this layer can be difficult to follow. A description is 
 included here to assist with replication and re-use of the script. The different 
 sections of the script are outlined separately.
 
-
-
 ### Network Pre-processing
-
-This section Maps the impoundments within the specified snap distance to the flowlines and 
-creates a layer of the stream segments with dams present for processing.
-
-
+This section maps the impoundments within the specified snap distance to the 
+flowlines and creates a layer of the stream segments with dams present for 
+processing. Only the dams where the column "Use" = 1 are used as instructed 
+in the source documentation.
 
 ### Linear Referencing
-
-This section creates the routes layer and determines the position of each impoundment along 
-the stream segments.
+This section creates the routes layer and determines the position of each 
+impoundment along the stream segments.
 
 The `FMEAS` column indicates the location along the segment, in meters, where 
-the impoundment falls. The `FMEAS` column is used to create the line representing 
-the impacted downstream zone from the impoundment.
+the impoundment falls. The `FMEAS` column is used to create the line 
+representing the impacted downstream zone from the impoundment.
 
 A `zoneM` field is added for specifying the end point of the route event 
 calculation. The calulation varies for confluence and non-confluence zones 
@@ -69,90 +60,57 @@ processing will continue downstream from the confluence without stopping due to
 blank features. This effectively includes the case with the "Conlfuence Points" 
 described below. These sections are removed later.
 
-
 ### Non-confluence Points
 
 This section handles the impacted downstream zones that do not contain any 
-confluences.
+confluences. This is the simpler of the processing methods.
 
-In this section, `zoneM` is just calulated as the impoundment's position along 
-the line plus the sepecfied zone distance (`zoneDistanceM`).
-
+In this section, `zoneM` is calulated as the impoundment's position along the 
+line plus the sepecfied zone distance (`zoneDistanceM`).
 
 ### Confluence Points
-
 This section handles locations that have 1 or more confluences in the impacted 
-downstream zone.
+downstream zone (`zoneDistanceM`).
 
 The script iterates through confluences until the specified zone distance is 
 met. A new field named `totalZoneM` is added to track the length of the zone as 
 it is mapped through confluences from segment to segment. The `zoneM` field 
 ends up being incremental and either equals the total length of the segment or 
 the length that will get the total zone length (`totalZoneM`) to the specified 
-zone distance. The `FMEAS` column is calculated as 0 for any segments 
+zone distance. The `FMEAS` column is calculated as 0 for any segments directly 
 downstream of a confluence. 
 
+At the end of the section all of the non-confluence and confluence zones are 
+merged into a single layer with the aforementioned 1 meter correction sections 
+bing removed.
+
+### Join Connected Areas
+After merging the segments some connected reaches may still exist as separate 
+features. This section converts the connected zones into single features by 
+utilizing small buffers around each line segment. Overlapping buffers signify 
+common groups by which the lines are joined.
+
+### Impacted Catchment Pour Points 
+Catchments with pour points within an impounded zone are noted in a separate 
+list. These catchments are identified if the catchment boundary is crossed by 
+an impoundment impacted zone and the catchment contains a dam. The possibility 
+of false positives exist in the cases where the upstream end of the stream is 
+the point of crossing and a dam (with downstream zone) exist within the 
+catchment without crossing the boundary. 
 
 
+## Output Layers
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-   - Sets up the folder structure in the specified directory
-   - Ensures constistency of projections
-   - Creates an empty raster of the entire specified range based on the State 
-   Boundaries shapefile
-   - Loops through the state polygons, creating state rasters of the categories 
-   described below
-   - Mosaicks all of the state raster and the full range empty raster
-   - Saves completed rasters to the `fwsWetlands\gisFiles\[outputName]\outputFiles` 
-   directory
+#### Impacted Zones
+Layer name: impoundedZones[`zoneDistanceM`]m.shp <br>
+Description: This layer represents the sections along the flowlines that are 
+within the specified distance downstream of an impoundment.
 
+#### Pour Points
+Raster name: impactedPourPoints[`zoneDistanceM`]m.dbf <br>
+Description: This table identifies the catchments with pour points falling 
+within the specified distance downstream of an impoundment.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Output Rasters
-
-#### Open Water 
-Raster name: fwsOpenWater <br>
-Description: This layer represents the FWS wetlands defined as "open water" (where 
-"WETLAND_TYPE" = "Freshwater Pond", "Lake", or "Estuarine and Marine Deepwater").
-
-#### Wetlands
-Raster name: fwsWetlands <br>
-Description: This layer represents the FWS wetlands defined as "open water" (where 
-"WETLAND_TYPE" = "Estuarine and Marine Wetland", "Freshwater Emergent Wetland", or 
-"Freshwater Forested/Shrub Wetland").
-
-## Notes
-
-- The states listed in the "Specify inputs" section of the script will determine 
-the spatial range of the output
-
-- The layers for Maryland (MD) and the District of Columbia (DC) overlap in the 
-FWS data, but not in the state boundary layer. DC is not included in "states" 
-(only MD is used). In the state boundaries layer, "District of Columbia" must 
-be specified if including Maryland.
 
 ## Next Steps
-- Classification definitions can be changed with relatively minimal effort. 
+- Upgrade the catchment pour point selection method.

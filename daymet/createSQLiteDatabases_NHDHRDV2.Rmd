@@ -19,7 +19,7 @@ rm(list=ls())
 library(maptools) # For reading spatial objects
 library(devtools) # For installing package
 
-install_github("Conte-Ecology/zonalDaymet")
+#install_github("Conte-Ecology/zonalDaymet")
 library(zonalDaymet)
 ```
 
@@ -46,7 +46,7 @@ VARIABLES <- c("tmax", "tmin", "prcp", "dayl", "srad", "vp", "swe")
 DAYMET_DIRECTORY <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/daymet/Daily"
 
 # Name of the database with Daymet data paired to NHDPlus catchments. The hydrologic region ID will be appended to this name.
-DATABASE_PATH <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/daymet/NHDHRDV2"
+DATABASE_PATH <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/daymet/NHDHRDV2_2/NHDHRDV2"
 TABLE_NAME <- "climateRecord"
 
 ZONE_FIELD <- "FEATUREID"
