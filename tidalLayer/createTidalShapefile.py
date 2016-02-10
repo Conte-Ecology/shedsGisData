@@ -7,7 +7,6 @@ from arcpy import env
 baseDirectory = "C:/KPONEIL/SHEDS/tidalFilter"
 states = ["ME", "NH", "MA", "RI", "CT", "NY", "NJ", "PA", "DE", "MD", "VA", "NC"]
 wetlandsFolder = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/land/fwsWetlands/rawData/"
-statesFile = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/political/states/States.shp"
 
 
 # ==================
