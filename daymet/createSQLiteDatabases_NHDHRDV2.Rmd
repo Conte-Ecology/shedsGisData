@@ -25,12 +25,8 @@ library(zonalDaymet)
 
 
 ---
-## Enter Inputs
+## Specify Inputs
 ```{r Inputs}
-
-# Define the projections of the shapefiles and Daymet data (Lambert Conformal Conic).
-proj4.Lambert <- "+proj=lcc +ellps=WGS84 +datum=WGS84 +lat_1=25 +lat_2=60 +lat_0=42.5 +lon_0=-100 +x_0=0 +y_0=0"  # Projected Coordinate System
-proj4.WGS <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0"                                    # Geographic Coordinate System
 
 # Temporal range
 START_YEAR <- 1980
@@ -45,6 +41,9 @@ VARIABLES <- c("tmax", "tmin", "prcp", "dayl", "srad", "vp", "swe")
 # Directory containing all of the raw Daymet mosaic NetCDF files
 DAYMET_DIRECTORY <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/daymet/Daily"
 
+# Directory containing the zone shapefiles
+SPATIAL_DIRECTORY <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/daymetShapefiles"
+
 # Name of the database with Daymet data paired to NHDPlus catchments. The hydrologic region ID will be appended to this name.
 DATABASE_PATH <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/daymet/NHDHRDV2_2/NHDHRDV2"
 TABLE_NAME <- "climateRecord"
@@ -52,6 +51,7 @@ TABLE_NAME <- "climateRecord"
 ZONE_FIELD <- "FEATUREID"
 
 ```
+
 
 ---
 ## Download the Daymet Mosaics
@@ -69,6 +69,11 @@ downloadMosaic(years = START_YEAR:END_YEAR,
 ## Average the Daymet Records
 ```{r Average Daymet by catchment}
 
+# Define the projections of the shapefiles and Daymet data (Lambert Conformal Conic).
+proj4.Lambert <- "+proj=lcc +ellps=WGS84 +datum=WGS84 +lat_1=25 +lat_2=60 +lat_0=42.5 +lon_0=-100 +x_0=0 +y_0=0"  # Projected Coordinate System
+proj4.WGS <- "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0"                                    # Geographic Coordinate System
+
+
 # Variables and years to average and add to database
 B <- proc.time()[3]
 
@@ -76,14 +81,14 @@ B <- proc.time()[3]
 for (r in seq_along(HYDRO_REGIONS)) {
 
   # Read the catchments shapefile
-  ZONES_SHAPEFILE <- readShapePoly(paste0("//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/daymetShapefiles/Catchments", HYDRO_REGIONS[r], "_Daymet.shp"), 
+  zonesShapefile <- readShapePoly(paste0(SPATIAL_DIRECTORY, "/Catchments", HYDRO_REGIONS[r], "_Daymet.shp"), 
                                     proj4string=CRS(proj4.Lambert))
 
 
 
   # Transform the shapefile into the coordinate system so the units are in lat/lon. 
   #   This makes the shapefile comparable to the coordinates provided by Daymet NetCDFs in WGS.
-  transformShapefile <- spTransform(ZONES_SHAPEFILE,
+  transformShapefile <- spTransform(zonesShapefile,
                                       CRS(proj4.WGS),
                                       class = "SpatialPolygonsDataFrame")
   
@@ -92,7 +97,7 @@ for (r in seq_along(HYDRO_REGIONS)) {
                                     tileDegree = 2)
   
   # Free up memory
-  rm(ZONES_SHAPEFILE, transformShapefile)
+  rm(zonesShapefile, transformShapefile)
 
   # Loop through the shapefile tiles
   for (t in 1:length(tiledShapefile)) {

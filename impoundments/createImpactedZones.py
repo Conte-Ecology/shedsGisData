@@ -449,7 +449,9 @@ for region in hydroRegions:
 
 	catchments = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/hydrography.gdb/catchments" + region
 	arcpy.MakeFeatureLayer_management(catchments, "catchments_lyr")
-
+	
+	# Catchment pour points are considered to be in the impounded zone if the catchment boundary is crossed by an impounded zone segment 
+	#   and contains a dam. This simplified method may produce false positives and has the potential to be updated in the future.
 	arcpy.SelectLayerByLocation_management ("catchments_lyr",
 											"CROSSED_BY_THE_OUTLINE_OF",
 											finalZones,
@@ -466,9 +468,6 @@ for region in hydroRegions:
 												workingDirectory, 
 												"pourPoints_" +  region)												
 												
-
-										
-
 	catsToMerge.append(workingDirectory + "/pourPoints_" +  region)										
 
 	# Delete old location table

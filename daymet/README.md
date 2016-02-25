@@ -1,0 +1,72 @@
+Daymet Climate Data
+===================
+
+# Description
+This repo assigns the Daymet climate record to the hydrologic catchments in the 
+NHDHRDV2 dataset. The Daymet data are daily time series of climate variables as 
+distributed through the [ORNL DAAC](https://daymet.ornl.gov/). Each catchment 
+gets daily records for precipitation(mm), minimum and maximum temperature 
+(degrees C), water vaport pressure (Pa), incident solar radiation (W/m2), snow 
+water equivalent (kg/m2), and day length (seconds) over the observed period of 
+1980 - 2014. The 1km x 1km gridded data are spatially assigned to the catchment 
+polygons by using the custom 
+[zonalDaymet package](https://github.com/Conte-Ecology/zonalDaymet).
+
+
+# Software Requirements
+
+R version 3.1.2  
+Current R libraries:  
+  - `maptools`
+  - `devtools`
+  - `zonalDaymet` (custom package)
+
+
+# Workflow
+
+1. Project the zones shapefiles into the Daymet spatial reference (Lambert 
+Conformal Conic) as defined on their 
+[Data Documentation Page](https://daymet.ornl.gov/datasupport.html). Save all 
+of the projected shapefiles for use into the same directory. Currently, the 
+script is structured to read zone shapefiles with the name format 
+"Catchments[`HYDRO_REGIONS`]_Daymet.shp", referencing ont of the input variables 
+in step 2. An example of one shapefile name is "Catchments01_Daymet.shp". If this
+naming scheme is altered, it should be reflected in the part of the script 
+where the shapefiles are read.
+
+2. Set the variables in the "Specify Inputs" section:
+
+|  Variable Name    | Description                                                                          | Example                                |
+|:-----------------:| ------------------------------------------------------------------------------------ | -------------------------------------- |
+|`START_YEAR`       | The first year of the time period to process                                         | `1980`                                 |
+|`END_YEAR`         | The last year of the time period to process                                          | `2014`                                 |
+|`HYDRO_REGIONS`    | The two-digit numeric ID of the hydrologic catchments                                | `c("01", "02", "03", "04", "05", "06")`|
+|`VARIABLES`        | The abbreviated variable names to process (as defined by Daymet)                     | `c("tmax", "tmin", "prcp")`            |
+|`DAYMET_DIRECTORY` | The path to the directory where downloaded NetCDF files should be saved              | `"C:/Data/Climate/Daymet/Input"`       |
+|`SPATIAL_DIRECTORY`| The path to the directory where the zones shapefiles are saved                       | `"C:/Data/Spatial/Hydro/Catchments"`   |
+|`DATABASE_PATH`    | The filepath to the output database to which the `HYDRO_REGIONS` ID will be appended | `"C:/Data/Climate/Daymet/Output"`      |
+|`TABLE_NAME`       | The name of the table in the database to output                                      | `"climateRecord"`                      |
+|`ZONE_FIELD`       | The unique ID field for the catchments                                               | "FEATUREID"                            |
+
+3. If the Daymet NetCDF mosaic layers have not yet been downloaded, run the 
+`downloadMosaic` function to do so.
+
+4. Execute the averaging section of the script to assign climate records to the 
+catchments.
+
+
+# Methods
+Averaging: When multiple Daymet cell centroid coordinates fall into a spatial 
+zone, the average of the records are assigned to the `ZONE_FIELD`. If a single 
+cell centroid falls within the zone, that record is assigned to the zone. If 
+no cell centroids fall within the zone, then the point nearest to the zone 
+centroid is used to assign the record to the zone.
+
+Output: The records are output as SQLite databases defined separately by 
+hydrologic zone IDs (`HYDRO_REGIONS`). These SQLite databases get uploaded 
+to the primary SHEDS database through a series of Postgres scripts.
+
+
+
+
+
