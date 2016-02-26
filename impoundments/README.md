@@ -7,8 +7,8 @@ in the script.
 
 
 ## Data Sources
-| Layer                         | Source                               |
-|:-----:                        | ------                               |
+|  Layer                        | Source                               |
+| :-----:                       | ------                               |
 | Dams Shapefile                | UMass Land Ecology Lab - DSL Project |
 | NHD High Resolution Flowlines | Conte Ecology Group - NHDHRDV2       |
 

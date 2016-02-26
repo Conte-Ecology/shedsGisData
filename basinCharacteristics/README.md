@@ -70,5 +70,4 @@ The workflow for the riparian buffer layers differs slightly from that of the ca
 
 Kyle O'Neil  
 koneil@usgs.gov  
-(413) 863-3829  
 

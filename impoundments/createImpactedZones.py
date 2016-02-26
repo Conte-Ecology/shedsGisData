@@ -386,7 +386,7 @@ mergedZonesCleaned = arcpy.FeatureClassToFeatureClass_conversion(mergedZones,
 # ====================
 # Join Connected Areas
 # ====================
-# 
+
 #1. Create a very small buffer polygon around the lines (0.1 metres) to ensure crossover between the connected lines
 #2. Use the dissolve tool with the Unsplit option checked. This created individual polygons for each of the connected line groups.
 #3. Create a unique ID for each polygon.
@@ -491,15 +491,4 @@ arcpy.DeleteField_management(finalTable,
 
 arcpy.AddField_management(finalTable, "zoneDistM", "LONG")
 arcpy.CalculateField_management (finalTable, "zoneDistM", zoneDistanceM, "PYTHON_9.3")
-
-
-
-
-
-
-
-
-
-
-
 
