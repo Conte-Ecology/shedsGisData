@@ -1,0 +1,173 @@
+
+# ================================================================================================
+#                              Workflow Update: 5/20/15
+# ================================================================================================
+If this workflow doesn't resolve dead-end issues, then try re-burning streams into "FillSink:
+
+>>>> Make sure to set ArcHydro layers paths before starting <<<
+
+
+1. Terrain Processing > DEM Manipulation > Level DEM
+Raw DEM: dem01
+Lake Polygon: waterbodies01
+Fill Elevation: None
+Level DWM: LevelDEM01
+Fill Elevation Offset: 1
+
+2. Terrain Processing > DEM Manipulation > DEM Reconditioning
+Raw DEM: LevelDEM
+AGREE Stream: streams01
+AGREE DEM: AgreeDEM01
+Stream buffer: 4
+Smooth drop/raise: 20
+Sharp drop/raise: 50
+
+3. Extract by mask
+Input Raster: AgreeDEM01
+Input Raster or feature mask data: demOutline01
+Output raster: AgreeDEMBnd01
+
+4. Terrain Processing > DEM Manipulation > Fill Sinks
+DEM: AgreeDEMBnd01
+Deranged Polygon: Null
+Hydro DEM: FillSink01
+Use Sink Field: Unchecked
+Fill Method: Fill All
+
+5. Terrain Processing > Flow Direction
+Hydro DEM: FillSink01
+Outer Wall Polygon: Null
+Flow Direction Grid: Fdr01
+
+6. Terrain Processing > Flow Accumulation
+Flow Direction Grid: Fdr01
+Flow Accumulation Grid: Fac01
+
+7. Terrain Processing > Stream Definition
+Flow Accumulation Grid: Fac01
+Number of Cells: 833
+Area (square km): 0.75
+Stream Grid: str01
+
+8. Polyline To Raster (Conversion)
+Input Features: streams01
+Value Field: rasterVal (= 1)
+Output Raster Dataset: StrHR01
+Call assignment type: MAXIMUM_LENGTH
+Priority Field: None
+Cell Size: Same as "Str01"
+Environments: Set snap raster to "Str01"
+
+9: Extract By Mask
+Input raster: Str01
+input raster or feature mask data: StrHR01
+Output Raster: StrTrunc01
+
+10. Terrain Processing > Stream Segmentation
+Flow Direction Grid: Fdr01
+Stream Grid: strTrunc01
+Sink Watershed Grid: Null
+Sink Link Grid: Null
+Stream Link Grid: StrLnk01
+
+11. Terrain Processing > Catchment Grid Delineation
+Flow Direction Grid: Fdr01
+Link Grid: StrLnk01
+Catchment Grid: cat01
+
+12. Terrain Processing > Catchment Polygon Processing
+Catchment Grid: cat01
+Catchment: Catchment01
+
+13. Terrain Processing > Drainage Line Processing
+Stream Link Grid: StrLnk01
+Flow Direction Grid: Fdr01
+Drainage Line: DrainageLineRaw01
+
+
+
+##### Remove False Headwater Streams ######
+
+
+13. Terrain Processing > Drainage Line Processing
+Stream Link Grid: StrLnk01
+Flow Direction Grid: Fdr01
+Drainage Line: DrainageLineRaw01
+
+
+Remove false headwater streams from polyline (DrainageLineRaw01) - 
+Export DrainageLineRaw01 Table as a DBF
+Run indexFalseHeadwaters.R on this DBF
+Join the output table from this back to DrainageLineRaw01
+
+Select the features from DrainageLineRaw01 where remove = 0
+Export these as DrainageLineTrim01
+
+Polyline to Raster
+
+
+
+
+
+
+
+
+
+
+Rasterize these
+Clip these to the StrTrunc01
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14. Terrain Processing > Adjoint Catchment Processing
+Drainage Line: DrainageLine01
+Catchment: Catchment01
+Adjoint Catchment: AdjointCatchment01
+
+
+
+
+# This process worked fairly well. There are a few errors where NextDownID = -1 in the middle of a basin.
+
+Str segments align with strHR segments from a different branch. Can go through manually and delete the areas where there are tiny, disjointed segments.
+
+** Check the areas where these errors occur. Some changes done by UMass to the raw flowlines seem to be problematic (streams crossing through hills). 
+		Maybe it was an earlier version of the high res flowlines that caused this
+
+
+
+
+
+# ================================================================================
+#                                 Skipped
+# ================================================================================
+6. Terrain Processing > DEM Manipulation > Create Drainage Line Structures
+Raw DEM: LevelDEM
+Stream: flowlines01
+Stream Flow Direction Grid: FdrStr
+Stream Link Grid: StrLnkAdj
+Drainage Line: DrainageLineAdj
+Clear Right Angles: Unchecked
+Use Raster Extent: Unchecked
+
+Notes: 
+	> Stream layer needs to have HydroID column
+	> Don't use Stream Link Grid or Drainage Line created from this step
+	> It would be better to use the corrected flowlines here
+	
+7. Terrain Processing > Adjust Flow Direction in Streams
+Flow Direction Grid: FdrRaw
+Stream Flow Direction Grid: FdrStr
+Stram Adjusted Flow Direction Grid: Fdr (or FdrAdj) 
+# ================================================================================

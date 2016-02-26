@@ -1,0 +1,321 @@
+
+# ================================================================================================
+#                              Workflow Update: 6/2/15
+# ================================================================================================
+
+======================================================================================================================
+                                                  DEM Processing
+======================================================================================================================
+
+1. Burn Streams
+Burn the high resolution streams into the 30m DEM.
+ArcHydro Tools > Terrain Processing > DEM Manipulation > DEM Reconditioning
+Raw DEM: dem01
+AGREE Stream: streams01
+AGREE DEM: AgreeDEM01
+Stream buffer: 5
+Smooth drop/raise: 200
+Sharp drop/raise: 1000
+
+
+2. Remove excess cells created from burning the streams with a buffer.
+Spatial Analyst Tools > Extraction > Extract by mask
+Input Raster: AgreeDEM01
+Input Raster or feature mask data: demOutline01
+Output raster: AgreeDEMBnd01
+
+
+3. Fill all of the sinks in the DEM.
+ArcHydro Tools > Terrain Processing > DEM Manipulation > Fill Sinks
+DEM: AgreeDEMBnd01
+Deranged Polygon: Null
+Hydro DEM: FillSink01
+Use Sink Field: Unchecked
+Fill Method: Fill All
+
+
+4. Generate the flow direction grid.
+ArcHydro Tools > Terrain Processing > Flow Direction
+Hydro DEM: FillSink01
+Outer Wall Polygon: Null
+Flow Direction Grid: Fdr01
+
+
+5. Generate the flow accumulation grid.
+ArcHydro Tools > Terrain Processing > Flow Accumulation
+Flow Direction Grid: Fdr01
+Flow Accumulation Grid: Fac01
+
+
+======================================================================================================================
+                                                 Streams Processing
+======================================================================================================================
+
+Create Stream Layer
+===================
+6. Define streams based on a minimum drainage area. These streams will be used to trim the high resolution streams and improve resolution consistency.
+ArcHydro Tools > Terrain Processing > Stream Definition
+Flow Accumulation Grid: Fac01
+Number of Cells: 833
+Area (square km): 0.75
+Stream Grid: Str01
+
+7. Convert the high resolution streams to raster format. This layer will be trimmed to a defined threshold. 
+Conversion Tools > To Raster > Polyline To Raster
+Input Features: delineationStreams01
+Value Field: rasterVal (= 1)
+Output Raster Dataset: StrHR01
+Call assignment type: MAXIMUM_LENGTH
+Priority Field: None
+Cell Size: Same as "Str01"
+Environments: Set snap raster to "Str01"
+
+8. Trim the high resolution stream grid to the defined stream threshold by masking the latter with the former.
+Spatial Analyst Tools > Extraction > Extract by mask
+Input raster: Str01
+Input raster or feature mask data: StrHR01
+Output Raster: StrTrunc01
+
+9. Segment Streams
+Segment the streams at confluences for network definition.
+ArcHydro Tools > Terrain Processing > Stream Segmentation
+Flow Direction Grid: Fdr01
+Stream Grid: StrTrunc01
+Sink Watershed Grid: Null
+Sink Link Grid: Null
+Stream Link Grid: StrLnk01
+
+10. Create the flowline layer for initial inspection.
+ArcHydro Tools > Terrain Processing > Drainage Line Processing
+Stream Link Grid: StrLnk01
+Flow Direction Grid: Fdr01
+Drainage Line: DrainageLine01
+
+11. Edit Network Breaks
+Errors in the raw high resolution flowlines can result in breaks in the network. The streams layer from UMass has taken care of most of these issues, so the edits should mostly come in the area of raw NHDH flowlines.
+These are discovered by performing a Select By Attributes on DrainageLine01 where: NextDownID = -1.
+Export these selected stream segments and compare with the original "streams01" layer. The "streams01" layer is manually edited to either connect or remove the stream segments that cause these breaks in the network. 
+The edited layer is saved as "streamsCleaned01". A new folder structure and map are set up and the process is begun again from the first step. This time, the edited streams are used in place of the originals.
+
+**** The "RasterVal" column needs to be recalculated whenever new features are added to a streams layer
+
+
+Remove False Headwaters
+=======================
+Converting the high resolution streams to grid format creates orthogonal cells. These cells are interpreted as new streams which are false headwater streams.
+These streams need to be removed from the network.
+
+
+12. Mark False Headwaters
+Determine the false headwater streams using the R script that checks segment length and whether or not it is a headwater. Headwater streams that are 45 meters or shorter are marked.
+Export DrainageLine01 Table as a DBF
+Run indexFalseHeadwaters.R on this DBF
+Join the output table (DrainageLine01_FalseHeadwaters.dbf) back to DrainageLine01 by the "HydroID" field
+
+
+
+A. Remove streams by polyline editing
+
+12. Edit Flowlines
+Open the DrainageLine01 attribute table and Select by Attributes: remove = 0  ("DrainageLine01_FalseHeadwaters.remove" = 0)
+Export the selected features as DrainageLineTrimHW01
+
+
+
+
+13. Rasterize New Flowlines
+Convert the edited flowlines to grid format.
+Conversion Tools > To Raster > Polyline To Raster
+Input Features: DrainageLineTrimHW01
+Value Field: rasterVal (= 1)
+Output Raster Dataset: StrTrimHW01
+Cell assignment type: MAXIMUM_LENGTH
+Priority Field: None
+Cell Size: Same as "StrTrunc01"
+Environments: Set snap raster to "StrTrunc01"
+
+14: Trim New Flowlines 
+Rasterizing the new flowlines creates some extra cells that did not exist in the original layer (StrTrunc01). Trimming the new stream grid to the old removes these. 
+Spatial Analyst Tools > Extraction > Extract by mask
+Input raster: StrTrimHW01
+Input raster or feature mask data: StrTrunc01
+Output Raster: StrFixHW01
+
+B. Remove streams by raster cells
+Some cells representing false headwaters persist through the previous removal process. These remaining cells are removed by rasterizing the headwaters to mask these cells.
+
+15. Identify False Headwaters
+Open the DrainageLineRaw01 attribute table and Select by Attributes: remove = 1 ("DrainageLine01_FalseHeadwaters.remove" = 1)
+Export the selected features as FalseHeadwaters01
+
+16. Convert False Headwaters to Points
+The false headwater lines are converted to points for rasterization. Since these segments have a maximum length of the cell diagonal, the points fall in the correct cell they will represent.
+Data Management Tools > Features > Feature to Point
+Input Features: FalseHeadwaters01
+Output Feature Class: FalseHeadwatersPts01
+Inside: Checked
+
+17. Convert False Headwater Points to Raster
+The false headwaters are converted to raster cells for correcting the new stream grid.
+Conversion Tools > To Raster > Point To Raster
+Input Features: FalseHeadwatersPts01
+Value Field: rasterVal (= 1)
+Output Raster Dataset: FalseHWPts01
+Call assignment type: MOST_FREQUENT
+Priority Field: None
+Cell Size: Same as "StrFixHW01"
+Environments: Set snap raster to "StrFixHW01"
+
+18. Remove Remaining Headwater Cells
+Use the Raster Calculator to remove the remaining false headwater cells from the new stream grid layer.
+Spatial Analyst Tools > Map Algebra > Raster Calculator
+Map Algebra Expression: SetNull(~(IsNull("FalseHWPts01")),"StrFixHW01")
+OutputRaster: StrFinal01
+Environments: Set processing extent to "StrFixHW01"
+
+19. Segment Streams
+Segment the streams at confluences for network definition.
+ArcHydro Tools > Terrain Processing > Stream Segmentation
+Flow Direction Grid: Fdr01
+Stream Grid: StrFinal01
+Sink Watershed Grid: Null
+Sink Link Grid: Null
+Stream Link Grid: StrLnkFinal01
+
+20. Create New Drainage Lines
+Create the drainage lines from the new segmented streams. These streams should have all false headwaters removed. 
+ArcHydro Tools > Terrain Processing > Drainage Line Processing
+Stream Link Grid: StrLnkFinal01
+Flow Direction Grid: Fdr01
+Drainage Line: DrainageLineFinal01
+
+Check that all of the false headwaters have been removed by using the "indexFalseHeadwaters" R script on the new attribute table.
+In some cases, a few false headwaters may still exist. If this is the case, then manually adjust the points to fall into the correct cells and iterate again through steps 17-20
+Also check to see if these steps created any network breaks. If so, correct the false headwater points and iterate through steps 17-20.
+
+Delete: FalseHWPts01, StrFinal01, StrLnkFinal01, DrainageLineFinal01, DrainageLineFinal01.dbf
+
+
+Delineate Catchments
+====================
+21. Delineate Catchment Grid
+ArcHydro Tools > Terrain Processing > Catchment Grid Delineation
+Flow Direction Grid: Fdr01
+Link Grid: StrLnkFinal01
+Catchment Grid: Cat01
+
+22. Convert Catchment Grid to Polygons
+ArcHydro Tools > Terrain Processing > Catchment Polygon Processing
+Catchment Grid: cat01
+Catchment: Catchment01
+
+
+
+
+
+
+#
+##
+### Need to figure out how to split up the HUC regions. Options:
+
+ - Use the boundary and call that it.
+ - Buffer the delineation and select by flowlines
+
+
+
+
+
+
+
+Manually check network
+======================
+
+
+Options: 
+
+
+1) Just edit the DrainageLine and Catchment features. This will make further working with layers difficult in cases of diverted flow (e.g. reservoirs) 
+
+
+
+
+2) Edit str (stream raster) layers. In order to work with the flow direction/flow accumulation layer this might require ignoring diversions in the case of reservoirs.
+
+
+
+
+
+
+
+Addressed errors
+================
+> False headwater streams created
+> NextdownID = -1 in middle of network
+
+Existing Errors
+===============
+
+
+
+
+
+
+
+
+
+
+
+
+
+14. Terrain Processing > Adjoint Catchment Processing
+Drainage Line: DrainageLine01
+Catchment: Catchment01
+Adjoint Catchment: AdjointCatchment01
+
+
+
+
+# This process worked fairly well. There are a few errors where NextDownID = -1 in the middle of a basin.
+
+Str segments align with strHR segments from a different branch. Can go through manually and delete the areas where there are tiny, disjointed segments.
+
+** Check the areas where these errors occur. Some changes done by UMass to the raw flowlines seem to be problematic (streams crossing through hills). 
+		Maybe it was an earlier version of the high res flowlines that caused this
+
+
+
+
+
+# ================================================================================
+#                                 Skipped
+# ================================================================================
+
+1. Terrain Processing > DEM Manipulation > Level DEM
+Raw DEM: dem01
+Lake Polygon: waterbodies01
+Fill Elevation: None
+Level DWM: LevelDEM01
+Fill Elevation Offset: 1
+
+
+
+
+6. Terrain Processing > DEM Manipulation > Create Drainage Line Structures
+Raw DEM: LevelDEM
+Stream: flowlines01
+Stream Flow Direction Grid: FdrStr
+Stream Link Grid: StrLnkAdj
+Drainage Line: DrainageLineAdj
+Clear Right Angles: Unchecked
+Use Raster Extent: Unchecked
+
+Notes: 
+	> Stream layer needs to have HydroID column
+	> Don't use Stream Link Grid or Drainage Line created from this step
+	> It would be better to use the corrected flowlines here
+	
+7. Terrain Processing > Adjust Flow Direction in Streams
+Flow Direction Grid: FdrRaw
+Stream Flow Direction Grid: FdrStr
+Stram Adjusted Flow Direction Grid: Fdr (or FdrAdj) 
+# ================================================================================

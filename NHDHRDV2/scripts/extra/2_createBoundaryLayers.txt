@@ -1,0 +1,31 @@
+The "hydroPoliticalBoundary01" layer was created by combining the "hydroBoundary01" with the overlapping poltical boundaries. 
+The primary purpose of the political boundaries was to establish the coastline boundary to be clipped from the DEM.
+This process will be unique to each hydro zone so it is not scripted out.
+
+
+Being with: 
+Political boundary shapefiles
+Canada Provinces -  http://www.nws.noaa.gov/geodata/catalog/national/html/province.htm
+United States - http://nationalatlas.gov/atlasftp-1m.html
+New Brunswick - http://www.snb.ca/geonb1/e/DC/catalogue-E.asp
+
+Hydro region polygon
+"hydroBoundary01" - created by the script: "createHydroBoundary.py"
+
+
+Processing steps:
+
+1) Project all of the files to the same projection as "hydroBoundary01".
+2) Select just the Quebec province from the Canada province shapefile and export as a new layer.
+3) Select all of the state polygons that overlap the hydro region and export as a new layer.
+4) Use the "Union" tool to combine the political boundaries (New Brunswick, Quebec, and states).
+5) Dissolve the result of the union (allow multipart features).
+6) Manually edit the result of the dissolve to remove the holes created along the border between the US and Canada.
+7) Clip this politcal boundary to the hydro region boundary ("hydroBoundary01"). The result is the "hydroPoliticalBoundary01" layer.
+
+
+
+processingBoundary01
+
+buffer the hydro boundary by 5km
+clip the buffered file to the political boundary. This step creates the shoreline boundary, while maintaining a buffer on the inland watershed boundary for establishing the natural boundary through delineation.
