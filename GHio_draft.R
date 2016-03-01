@@ -1,11 +1,20 @@
+Project page URL:
 http://conte-ecology.github.io/shedsData
+
+Project name:
+SHEDS Data
+
+Tagline:
+A project generating the environmental data supporting the Spatial Hydro-Ecological Decision System (SHEDS).
+
 
 
 # SHEDS Data
 ------------
 
-This repository documents the steps used to generate the supporting data used 
-on SHEDS. It includes descriptions of products and processing related to:
+This project documents the steps used to generate the supporting data used on 
+the Spatial Hydro-Ecological Decision System (SHEDS). It includes descriptions 
+of products and processing related to:
 * The high resolution catchment delineation
 * Daily climate records used to drive models
 * Basin characteristics used in models and visualization
@@ -14,12 +23,11 @@ on SHEDS. It includes descriptions of products and processing related to:
 impoundments
 <br><br>
 
-### NHDHRDV2 Description 
+### The National Hydrography Dataset High Resolution Delineation Version 2 (NHDHRDV2)
 
 Repository: [NHDHRDV2](https://github.com/Conte-Ecology/shedsData/tree/master/NHDHRDV2)
 
-Version 2 of the National Hydrography Dataset High Resolution Delineation 
-(NHDHRDV2) is a series of GIS layers representing hydrologic catchments and 
+The NHDHRDV2 is a series of GIS layers representing hydrologic catchments and 
 flowlines spanning the Northeast region of the United States. The catchments 
 are similar to existing products such as the well-known NHD Plus dataset. 
 Based on the National Hydrography Dataset (NHD), catchment layers contain 
@@ -80,7 +88,7 @@ Figure 3: Range comparison between DSL Project boundary and NHDHRDV2 layers
 The final products adhere to an established areal consistency while managing to 
 include higher resolution streams than the medium resolution products. The high 
 resolution catchments, network, and flowlines form the foundation of the other 
-data in this repository that go into SHEDS. The layers are divided by hydrologic 
+data in this project that go into SHEDS. The layers are divided by hydrologic 
 region as shown in Figure 4. Full citations for source data can be found in the 
 "NHDHRDV2 Documentation.doc" file.
 
@@ -97,9 +105,9 @@ Repository: [daymet](https://github.com/Conte-Ecology/shedsData/tree/master/daym
 This section takes advantage of the gridded daily surface weather and 
 climatological summaries known as [Daymet](https://daymet.ornl.gov/). 
 A daily timeseries is assigned to all catchments in the NHDHRDV2 for 
-all climate variables over the entire record (1980-2014). The repository 
-README documents the process for assigning the climate records to each 
-hydrologic catchment in the NHDHRDV2. 
+all available climate variables over the entire record (1980-2014). The 
+repository README documents the process for assigning the climate records 
+to each hydrologic catchment in the NHDHRDV2. 
 <br><br>
 
 
@@ -114,7 +122,8 @@ Varying source data structures are processed to create uniformly structured
 value raster layers that are attributed to the individual catchments and 
 aggregated to larger basins based on the network structure of the delineation
 product. The repository provides an in depth description of the processing steps 
-and the different characteristics assigned. 
+and the different characteristics assigned. For a full list of variables refer 
+to the [Covariate Data Status spreadsheet](https://github.com/Conte-Ecology/shedsData/blob/master/basinCharacteristics/Covariate%20Data%20Status%20-%20High%20Res%20Delineation.xlsx).
 <br><br>
 
 
@@ -137,15 +146,16 @@ by tides.
 Repository: [impoundments](https://github.com/Conte-Ecology/shedsData/tree/master/impoundments)
 
 The impoundment influence layer is developed to represent the stream sections 
-within the SHEDS hydrologic network that are impacted by impoundments. The 
-impoundment location dataset comes from the DSL Project. The locations from 
-The Nature Conservancy's dam inventory were snapped to the NHD high resolution 
-flowlines. This source layer is not public and the resulting layer is only used 
-within the SHEDS group. The processing documentation exists in the repository 
-README. 
+within the SHEDS hydrologic network that are impacted by impoundments. The product 
+is a polyline layer representing the stream segments of a user-specified distance 
+downstream from each impoundments location. The impoundments dataset comes 
+from the DSL Project where the locations from The Nature Conservancy's dam inventory 
+were snapped to the NHD high resolution flowlines. This source layer is not public 
+and the resulting layer is only used within the SHEDS group. The processing 
+documentation exists in the repository README. 
 <br><br>
 
 
 ### Contact Info
-Kyle O'Neil <br><br>
+Kyle O'Neil <br>
 koneil@usgs.gov
