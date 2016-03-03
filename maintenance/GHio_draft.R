@@ -22,7 +22,8 @@ of products and processing related to:
   * A spatial layer representing river segments potentially influenced by upstream 
 impoundments
 
-Further details about each of the data sources can be found in the repositories.
+Further details about the data sources related to each product can be found in 
+the respective repositories.
 <br><br>
   
 ### The National Hydrography Dataset High Resolution Delineation Version 2 (NHDHRDV2)
