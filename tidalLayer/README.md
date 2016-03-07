@@ -10,6 +10,8 @@ The polygons are joined together and output in a single shapefile representing
 all bodies of water within the SHEDS range that are impacted by tide.
 
 
+# Shapefile Creation
+
 ## Steps to Run:
 
 1. Open the script `createTidalShapefile.py`
@@ -28,3 +30,13 @@ Unfortunately, some categorization errors are present in the raw wetland layers.
 After the script is run a handful of errors need to be corrected. These errors 
 exist in the form of small polygons located far enough inland to be positively 
 identified as not tidally influenced.
+
+
+# QAQC 
+
+QAQC bash script added on 3/7/16. This section needs to be updated.
+
+
+## Run script
+cd /home/kyle/scripts/qaqc
+./id_tidal_sites.sh sheds_new /home/kyle/scripts/qaqc
