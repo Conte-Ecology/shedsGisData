@@ -1,5 +1,50 @@
 
+CREATE TEMPORARY TABLE check_locations (id  int);
 
+COPY check_locations
+	FROM "$CHECK_FILE"
+	WITH CSV HEADER;
+	
+SELECT 
+     loc.id, loc.latitude, loc.longitude
+	 INTO TEMPORARY locations_temp3
+   FROM 
+     public.locations loc, 
+     check_locations chk 
+   WHERE 
+     loc.id = chk.id;
+	
+ALTER TABLE locations_temp3 ADD COLUMN geom geometry(POINT,4326);
+UPDATE locations_temp3 SET geom = ST_SetSRID(ST_MakePoint(longitude,latitude),4326);
+CREATE INDEX idx_loc_dum_geom ON locations_temp3 USING GIST(geom);
+
+
+
+-- Select points near impoundment zones
+COPY (
+SELECT id
+  FROM locations_temp3, gis.impoundment_zones_100m
+  WHERE ST_Intersects(ST_Buffer(locations_temp3.geom::geography, 50), impoundment_zones_100m.geom);
+) TO STDOUT WITH CSV HEADER " > $FOLDER/impoundment_sites.csv
+
+
+
+  
+
+	ln.id AS ln_id, 
+     pt.id AS pt_id, 
+  
+SELECT 
+     ln.geom AS ln_geom, 
+     pt.geom AS pt_geom, 
+     ln.id AS ln_id, 
+     pt.id AS pt_id, 
+     ST_Distance(ln.geom, pt.geom) AS d 
+   FROM 
+     locations_temp pt, 
+     gis.impoundment_zones_100m ln   
+  
+  
 
 -- Select & simplify flowlines for snapping
 -- ========================================

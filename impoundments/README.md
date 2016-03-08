@@ -6,11 +6,15 @@ immediately downstream of an impoundment. The length of the section is specified
 in the script.
 
 
-## Data Sources
+# Data Sources
 |  Layer                        | Source                               |
 | :-----:                       | ------                               |
 | Dams Shapefile                | UMass Land Ecology Lab - DSL Project |
 | NHD High Resolution Flowlines | Conte Ecology Group - NHDHRDV2       |
+
+
+
+# Shapefile Creation
 
 
 ## Steps to Run:
@@ -114,5 +118,39 @@ Description: This table identifies the catchments with pour points falling
 within the specified distance downstream of an impoundment.
 
 
-## Next Steps
+
+
+# QAQC Process
+The tidal influence layer is used in Postgres to identify sites with potential 
+tidal influence. The QAQC bash script uses the lat/lon coordinates of the 
+locations to perform a spatial intersection with the tidal layer. A CSV file 
+identifying the location id of the tidally influenced sites is generated. The 
+option exists to specify the locations to evaluate.
+
+## Run script
+
+1. Prepare script arguments
+
+| Parameter |              Description              |                Example                 | 
+|:---------:|              -----------              |                -------                 |
+|     1     | The current working database          | sheds_new                              |
+|     2     | The output directory                  | /home/kyle/qaqc                        |
+|     3     | The CSV file specifying location id's | /home/kyle/qaqc/eg_check_locations.csv |
+
+The format of the CSV that specifies the location id's to check is a single 
+column with the header 'id'. The column data type should be integer. If this 
+changes in the system, the QAQC script will need to be updated. 
+
+
+2. Execute the scrpt in the bash (include full path)
+
+Evaluate all locations:
+`/home/kyle/scripts/qaqc/id_impoundment_sites.sh sheds_new /home/kyle/qaqc`
+
+Evaluate specified locations:
+`/home/kyle/scripts/qaqc/id_impoundment_sites.sh sheds_new /home/kyle/qaqc /home/kyle/qaqc/eg_check_locations.csv`
+
+
+
+# Next Steps
 - Upgrade the catchment pour point selection method.

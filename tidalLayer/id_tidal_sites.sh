@@ -3,7 +3,7 @@
 # csv file is named "tidal_sites.csv" and the header is "id"
 
 # usage: $ ./id_tidal_sites.sh <db name> <path to output directory>
-# example: $ ./append_covariates.sh conte_dev /conte/data/covariates/20150129
+# example: $ ./id_tidal_sites.sh sheds_new /conte/data/qaqc
 
 set -eu
 set -o pipefail
