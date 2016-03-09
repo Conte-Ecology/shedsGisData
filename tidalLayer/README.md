@@ -28,7 +28,7 @@ manually deleted and the corrected layer is saved.
 
 
 # Database Upload
-The tidal zone shapefile created in the previous sction is uploaded to the 
+The tidal zone shapefile created in the previous section is uploaded to the 
 SHEDS database. 
 
 1. Save the tidal zone shapefile as `tidal_zones.shp` into a dedicated folder 
@@ -41,7 +41,8 @@ on the server.
 3. Execute the bash script in the command line:
  - `./import_tidal_zones.sh sheds_new /home/kyle/data/gis/tidal_zones`
 
-4. The layer is uploaded as `gis.tidal_zones` to the specified database.
+4. The layer is uploaded to the specified database as the `gis.tidal_zones` 
+table.
 
 
 # QAQC 
