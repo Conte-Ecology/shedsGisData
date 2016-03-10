@@ -34,7 +34,7 @@ if [ $CHECK_FILE = "absent" ]; then
   COPY (
   SELECT id
     FROM locations_temp, gis.impoundment_zones_100m
-    WHERE ST_Intersects(ST_Buffer(locations_temp.geom::geography, 50), gis.impoundment_zones_100m.geom)
+    WHERE ST_Intersects(ST_Buffer(locations_temp.geom::geography, 10), gis.impoundment_zones_100m.geom)
   ) TO STDOUT WITH CSV HEADER" > $FOLDER/impoundment_sites.csv
   
 else
@@ -69,6 +69,6 @@ else
   COPY (
   SELECT id
     FROM locations_temp, gis.impoundment_zones_100m
-    WHERE ST_Intersects(ST_Buffer(locations_temp.geom::geography, 50), gis.impoundment_zones_100m.geom)
+    WHERE ST_Intersects(ST_Buffer(locations_temp.geom::geography, 10), gis.impoundment_zones_100m.geom)
   ) TO STDOUT WITH CSV HEADER " > $FOLDER/impoundment_sites.csv
 fi

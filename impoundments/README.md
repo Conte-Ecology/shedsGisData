@@ -1,9 +1,14 @@
 Impoundments: Downstream Impacted Area
 ======================================
 
-This script produces a spatial polyline layer representing stream sections 
-immediately downstream of an impoundment. The length of the section is specified 
-in the script.
+The impoundment influence zones layer is created using a network analysis 
+methodology that maps a user-specified length downstream from an impoundment. 
+The impoundments layer comes from the version of The Nature Conservancy's dam 
+inventory with locations snapped to the NHD high resolution flowlines as part 
+of the DSL Project. The impoundment influence zones are uploaded to the SHEDS 
+database and used to identify sites that are potentially influenced by upstream 
+impoundments. 
+
 
 
 # Data Sources
@@ -119,36 +124,55 @@ within the specified distance downstream of an impoundment.
 
 
 
+# Database Upload
+The impoundment zone shapefile created in the previous section is uploaded to 
+the SHEDS database. The upload script is specific to the zone shapefile with 
+the reference to the spatial object being hard-coded, meaning a new script will 
+need to be derived for each new zone length (a simple task). For example, the 
+`import_impoundment_zones_100m.sh` script directly references the 
+`impoundedZones100m.shp` layer. The steps below follow the example of the 100 
+meter zone. 
+
+1. Save the impoundment zone shapefile into a dedicated folder on the server 
+with the name identifying the zone length (e.g. `impoundedZones100m.shp`). The 
+upload script will specifically reference this name.
+
+2. Set parameters for the bash script `import_impoundment_zones_100m.sh`. 
+ - Parameter 1: The name of the database
+ - Parameter 2: The path to the directory containing the impoundment zone 
+ shapefile 
+ 
+3. Execute the bash script in the command line:
+ - `./import_impoundment_zones_100m.sh sheds_new /home/kyle/data/gis/impoundment_zones`
+
+4. The layer is uploaded to the specified database as the `gis.impoundment_zones_100m` 
+table.
+
+
 
 # QAQC Process
-The tidal influence layer is used in Postgres to identify sites with potential 
-tidal influence. The QAQC bash script uses the lat/lon coordinates of the 
-locations to perform a spatial intersection with the tidal layer. A CSV file 
-identifying the location id of the tidally influenced sites is generated. The 
-option exists to specify the locations to evaluate.
 
-## Run script
+The uploaded layer is used to identify sites in the database from the 
+`public.locations` table that are potentially influenced by impoundments. An 
+optional CSV indicating the locations to check may be used with the script. The 
+format of this CSV is an integer column with the header 'id'.
 
-1. Prepare script arguments
+1. Set parameters for the bash script `id_impoundment_sites.sh`. 
+ - Parameter 1: The name of the database
+ - Parameter 2: The path to the directory to output a CSV
+ - Parameter 3: The path to the optional input CSV
 
-| Parameter |              Description              |                Example                 | 
-|:---------:|              -----------              |                -------                 |
-|     1     | The current working database          | sheds_new                              |
-|     2     | The output directory                  | /home/kyle/qaqc                        |
-|     3     | The CSV file specifying location id's | /home/kyle/qaqc/eg_check_locations.csv |
+2. Execute the bash script in the command line:
 
-The format of the CSV that specifies the location id's to check is a single 
-column with the header 'id'. The column data type should be integer. If this 
-changes in the system, the QAQC script will need to be updated. 
+ - Evaluate all locations: `./id_impoundment_sites.sh sheds_new /home/kyle/qaqc`
 
-
-2. Execute the scrpt in the bash (include full path)
-
-Evaluate all locations:
-`/home/kyle/scripts/qaqc/id_impoundment_sites.sh sheds_new /home/kyle/qaqc`
-
-Evaluate specified locations:
-`/home/kyle/scripts/qaqc/id_impoundment_sites.sh sheds_new /home/kyle/qaqc /home/kyle/qaqc/eg_check_locations.csv`
+ - Evaluate specified locations: `./id_impoundment_sites.sh sheds_new /home/kyle/qaqc /home/kyle/qaqc/eg_check_locations.csv`
+ 
+3. A CSV identifying the sites within the downstream zone of an impoundment is 
+saved to the output directory. The file has one column with the header "id". 
+Currently, the identification method uses a 10 meter buffer around the site 
+locations to determine if they intersect with an impoundment zone. This is 
+because the points are not snapped to the flowlines. 
 
 
 

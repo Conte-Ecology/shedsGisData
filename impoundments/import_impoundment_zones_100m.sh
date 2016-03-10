@@ -35,5 +35,5 @@ shp2pgsql -s 4326:4326 -g geom -I -a -t 2D $FILE_WGS $TABLE | psql -d $DB -q
 
 
 # Update internal query statistics and reclaim unused space in the table pages
-#echo Cleaning up...
-#psql -d $DB -c "VACUUM ANALYZE;"
+echo Cleaning up...
+psql -d $DB -c "VACUUM ANALYZE;"
