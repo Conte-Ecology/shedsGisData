@@ -1,12 +1,12 @@
-Impoundments: Downstream Impacted Area
+Impoundments: Downstream Impacted Zone
 ======================================
 
 The impoundment influence zones layer is created using a network analysis 
 methodology that maps a user-specified length downstream from an impoundment. 
-The impoundments layer comes from the version of The Nature Conservancy's dam 
-inventory with locations snapped to the NHD high resolution flowlines as part 
-of the DSL Project. The impoundment influence zones are uploaded to the SHEDS 
-database and used to identify sites that are potentially influenced by upstream 
+The impoundments layer comes from the DSL Project version of The Nature 
+Conservancy's dam inventory with locations snapped to the NHD high resolution 
+flowlines. The impoundment influence zones are uploaded to the SHEDS database 
+and used to identify sites that are potentially influenced by upstream 
 impoundments. 
 
 
@@ -159,7 +159,7 @@ format of this CSV is an integer column with the header 'id'.
 
 1. Set parameters for the bash script `id_impoundment_sites.sh`. 
  - Parameter 1: The name of the database
- - Parameter 2: The path to the directory to output a CSV
+ - Parameter 2: The path to the output directory
  - Parameter 3: The path to the optional input CSV
 
 2. Execute the bash script in the command line:
