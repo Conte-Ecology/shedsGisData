@@ -1,0 +1,8 @@
+Field,Description,Type
+FID,A unqiue identifier specific to the spatial layer (required field),Integer
+Shape,"The spatial geometry type of the layer such as ""Point"" or ""Polygon""",Geometry
+Source,"The process by which the catchment was defined. Categories are ""Delineation"", ""Coastal"", or ""Coastal Fill"" and are described in the product documentation",Text
+FEATUREID,The unique ID that links catchments to their respective flowlines or riparian buffers,Double
+NextDownID,The FEATUREID of the catchment located immediately downstream in the network,Double
+Shape_Leng,The length of the feature in meters (required field),Double
+LengthKM,The length of the feature in kilometers,Double

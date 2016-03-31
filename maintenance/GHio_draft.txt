@@ -13,11 +13,9 @@ A project generating the environmental data supporting the Spatial Hydro-Ecologi
 
 
 
-```{r}
 
+```r
 cats <- read.csv("C:/KPONEIL/GitHub/projects/shedsData/maintenance/NHDHRDV2/spatial_doc_tables/catchments.csv")
-
-
 ```
 
 # SHEDS Data
@@ -103,9 +101,8 @@ Figure 3: Range comparison between DSL Project boundary and NHDHRDV2 layers
 include higher resolution streams than the medium resolution products. The high 
 resolution catchments, network, and flowlines form the foundation of the other 
 data in this project that go into SHEDS. The layers are divided by hydrologic 
-region as shown in Figure 4. Comprehensive documentation and citations for source 
-data can be found in the 
-[NHDHRDV2 Documentation file](https://github.com/Conte-Ecology/shedsData/blob/master/NHDHRDV2/NHDHRDV2%20Documentation.docx).
+region as shown in Figure 4. Full citations for source data can be found in the 
+"NHDHRDV2 Documentation.doc" file.
 
 ![Hydrologic Regions](https://cloud.githubusercontent.com/assets/6216239/13403701/55a1428a-dee4-11e5-952d-eded1daa6e83.png)
 

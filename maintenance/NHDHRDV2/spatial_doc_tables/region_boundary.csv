@@ -1,0 +1,5 @@
+Field,Description,Type
+FID,A unqiue identifier specific to the spatial layer (required field),Integer
+Shape,"The spatial geometry type of the layer such as ""Point"" or ""Polygon""",Geometry
+Shape_Leng,The length of the feature in meters (required field),Double
+Shape_Area,The area of the feature in square meters (required field),Double

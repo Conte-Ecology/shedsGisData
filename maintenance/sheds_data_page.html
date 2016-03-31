@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>SHEDS Data</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>SHEDS Data</h1>
+
+<hr/>
+
+<p>This project documents the steps used to generate the supporting data used on 
+the Spatial Hydro-Ecological Decision System (SHEDS). It includes descriptions 
+of products and processing related to:</p>
+
+<ul>
+<li>The high resolution catchment delineation</li>
+<li>Daily climate records used to drive models</li>
+<li>Basin characteristics used in models and visualization</li>
+<li>A spatial layer representing water bodies experiencing tidal influence</li>
+<li>A spatial layer representing river segments potentially influenced by upstream 
+impoundments</li>
+</ul>
+
+<p>Further details about the data sources related to each product can be found in 
+the respective repositories.
+<br><br></p>
+
+<h2>The National Hydrography Dataset High Resolution Delineation Version 2 (NHDHRDV2)</h2>
+
+<p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/NHDHRDV2">NHDHRDV2</a></p>
+
+<h3>Description</h3>
+
+<p>The NHDHRDV2 is a series of GIS layers representing hydrologic catchments and 
+flowlines spanning the Northeast region of the United States. The catchments 
+are similar to existing products such as the well-known NHD Plus dataset. 
+Based on the National Hydrography Dataset (NHD), catchment layers contain 
+fields to indicate routing paths which can be used to establish the network 
+structure. Some basic information about the layers is also included in the 
+attribute tables. Layers representing riparian buffer zones in each catchment 
+also exist.</p>
+
+<p>The NHDHRDV2 seeks to address specific aspects of existing hydrography products 
+that have proven to restrict their usefulness. Specifically, improved spatial 
+resolution and consistency are the focus of the development of these products. 
+Catchment delineation is based on the high resolution NHD flowlines. Currently, 
+there are no known large scale catchment products derived from this more detailed 
+layer. One primary focus of this product is to capture small headwater streams 
+omitted by existing products such as the medium resolution catchments in NHDPlus 
+Version 2. Representing these streams can be critical to understanding key ecological 
+interests. Figure 1 shows the added catchment detail from the high resolution 
+streams in the Westbrook stream in Whately, MA.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/6216239/13364134/22316bc8-dc9b-11e5-93f9-3d1d0db73fb0.png" alt="Figure 1"/></p>
+
+<p>Figure 1: Catchment resolution compariston in the Westbrook, Whately, MA 
+<br><br></p>
+
+<p>Resolution consistency is addressed in the creation of the high resolution 
+catchments. The NHD Plus Version 2 catchments, derived from the medium resolution 
+NHD flowlines, are unnaturally inconsistent in area. The inconsistency is evidenced 
+in Figure 2, which shows a regional view of the catchments. The unnatural catchment 
+area differential shows up as straight lines between lighter and darker shades, 
+indicating lesser and greater density of catchments respectively. These inconsistencies 
+permeate the entire dataset and are a result of the varying resolution of existing 
+hydrography data in the region. The areal inconsistency presents a problem for models 
+relying on drainage area as a driver as well as for visual representation of data layers. </p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/6216239/13364586/9ddedc0e-dc9d-11e5-8f8c-7b7126654b8a.png" alt="Figure 2"/></p>
+
+<p>Figure 2: NHDPlus Version 2 medium resolution catchments in the Northeast
+<br><br></p>
+
+<p>The issue shown above in the medium resolution layers also exists in the high 
+resolution flowlines. It is evident from examining the flowline layers that the 
+dataset has been processed in a gridded format at differing resolutions. The 
+catchments are developed using a methodology for improving areal consistency. 
+The hydrography layers created by this method are derived from a 30m resolution 
+digital elevation model and the NHD high resolution flowlines. The high resolution 
+flowlines edited by the Designing Sustainable Landscapes (DSL) Project to eliminate 
+network gaps, correct flow direction, and remove coastline from the majority of 
+the flowline layer used. Raw NHD flowlines were edited in general accordance with 
+the DSL Project methodolgoy to produce whole watersheds that are not artificially 
+split along poltical boundaries. Figure 3 shows the expansion added in the 
+delineation effort.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/6216239/13403225/05fdcaa2-dee2-11e5-9368-0a92ad782b38.png" alt="Range Expansion"/></p>
+
+<p>Figure 3: Range comparison between DSL Project boundary and NHDHRDV2 layers
+<br><br></p>
+
+<p>The final products adhere to an established areal consistency while managing to 
+include higher resolution streams than the medium resolution products. The high 
+resolution catchments, network, and flowlines form the foundation of the other 
+data in this project that go into SHEDS. The layers are divided by hydrologic 
+region as shown in Figure 4. Comprehensive documentation and citations for source 
+data can be found in the 
+<a href="https://github.com/Conte-Ecology/shedsData/blob/master/NHDHRDV2/NHDHRDV2%20Documentation.docx">NHDHRDV2 Documentation file</a>.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/6216239/13403701/55a1428a-dee4-11e5-952d-eded1daa6e83.png" alt="Hydrologic Regions"/></p>
+
+<p>Figure 4: Hydrologic region map
+<br><br></p>
+
+<h3>Products</h3>
+
+<p>The descriptions below are for the spatial hydrography products currently 
+available for download.</p>
+
+<h4>Catchments</h4>
+
+<p>The catchments layer consists of polygons representing the drainage area 
+contributing to individual stream segments in the &ldquo;truncated flowlines&rdquo; network 
+described below. One catchment polygon exists per stream segment. A segment is 
+defined as the reach in between confluences. The table below describes the 
+fields in the shapefile attributes table.</p>
+
+<table><thead>
+<tr>
+<th align="center">Field</th>
+<th align="left">Description</th>
+<th align="center">Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">FID</td>
+<td align="left">A unqiue identifier specific to the spatial layer (required field)</td>
+<td align="center">Integer</td>
+</tr>
+<tr>
+<td align="center">Shape</td>
+<td align="left">The spatial geometry type of the layer such as &ldquo;Point&rdquo; or &ldquo;Polygon&rdquo;</td>
+<td align="center">Geometry</td>
+</tr>
+<tr>
+<td align="center">Source</td>
+<td align="left">The process by which the catchment was defined. Categories are &ldquo;Delineation&rdquo;, &ldquo;Coastal&rdquo;, or &ldquo;Coastal Fill&rdquo; and are described in the product documentation</td>
+<td align="center">Text</td>
+</tr>
+<tr>
+<td align="center">FEATUREID</td>
+<td align="left">The unique ID that links catchments to their respective flowlines or riparian buffers</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">NextDownID</td>
+<td align="left">The FEATUREID of the catchment located immediately downstream in the network</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">Shape_Leng</td>
+<td align="left">The length of the feature in meters (required field)</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">Shape_Area</td>
+<td align="left">The area of the feature in meters (required field)</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">AreaSqKM</td>
+<td align="left">The area of the feature in square kilometers</td>
+<td align="center">Double</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<h4>Truncated Flowlines</h4>
+
+<p>The truncated flowlines layer consits of polylines representing the delineation 
+flowlines used to define the catchments. These flowlines are an adjusted version 
+of the high resolution flowlines. In this layer streams are only initiated if 
+they meet the minimum 0.75 square kilometer drainage area threshold. The table 
+below describes the fields in the shapefile attributes table.</p>
+
+<table><thead>
+<tr>
+<th align="center">Field</th>
+<th align="left">Description</th>
+<th align="center">Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">FID</td>
+<td align="left">A unqiue identifier specific to the spatial layer (required field)</td>
+<td align="center">Integer</td>
+</tr>
+<tr>
+<td align="center">Shape</td>
+<td align="left">The spatial geometry type of the layer such as &ldquo;Point&rdquo; or &ldquo;Polygon&rdquo;</td>
+<td align="center">Geometry</td>
+</tr>
+<tr>
+<td align="center">Source</td>
+<td align="left">The process by which the catchment was defined. Categories are &ldquo;Delineation&rdquo;, &ldquo;Coastal&rdquo;, or &ldquo;Coastal Fill&rdquo; and are described in the product documentation</td>
+<td align="center">Text</td>
+</tr>
+<tr>
+<td align="center">FEATUREID</td>
+<td align="left">The unique ID that links catchments to their respective flowlines or riparian buffers</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">NextDownID</td>
+<td align="left">The FEATUREID of the catchment located immediately downstream in the network</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">Shape_Leng</td>
+<td align="left">The length of the feature in meters (required field)</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">LengthKM</td>
+<td align="left">The length of the feature in kilometers</td>
+<td align="center">Double</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<h4>Detailed Flowlines</h4>
+
+<p>The detailed flowlines layer is a polyline representation of the high resolution 
+flowlines mapped to the catchments. Multiple stream segments may exist for a 
+single catchment with no intra-catchment network identifiers present in the 
+layer. The table below describes the fields in the shapefile attributes table.</p>
+
+<table><thead>
+<tr>
+<th align="center">Field</th>
+<th align="left">Description</th>
+<th align="center">Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">FID</td>
+<td align="left">A unqiue identifier specific to the spatial layer (required field)</td>
+<td align="center">Integer</td>
+</tr>
+<tr>
+<td align="center">Shape</td>
+<td align="left">The spatial geometry type of the layer such as &ldquo;Point&rdquo; or &ldquo;Polygon&rdquo;</td>
+<td align="center">Geometry</td>
+</tr>
+<tr>
+<td align="center">FEATUREID</td>
+<td align="left">The unique ID that links catchments to their respective flowlines or riparian buffers</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">Shape_Leng</td>
+<td align="left">The length of the feature in meters (required field)</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">LengthKM</td>
+<td align="left">The length of the feature in kilometers</td>
+<td align="center">Double</td>
+</tr>
+</tbody></table>
+
+<p><br></p>
+
+<h4>Region Boundary</h4>
+
+<p>The region boundary layer is simply the outline of the catchments layer for the 
+hydrologic region. The table below describes the fields in the shapefile 
+attributes table.</p>
+
+<table><thead>
+<tr>
+<th align="center">Field</th>
+<th align="left">Description</th>
+<th align="center">Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">FID</td>
+<td align="left">A unqiue identifier specific to the spatial layer (required field)</td>
+<td align="center">Integer</td>
+</tr>
+<tr>
+<td align="center">Shape</td>
+<td align="left">The spatial geometry type of the layer such as &ldquo;Point&rdquo; or &ldquo;Polygon&rdquo;</td>
+<td align="center">Geometry</td>
+</tr>
+<tr>
+<td align="center">Shape_Leng</td>
+<td align="left">The length of the feature in meters (required field)</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">Shape_Area</td>
+<td align="left">The area of the feature in square meters (required field)</td>
+<td align="center">Double</td>
+</tr>
+</tbody></table>
+
+<p><br><br></p>
+
+<h2>Daymet Climate Record</h2>
+
+<p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/daymet">daymet</a></p>
+
+<p>This section takes advantage of the gridded daily surface weather and 
+climatological summaries known as <a href="https://daymet.ornl.gov/">Daymet</a>. 
+A daily timeseries is assigned to all catchments in the NHDHRDV2 for 
+all available climate variables over the entire record (1980-2014). The 
+repository README documents the process for assigning the climate records 
+to each hydrologic catchment in the NHDHRDV2. 
+<br><br></p>
+
+<h2>Basin Characteristics</h2>
+
+<p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/basinCharacteristics">basinCharacteristics</a></p>
+
+<p>This section assigns a variety of attributes from different sources to the 
+hydrologic catchments in the NHDHRDV2. The basin characteristics are spatially 
+attributed to the zonal catchment layers through a series of ArcPy and R scripts. 
+Varying source data structures are processed to create uniformly structured 
+value raster layers that are attributed to the individual catchments and 
+aggregated to larger basins based on the network structure of the delineation
+product. The repository provides an in depth description of the processing steps 
+and the different characteristics assigned. For a full list of variables refer 
+to the <a href="https://github.com/Conte-Ecology/shedsData/blob/master/basinCharacteristics/Covariate%20Data%20Status%20-%20High%20Res%20Delineation.xlsx">Covariate Data Status spreadsheet</a>.
+<br><br></p>
+
+<h2>Tidal Influence Layer</h2>
+
+<p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/tidalLayer">tidalLayer</a>. </p>
+
+<p>The tidal influence layer represents all water bodies within the SHEDS spatial 
+range that experience some form of tidal effect. Spatial layers from the 
+<a href="http://www.fws.gov/wetlands/Data/Mapper.html">U.S. Fish &amp; Wildlife Service - National Wetlands Inventory</a> 
+are processed to generate a spatial polygon layer of all of the tidal zones. 
+The processing documentation exists in the repository README. This layer is 
+primarily used to flag observed stream temperature sites that may be influenced 
+by tides.
+<br><br></p>
+
+<h2>Impoundment Influence Layer</h2>
+
+<p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/impoundments">impoundments</a></p>
+
+<p>The impoundment influence layer is developed to represent the stream sections 
+within the SHEDS hydrologic network that are impacted by impoundments. The product 
+is a polyline layer representing the stream segments of a user-specified distance 
+downstream from each impoundments location. The impoundments dataset comes 
+from the DSL Project where the locations from The Nature Conservancy&#39;s dam inventory 
+were snapped to the NHD high resolution flowlines. This source layer is not public 
+and the resulting layer is only used within the SHEDS group. The processing 
+documentation exists in the repository README. 
+<br><br></p>
+
+<h2>Contact Info</h2>
+
+<p>Kyle O&#39;Neil <br>
+<a href="mailto:koneil@usgs.gov">koneil@usgs.gov</a></p>
+
+<p>Benjamin Letcher <br>
+<a href="mailto:bletcher@usgs.gov">bletcher@usgs.gov</a> </p>
+
+</body>
+
+</html>
+

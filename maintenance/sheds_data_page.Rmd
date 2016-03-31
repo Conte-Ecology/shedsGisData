@@ -1,32 +1,37 @@
-Project page URL:
-http://conte-ecology.github.io/shedsData
+---
+title: "SHEDS Data GH Page"
+author: "Kyle O'Neil"
+date: "March 30, 2016"
+output: 
+  html_document
+  keep_md: yes
+---
 
-Project name:
-SHEDS Data
+```{r notes and read data, echo = FALSE, warning = FALSE}
+library(pander)
 
-Tagline:
-A project generating the environmental data supporting the Spatial Hydro-Ecological Decision System (SHEDS).
+#Project page URL: 
+#   http://conte-ecology.github.io/shedsData
+#Project name: 
+#   SHEDS Data
+#Tagline: 
+#   A project generating the environmental data supporting the Spatial Hydro-Ecological Decision System (SHEDS).
 
-
-
-
-
-
-
-```{r}
-
-cats <- read.csv("C:/KPONEIL/GitHub/projects/shedsData/maintenance/NHDHRDV2/spatial_doc_tables/catchments.csv")
-
-
+catchments <- read.csv("C:/KPONEIL/GitHub/projects/shedsData/maintenance/NHDHRDV2/spatial_doc_tables/catchments.csv")
+truncated_flowlines <- read.csv("C:/KPONEIL/GitHub/projects/shedsData/maintenance/NHDHRDV2/spatial_doc_tables/truncated_flowlines.csv")
+detailed_flowlines <- read.csv("C:/KPONEIL/GitHub/projects/shedsData/maintenance/NHDHRDV2/spatial_doc_tables/detailed_flowlines.csv")
+region_boundary <- read.csv("C:/KPONEIL/GitHub/projects/shedsData/maintenance/NHDHRDV2/spatial_doc_tables/region_boundary.csv")
 ```
+
+
 
 # SHEDS Data
 ------------
   
-  This project documents the steps used to generate the supporting data used on 
+This project documents the steps used to generate the supporting data used on 
 the Spatial Hydro-Ecological Decision System (SHEDS). It includes descriptions 
 of products and processing related to:
-  * The high resolution catchment delineation
+* The high resolution catchment delineation
 * Daily climate records used to drive models
 * Basin characteristics used in models and visualization
 * A spatial layer representing water bodies experiencing tidal influence
@@ -36,11 +41,13 @@ impoundments
 Further details about the data sources related to each product can be found in 
 the respective repositories.
 <br><br>
-  
-  ### The National Hydrography Dataset High Resolution Delineation Version 2 (NHDHRDV2)
-  
-  Repository: [NHDHRDV2](https://github.com/Conte-Ecology/shedsData/tree/master/NHDHRDV2)
 
+  
+## The National Hydrography Dataset High Resolution Delineation Version 2 (NHDHRDV2)
+
+Repository: [NHDHRDV2](https://github.com/Conte-Ecology/shedsData/tree/master/NHDHRDV2)
+
+### Description
 The NHDHRDV2 is a series of GIS layers representing hydrologic catchments and 
 flowlines spanning the Northeast region of the United States. The catchments 
 are similar to existing products such as the well-known NHD Plus dataset. 
@@ -66,7 +73,7 @@ streams in the Westbrook stream in Whately, MA.
 Figure 1: Catchment resolution compariston in the Westbrook, Whately, MA 
 <br><br>
   
-  Resolution consistency is addressed in the creation of the high resolution 
+Resolution consistency is addressed in the creation of the high resolution 
 catchments. The NHD Plus Version 2 catchments, derived from the medium resolution 
 NHD flowlines, are unnaturally inconsistent in area. The inconsistency is evidenced 
 in Figure 2, which shows a regional view of the catchments. The unnatural catchment 
@@ -81,7 +88,7 @@ relying on drainage area as a driver as well as for visual representation of dat
 Figure 2: NHDPlus Version 2 medium resolution catchments in the Northeast
 <br><br>
   
-  The issue shown above in the medium resolution layers also exists in the high 
+The issue shown above in the medium resolution layers also exists in the high 
 resolution flowlines. It is evident from examining the flowline layers that the 
 dataset has been processed in a gridded format at differing resolutions. The 
 catchments are developed using a methodology for improving areal consistency. 
@@ -99,7 +106,7 @@ delineation effort.
 Figure 3: Range comparison between DSL Project boundary and NHDHRDV2 layers
 <br><br>
   
-  The final products adhere to an established areal consistency while managing to 
+The final products adhere to an established areal consistency while managing to 
 include higher resolution streams than the medium resolution products. The high 
 resolution catchments, network, and flowlines form the foundation of the other 
 data in this project that go into SHEDS. The layers are divided by hydrologic 
@@ -111,11 +118,69 @@ data can be found in the
 
 Figure 4: Hydrologic region map
 <br><br>
+
+
+### Products
+The descriptions below are for the spatial hydrography products currently 
+available for download.
+
+#### Catchments
+The catchments layer consists of polygons representing the drainage area 
+contributing to individual stream segments in the "truncated flowlines" network 
+described below. One catchment polygon exists per stream segment. A segment is 
+defined as the reach in between confluences. The table below describes the 
+fields in the shapefile attributes table.
+```{r catchments, results='asis', echo = FALSE}
+pandoc.table(catchments,
+             justify = 'clc',
+             style = 'rmarkdown',
+             split.tables = Inf)
+```
+<br>
+
+#### Truncated Flowlines
+The truncated flowlines layer consits of polylines representing the delineation 
+flowlines used to define the catchments. These flowlines are an adjusted version 
+of the high resolution flowlines. In this layer streams are only initiated if 
+they meet the minimum 0.75 square kilometer drainage area threshold. The table 
+below describes the fields in the shapefile attributes table.
+```{r truncated flowlines, results='asis', echo = FALSE}
+pandoc.table(truncated_flowlines,
+             justify = 'clc',
+             style = 'rmarkdown',
+             split.tables = Inf)
+```
+<br>
+
+#### Detailed Flowlines
+The detailed flowlines layer is a polyline representation of the high resolution 
+flowlines mapped to the catchments. Multiple stream segments may exist for a 
+single catchment with no intra-catchment network identifiers present in the 
+layer. The table below describes the fields in the shapefile attributes table.
+```{r detailed flowlines, results='asis', echo = FALSE}
+pandoc.table(detailed_flowlines,
+             justify = 'clc',
+             style = 'rmarkdown',
+             split.tables = Inf)
+```
+<br>
+
+#### Region Boundary
+The region boundary layer is simply the outline of the catchments layer for the 
+hydrologic region. The table below describes the fields in the shapefile 
+attributes table.
+```{r region boundary, results='asis', echo = FALSE}
+pandoc.table(region_boundary,
+             justify = 'clc',
+             style = 'rmarkdown',
+             split.tables = Inf)
+```
+<br><br>
+
+
+## Daymet Climate Record
   
-  
-  ### Daymet Climate Record
-  
-  Repository: [daymet](https://github.com/Conte-Ecology/shedsData/tree/master/daymet)
+Repository: [daymet](https://github.com/Conte-Ecology/shedsData/tree/master/daymet)
 
 This section takes advantage of the gridded daily surface weather and 
 climatological summaries known as [Daymet](https://daymet.ornl.gov/). 
@@ -126,9 +191,9 @@ to each hydrologic catchment in the NHDHRDV2.
 <br><br>
   
   
-  ### Basin Characteristics
+## Basin Characteristics
   
-  Repository: [basinCharacteristics](https://github.com/Conte-Ecology/shedsData/tree/master/basinCharacteristics)
+Repository: [basinCharacteristics](https://github.com/Conte-Ecology/shedsData/tree/master/basinCharacteristics)
 
 This section assigns a variety of attributes from different sources to the 
 hydrologic catchments in the NHDHRDV2. The basin characteristics are spatially 
@@ -142,9 +207,9 @@ to the [Covariate Data Status spreadsheet](https://github.com/Conte-Ecology/shed
 <br><br>
   
   
-  ### Tidal Influence Layer
+## Tidal Influence Layer
   
-  Repository: [tidalLayer](https://github.com/Conte-Ecology/shedsData/tree/master/tidalLayer). 
+Repository: [tidalLayer](https://github.com/Conte-Ecology/shedsData/tree/master/tidalLayer). 
 
 The tidal influence layer represents all water bodies within the SHEDS spatial 
 range that experience some form of tidal effect. Spatial layers from the 
@@ -156,9 +221,9 @@ by tides.
 <br><br>
   
   
-  ### Impoundment Influence Layer
+## Impoundment Influence Layer
   
-  Repository: [impoundments](https://github.com/Conte-Ecology/shedsData/tree/master/impoundments)
+Repository: [impoundments](https://github.com/Conte-Ecology/shedsData/tree/master/impoundments)
 
 The impoundment influence layer is developed to represent the stream sections 
 within the SHEDS hydrologic network that are impacted by impoundments. The product 
@@ -171,12 +236,10 @@ documentation exists in the repository README.
 <br><br>
 
 
-### Contact Info 
+## Contact Info 
 
 Kyle O'Neil <br>
-  koneil@usgs.gov
+koneil@usgs.gov
 
 Benjamin Letcher <br>
-  bletcher@usgs.gov 
-
-
+bletcher@usgs.gov 
