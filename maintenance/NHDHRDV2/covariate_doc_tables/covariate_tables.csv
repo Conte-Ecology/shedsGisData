@@ -1,0 +1,6 @@
+Field,Description,Type
+featureid,The unique ID that links catchments to their respective flowlines or riparian buffers,Integer
+variable,"The variable name corresponding to the ""Name"" column of the NHDHRDV2 Covariate Documentation spreadsheet",Text
+value,The spatial average of the variable within the zone,Double
+zone,"The area over which the values were spatially averaged. Options are either ""local"" for current zone or ""upstream"" for the entire contributing network zone",Text
+riparian_distance_ft,"The distance of the riparian buffer, in feet. The value for catchments in this field is ""NA""",Integer

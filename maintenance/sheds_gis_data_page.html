@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>SHEDS Data</title>
+<title>SHEDS GIS Data</title>
 
 <style type="text/css">
 body, td {
@@ -142,7 +142,7 @@ hr {
 </head>
 
 <body>
-<h1>SHEDS Data</h1>
+<h1>SHEDS GIS Data</h1>
 
 <hr/>
 
@@ -152,20 +152,27 @@ of products and processing related to:</p>
 
 <ul>
 <li>The high resolution catchment delineation</li>
-<li>Daily climate records used to drive models</li>
 <li>Basin characteristics used in models and visualization</li>
+<li>Daily climate records used to drive models</li>
 <li>A spatial layer representing water bodies experiencing tidal influence</li>
 <li>A spatial layer representing river segments potentially influenced by upstream 
 impoundments</li>
 </ul>
 
-<p>Further details about the data sources related to each product can be found in 
-the respective repositories.
+<p>The high resolution delineation spatial layers, basin characteristics, and 
+documentation files have been made available on the SHEDS GIS Data 
+<a href="http://ecosheds.org/assets/nhdhrd/v2/">download page</a>. The specific layers made 
+avilable are described in the respective sections below.</p>
+
+<p>Further details about the data sources related to each product can be found 
+directly in the product repositories.
 <br><br></p>
 
 <h2>The National Hydrography Dataset High Resolution Delineation Version 2 (NHDHRDV2)</h2>
 
-<p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/NHDHRDV2">NHDHRDV2</a></p>
+<p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/NHDHRDV2">NHDHRDV2</a>
+<br>
+Product Download: <a href="http://ecosheds.org/assets/nhdhrd/v2/">SHEDS GIS Data download page</a></p>
 
 <h3>Description</h3>
 
@@ -233,7 +240,7 @@ resolution catchments, network, and flowlines form the foundation of the other
 data in this project that go into SHEDS. The layers are divided by hydrologic 
 region as shown in Figure 4. Comprehensive documentation and citations for source 
 data can be found in the 
-<a href="https://github.com/Conte-Ecology/shedsData/blob/master/NHDHRDV2/NHDHRDV2%20Documentation.docx">NHDHRDV2 Documentation file</a>.</p>
+<a href="http://ecosheds.org/assets/nhdhrd/v2/NHDHRDV2_Documentation.docx">NHDHRDV2 Documentation file</a>.</p>
 
 <p><img src="https://cloud.githubusercontent.com/assets/6216239/13403701/55a1428a-dee4-11e5-952d-eded1daa6e83.png" alt="Hydrologic Regions"/></p>
 
@@ -242,8 +249,9 @@ data can be found in the
 
 <h3>Products</h3>
 
-<p>The descriptions below are for the spatial hydrography products currently 
-available for download.</p>
+<p>The spatial hydrography products described in this section are currently 
+available on the download page. Each of the 4 layers described below are grouped 
+into the &ldquo;spatial_XX.zip&rdquo; files for each of the 6 hydrologic regions in Figure 4.</p>
 
 <h4>Catchments</h4>
 
@@ -438,6 +446,68 @@ attributes table.</p>
 
 <p><br><br></p>
 
+<h2>Basin Characteristics</h2>
+
+<p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/basinCharacteristics">basinCharacteristics</a>
+<br>
+Product Download: <a href="http://ecosheds.org/assets/nhdhrd/v2/">SHEDS GIS Data download page</a></p>
+
+<h3>Description</h3>
+
+<p>This section assigns a variety of attributes from different sources to the 
+hydrologic catchments in the NHDHRDV2. The basin characteristics are spatially 
+attributed to the zonal catchment layers through a series of ArcPy and R scripts. 
+Varying source data structures are processed to create uniformly structured 
+value raster layers that are attributed to the individual catchments and 
+aggregated to larger basins based on the network structure of the delineation
+product. The repository provides an in depth description of the processing steps 
+and the different characteristics assigned. For a full list of variables refer 
+to the <a href="http://ecosheds.org/assets/nhdhrd/v2/NHDHRDV2_Covariate_Documentation.xlsx">NHDHRDV2 Covariate Documentation spreadsheet</a>.
+<br><br></p>
+
+<h3>Products</h3>
+
+<p>The basin characteristics for the delineation products are made available on 
+the download page. Spatial averages for the full list of variables exist over 
+4 zones: the catchment area plus 3 riparian buffer zones (50, 100, and 200ft). 
+Each of the 4 zones are grouped into the &ldquo;covariates_XX.zip&rdquo; files for each of 
+the 6 hydrologic regions in Figure 4. The table below describes the fields in 
+the covariate CSV files.</p>
+
+<table><thead>
+<tr>
+<th align="center">Field</th>
+<th align="left">Description</th>
+<th align="center">Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">featureid</td>
+<td align="left">The unique ID that links catchments to their respective flowlines or riparian buffers</td>
+<td align="center">Integer</td>
+</tr>
+<tr>
+<td align="center">variable</td>
+<td align="left">The variable name corresponding to the &ldquo;Name&rdquo; column of the NHDHRDV2 Covariate Documentation spreadsheet</td>
+<td align="center">Text</td>
+</tr>
+<tr>
+<td align="center">value</td>
+<td align="left">The spatial average of the variable within the zone</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">zone</td>
+<td align="left">The area over which the values were spatially averaged. Options are either &ldquo;local&rdquo; for current zone or &ldquo;upstream&rdquo; for the entire contributing network zone</td>
+<td align="center">Text</td>
+</tr>
+<tr>
+<td align="center">riparian_distance_ft</td>
+<td align="left">The distance of the riparian buffer, in feet. The value for catchments in this field is &ldquo;NA&rdquo;</td>
+<td align="center">Integer</td>
+</tr>
+</tbody></table>
+
 <h2>Daymet Climate Record</h2>
 
 <p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/daymet">daymet</a></p>
@@ -448,21 +518,6 @@ A daily timeseries is assigned to all catchments in the NHDHRDV2 for
 all available climate variables over the entire record (1980-2014). The 
 repository README documents the process for assigning the climate records 
 to each hydrologic catchment in the NHDHRDV2. 
-<br><br></p>
-
-<h2>Basin Characteristics</h2>
-
-<p>Repository: <a href="https://github.com/Conte-Ecology/shedsData/tree/master/basinCharacteristics">basinCharacteristics</a></p>
-
-<p>This section assigns a variety of attributes from different sources to the 
-hydrologic catchments in the NHDHRDV2. The basin characteristics are spatially 
-attributed to the zonal catchment layers through a series of ArcPy and R scripts. 
-Varying source data structures are processed to create uniformly structured 
-value raster layers that are attributed to the individual catchments and 
-aggregated to larger basins based on the network structure of the delineation
-product. The repository provides an in depth description of the processing steps 
-and the different characteristics assigned. For a full list of variables refer 
-to the <a href="https://github.com/Conte-Ecology/shedsData/blob/master/basinCharacteristics/Covariate%20Data%20Status%20-%20High%20Res%20Delineation.xlsx">Covariate Data Status spreadsheet</a>.
 <br><br></p>
 
 <h2>Tidal Influence Layer</h2>
