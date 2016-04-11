@@ -112,6 +112,14 @@ data can be found in the
 Figure 4: Hydrologic region map
 <br><br>
 
+In addition to the existing hydrography layers, it is possible to utilize the 
+processing effort for delineating user-specified locations. The 
+[MassDOT Deerfield Culvert Delineation](http://conte-ecology.github.io/culvertDelineation_MassDOT/) 
+exemplifies this process for a separate project. Watersheds are delineated from 
+a culvert location layer and landscape attributes within the watersheds are 
+assigned to each culvert location. 
+<br><br>
+
 
 ### Products
 The spatial hydrography products described in this section are currently 

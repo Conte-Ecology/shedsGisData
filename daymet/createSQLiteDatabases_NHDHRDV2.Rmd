@@ -29,8 +29,8 @@ library(zonalDaymet)
 ```{r Inputs}
 
 # Temporal range
-START_YEAR <- 1980
-END_YEAR <- 2014
+START_YEAR <- 2015
+END_YEAR <- 2015
 
 # List of hydrologic region identifer (used to indicate catchments layer and output database name)
 HYDRO_REGIONS <- c("01", "02", "03", "04", "05", "06")
@@ -45,7 +45,7 @@ DAYMET_DIRECTORY <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/day
 SPATIAL_DIRECTORY <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/streamStructure/NHDHRDV2/products/daymetShapefiles"
 
 # Name of the database with Daymet data paired to NHDPlus catchments. The hydrologic region ID will be appended to this name.
-DATABASE_PATH <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/daymet/NHDHRDV2_2/NHDHRDV2"
+DATABASE_PATH <- "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/climate/daymet/NHDHRDV2/NHDHRDV2"
 TABLE_NAME <- "climateRecord"
 
 ZONE_FIELD <- "FEATUREID"

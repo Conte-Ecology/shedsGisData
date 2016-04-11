@@ -13,7 +13,7 @@ library(pander)
 #Project page URL: 
 #   http://conte-ecology.github.io/shedsData
 #Project name: 
-#   SHEDS Data
+#   SHEDS GIS Data
 #Tagline: 
 #   A project generating the environmental data supporting the Spatial Hydro-Ecological Decision System (SHEDS).
 
@@ -126,6 +126,14 @@ data can be found in the
 ![Hydrologic Regions](https://cloud.githubusercontent.com/assets/6216239/13403701/55a1428a-dee4-11e5-952d-eded1daa6e83.png)
 
 Figure 4: Hydrologic region map
+<br><br>
+
+In addition to the existing hydrography layers, it is possible to utilize the 
+processing effort for delineating user-specified locations. The 
+[MassDOT Deerfield Culvert Delineation](http://conte-ecology.github.io/culvertDelineation_MassDOT/) 
+exemplifies this process for a separate project. Watersheds are delineated from 
+a culvert location layer and landscape attributes within the watersheds are 
+assigned to each culvert location. 
 <br><br>
 
 
