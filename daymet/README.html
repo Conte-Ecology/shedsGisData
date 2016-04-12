@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Daymet Climate Data</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Daymet Climate Data</h1>
+
+<h1>Description</h1>
+
+<p>This repo assigns the Daymet climate record to the hydrologic catchments in the 
+NHDHRDV2 dataset. The Daymet data are daily time series of climate variables as 
+distributed through the <a href="https://daymet.ornl.gov/">ORNL DAAC</a>. Each catchment 
+gets daily records for precipitation(mm), minimum and maximum temperature 
+(degrees C), water vaport pressure (Pa), incident solar radiation (W/m2), snow 
+water equivalent (kg/m2), and day length (seconds) over the observed period of 
+1980 - 2014. The 1km x 1km gridded data are spatially assigned to the catchment 
+polygons by using the custom 
+<a href="https://github.com/Conte-Ecology/zonalDaymet">zonalDaymet package</a>.</p>
+
+<h1>Software Requirements</h1>
+
+<p>R version 3.1.2<br/>
+Current R libraries:  </p>
+
+<ul>
+<li><code>maptools</code></li>
+<li><code>devtools</code></li>
+<li><code>zonalDaymet</code> (custom package)</li>
+</ul>
+
+<h1>Workflow</h1>
+
+<p>The database is initially populated with the 1980-2014 climate records. When 
+the new data is released annually thereafter, the process is re-run for just 
+that year. Step 1 may not be necessary to repeat if shapefiles still exist 
+from previous years.</p>
+
+<ol>
+<li><p>Project the zones shapefiles into the Daymet spatial reference (Lambert 
+Conformal Conic) as defined on the 
+<a href="https://daymet.ornl.gov/datasupport.html">Data Documentation Page</a>. Save all 
+of the projected shapefiles to use into the same directory. Currently, the 
+script is structured to read zone shapefiles with the name format 
+&ldquo;Catchments[<code>HYDRO_REGIONS</code>]_Daymet.shp&rdquo;, referencing one of the input variables 
+in step 2. An example of one shapefile name is &ldquo;Catchments01_Daymet.shp&rdquo;. If this
+naming scheme is altered, it should be reflected in the part of the script that 
+reads the shapefiles.</p></li>
+<li><p>Set the variables in the &ldquo;Specify Inputs&rdquo; section:</p>
+
+<table><thead>
+<tr>
+<th align="center">Variable Name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center"><code>START_YEAR</code></td>
+<td>The first year of the time period to assign</td>
+<td><code>1980</code></td>
+</tr>
+<tr>
+<td align="center"><code>END_YEAR</code></td>
+<td>The last year of the time period to assign</td>
+<td><code>2014</code></td>
+</tr>
+<tr>
+<td align="center"><code>HYDRO_REGIONS</code></td>
+<td>The two-digit numeric ID of the hydrologic catchments</td>
+<td><code>c(&quot;01&quot;, &quot;02&quot;, &quot;03&quot;, &quot;04&quot;, &quot;05&quot;, &quot;06&quot;)</code></td>
+</tr>
+<tr>
+<td align="center"><code>VARIABLES</code></td>
+<td>The abbreviated variable names to process (as defined in the Daymet mosaic files)</td>
+<td><code>c(&quot;tmax&quot;, &quot;tmin&quot;, &quot;prcp&quot;)</code></td>
+</tr>
+<tr>
+<td align="center"><code>DAYMET_DIRECTORY</code></td>
+<td>The path to the directory where downloaded NetCDF mosaic files will be saved</td>
+<td><code>&quot;C:/Data/Climate/Daymet/Input&quot;</code></td>
+</tr>
+<tr>
+<td align="center"><code>SPATIAL_DIRECTORY</code></td>
+<td>The path to the directory where the zones shapefiles are saved</td>
+<td><code>&quot;C:/Data/Spatial/Hydro/Catchments&quot;</code></td>
+</tr>
+<tr>
+<td align="center"><code>DATABASE_PATH</code></td>
+<td>The filepath to the output database to which the <code>HYDRO_REGIONS</code> ID will be appended</td>
+<td><code>&quot;C:/Data/Climate/Daymet/Output&quot;</code></td>
+</tr>
+<tr>
+<td align="center"><code>TABLE_NAME</code></td>
+<td>The name of the table in the database to output</td>
+<td><code>&quot;climateRecord&quot;</code></td>
+</tr>
+<tr>
+<td align="center"><code>ZONE_FIELD</code></td>
+<td>The unique ID field for the catchments</td>
+<td><code>&quot;FEATUREID&quot;</code></td>
+</tr>
+</tbody></table></li>
+<li><p>If the Daymet NetCDF mosaic layers have not yet been downloaded, run the 
+<code>downloadMosaic</code> function to do so.</p></li>
+<li><p>Execute the averaging section of the script to assign climate records to the 
+catchments.</p></li>
+<li><p>Once SQLite databases have been populated, transfer the files to a folder on 
+the server specific to the dataset (e.g. <code>/home/kyle/data/daymet/1980-2014</code>).</p></li>
+<li><p>Execute the bash scripts setup to populate the postgres database with the 
+records from the SQLite databases: <br>
+Initial database population</p>
+
+<blockquote>
+<p>cd /home/kyle/scripts/db/daymet <br>
+./import_daymet.sh sheds_new /home/kyle/data/daymet/1980-2014 <br></p>
+</blockquote>
+
+<p>Subsequent year population <br></p>
+
+<blockquote>
+<blockquote>
+<p>cd /home/kyle/scripts/db/daymet <br>
+./import_daymet.sh sheds_new /home/kyle/data/daymet/2015 <br></p>
+</blockquote>
+</blockquote></li>
+</ol>
+
+<h1>Methods</h1>
+
+<h2>Averaging</h2>
+
+<p>When multiple Daymet cell centroid coordinates fall into a spatial 
+zone, the average of the records are assigned to the <code>ZONE_FIELD</code> ID. If a single 
+cell centroid falls within the zone, that record is assigned to the <code>ZONE_FIELD</code> ID. If 
+no cell centroids fall within the zone, then the point nearest to the zone 
+centroid is used to assign the record to the <code>ZONE_FIELD</code> ID.</p>
+
+<h2>Output</h2>
+
+<p>The records are output as SQLite databases defined separately by 
+hydrologic zone IDs (<code>HYDRO_REGIONS</code>). These SQLite databases get uploaded 
+to the primary SHEDS database through a series of Postgres scripts.</p>
+
+<h2>Functions</h2>
+
+<p>Function-specific descriptions can be found on the 
+<a href="https://github.com/Conte-Ecology/zonalDaymet">zonalDaymet package</a> page. </p>
+
+<h1>Contact Info</h1>
+
+<p>Kyle O&#39;Neil<br/>
+<a href="mailto:koneil@usgs.gov">koneil@usgs.gov</a> </p>
+
+</body>
+
+</html>
+

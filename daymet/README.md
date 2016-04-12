@@ -23,16 +23,20 @@ Current R libraries:
 
 
 # Workflow
+The database is initially populated with the 1980-2014 climate records. When 
+the new data is released annually thereafter, the process is re-run for just 
+that year. Step 1 may not be necessary to repeat if shapefiles still exist 
+from previous years.
 
 1. Project the zones shapefiles into the Daymet spatial reference (Lambert 
-Conformal Conic) as defined on their 
+Conformal Conic) as defined on the 
 [Data Documentation Page](https://daymet.ornl.gov/datasupport.html). Save all 
 of the projected shapefiles to use into the same directory. Currently, the 
 script is structured to read zone shapefiles with the name format 
 "Catchments[`HYDRO_REGIONS`]_Daymet.shp", referencing one of the input variables 
 in step 2. An example of one shapefile name is "Catchments01_Daymet.shp". If this
-naming scheme is altered, it should be reflected in the part of the script 
-where the shapefiles are read.
+naming scheme is altered, it should be reflected in the part of the script that 
+reads the shapefiles.
 
 2. Set the variables in the "Specify Inputs" section:
 
@@ -53,6 +57,19 @@ where the shapefiles are read.
 
 4. Execute the averaging section of the script to assign climate records to the 
 catchments.
+
+5. Transfer the SQLite databases to a dataset-specific directory on the server 
+(e.g. `/home/kyle/data/daymet/1980-2014`).
+
+6. Execute the bash scripts setup to populate the postgres database with the 
+records from the SQLite databases: <br>
+Initial database population
+> cd /home/kyle/scripts/db/daymet <br>
+> ./import_daymet.sh sheds_new /home/kyle/data/daymet/1980-2014 <br>
+
+  Subsequent year population <br>
+>> cd /home/kyle/scripts/db/daymet <br>
+>> ./import_daymet.sh sheds_new /home/kyle/data/daymet/2015 <br>
 
 
 # Methods
