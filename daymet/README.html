@@ -243,24 +243,22 @@ reads the shapefiles.</p></li>
 <code>downloadMosaic</code> function to do so.</p></li>
 <li><p>Execute the averaging section of the script to assign climate records to the 
 catchments.</p></li>
-<li><p>Once SQLite databases have been populated, transfer the files to a folder on 
-the server specific to the dataset (e.g. <code>/home/kyle/data/daymet/1980-2014</code>).</p></li>
+<li><p>Transfer the SQLite databases to a dataset-specific directory on the server 
+(e.g. <code>/home/kyle/data/daymet/1980-2014</code>).</p></li>
 <li><p>Execute the bash scripts setup to populate the postgres database with the 
 records from the SQLite databases: <br>
-Initial database population</p>
+<strong>Initial database population</strong></p>
 
 <blockquote>
 <p>cd /home/kyle/scripts/db/daymet <br>
 ./import_daymet.sh sheds_new /home/kyle/data/daymet/1980-2014 <br></p>
 </blockquote>
 
-<p>Subsequent year population <br></p>
+<p><em>Subsequent year population</em> <br></p>
 
-<blockquote>
 <blockquote>
 <p>cd /home/kyle/scripts/db/daymet <br>
 ./import_daymet.sh sheds_new /home/kyle/data/daymet/2015 <br></p>
-</blockquote>
 </blockquote></li>
 </ol>
 

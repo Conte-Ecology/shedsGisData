@@ -61,15 +61,15 @@ catchments.
 5. Transfer the SQLite databases to a dataset-specific directory on the server 
 (e.g. `/home/kyle/data/daymet/1980-2014`).
 
-6. Execute the bash scripts setup to populate the postgres database with the 
+6. Execute the shell scripts setup to populate the postgres database with the 
 records from the SQLite databases: <br>
-Initial database population
+*Initial database upload*
 > cd /home/kyle/scripts/db/daymet <br>
 > ./import_daymet.sh sheds_new /home/kyle/data/daymet/1980-2014 <br>
 
-  Subsequent year population <br>
->> cd /home/kyle/scripts/db/daymet <br>
->> ./import_daymet.sh sheds_new /home/kyle/data/daymet/2015 <br>
+  *Subsequent year upload* <br>
+  > cd /home/kyle/scripts/db/daymet <br>
+  > ./import_daymet.sh sheds_new /home/kyle/data/daymet/2015 <br>
 
 
 # Methods
