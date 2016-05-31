@@ -8,13 +8,14 @@ from arcpy.sa import *
 # ==============
 
 # User input file
-inputsFilePath = "C:/KPONEIL/GitHub/projects/shedsData/basinCharacteristics/zonalStatistics/INPUTS_NHDHRDV2_RIPARIAN.txt"
+#inputsFilePath = "C:/KPONEIL/GitHub/projects/shedsData/basinCharacteristics/zonalStatistics/INPUTS_NHDHRDV2.txt"
+inputsFilePath = "C:/KPONEIL/GitHub/projects/shedsGisData/basinCharacteristics/zonalStatistics/INPUTS_NHDHRDV2.1.txt"
 
 # Raster directory
-raster_directory = "C:/KPONEIL/GitHub/projects/basinCharacteristics/zonalStatistics/gisFiles/rasters"
+raster_directory = "C:/KPONEIL/SHEDS/basinCharacteristics/zonalStatistics/gisFiles/rasters"
 
 # Vector directory
-vector_directory = "C:/KPONEIL/GitHub/projects/basinCharacteristics/zonalStatistics/gisFiles/vectors"
+vector_directory = "C:/KPONEIL/SHEDS/basinCharacteristics/zonalStatistics/gisFiles/vectors/V2.1"
 
 # =========================
 # Read use specified inputs
@@ -140,8 +141,9 @@ for catchmentsFileName in catchmentsFileNames:
 			
 		# Add area
 		arcpy.AddField_management(zonalRaster, "AreaSqKM", "DOUBLE")
-		arcpy.CalculateField_management(zonalRaster, "AreaSqKM", "[COUNT]*900/1000000", "VB", "#")
-			
+		arcpy.CalculateField_management(zonalRaster, "AreaSqKM", "!Count!*900/1000000", "PYTHON_9.3")
+		#arcpy.CalculateField_management(zonalRaster, "AreaSqKM", "[COUNT]*900/1000000")
+					
 		# Add zoneField
 		arcpy.AddField_management(zonalRaster, zoneField, "DOUBLE")
 		arcpy.CalculateField_management(zonalRaster, zoneField, "!VALUE!", "PYTHON_9.3")	

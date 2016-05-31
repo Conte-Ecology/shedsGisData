@@ -1,0 +1,19 @@
+discreteRasters = c("alloffnet", "allonnet", "openoffnet", "openonnet", "fwsopenwater", "fwswetlands", "agriculture", "devel_hi", "devel_low", "devel_med", "devel_opn", "developed", "forest", "forest_decid", "forest_evgrn", "forest_mixed", "herbaceous", "undev_forest", "water", "wetland", "drainageclass", "hydrogroup_a", "hydrogroup_ab", "hydrogroup_cd", "hydrogroup_d1", "hydrogroup_d4", "percent_sandy", "surfcoarse")
+continuousRasters = c("elevation", "slope_pcnt", "dep_no3_2011", "dep_so4_2011", "ann_tmax_c", "ann_tmin_c", "apr_prcp_mm", "aug_prcp_mm", "dec_prcp_mm", "feb_prcp_mm", "jan_prcp_mm", "jul_prcp_mm", "jun_prcp_mm", "mar_prcp_mm", "may_prcp_mm", "nov_prcp_mm", "oct_prcp_mm", "sep_prcp_mm", "impervious", "tree_canopy")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 # Name of the run
-outputName = "NHDHRDV2"
+outputName = "NHDHRDV2.1"
 
 # Catchments shapefile name
 catchmentsFileNames = c("Catchments01", "Catchments02", "Catchments03", "Catchments04", "Catchments05", "Catchments06")
