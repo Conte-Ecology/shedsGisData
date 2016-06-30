@@ -18,6 +18,8 @@ sites that are potentially influenced by tides.
  - `baseDirectory` is the path to the folder to output spatial data
  - `states` is the list of state abbreviations that identify the layers to use from the FWS data
  - `wetlandsFolder` is the source folder containing the downloaded wetlands datasets by state
+ - `grid` is a grid layer used to divide the final product into manageable sized polygons. This 
+ currently refers to a pre-existing climate grid of 25km x 25km grid cells.
 
 3. Execute the script in Arc Python
 

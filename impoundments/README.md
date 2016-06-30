@@ -135,12 +135,16 @@ meter zone.
 
 1. Save the impoundment zone shapefile into a dedicated folder on the server 
 with the name identifying the zone length (e.g. `impoundedZones100m.shp`). The 
-upload script will specifically reference this name.
+upload script will specifically reference this name. The existing layer is 
+currently saved to the `/home/kyle/data/gis/impoundment_zones` directory on 
+felek. 
 
 2. Set parameters for the bash script `import_impoundment_zones_100m.sh`. 
  - Parameter 1: The name of the database
  - Parameter 2: The path to the directory containing the impoundment zone 
  shapefile 
+A duplicate of the script in this repo is saved in the `/home/kyle/scripts/qaqc` 
+directory on felek.
  
 3. Execute the bash script in the command line:
  - `./import_impoundment_zones_100m.sh sheds_new /home/kyle/data/gis/impoundment_zones`

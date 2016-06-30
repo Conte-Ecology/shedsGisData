@@ -7,6 +7,17 @@ from arcpy import env
 baseDirectory = "C:/KPONEIL/SHEDS/tidalFilter"
 states = ["ME", "NH", "MA", "RI", "CT", "NY", "NJ", "PA", "DE", "MD", "VA", "NC"]
 wetlandsFolder = "//IGSAGBEBWS-MJO7/projects/dataIn/environmental/land/fwsWetlands/rawData/"
+grid = "C:/KPONEIL/SHEDS/tidalFilter/source.gdb/grid_albers"
+
+
+# ================
+# Define functions
+# ================
+# Define function to delete all fields except the ones specified
+def deleteExtraFields(layer, fieldsToKeep):
+	fields = arcpy.ListFields(layer) 
+	dropFields = [x.name for x in fields if x.name not in fieldsToKeep]
+	arcpy.DeleteField_management(layer, dropFields)
 
 
 # ==================
@@ -43,12 +54,32 @@ for s in range(len(states)):
 	# Append the state tidal layer to list for further processing
 	tidalZones.append(working_db + "/tidal_" + states[s])													
 						
-# Join the state polygons into the final layer
+# Join the state polygons into one layer
 mergedPolygons = arcpy.Merge_management(tidalZones, 
 										working_db + "/tidal_All")
-											
-arcpy.Dissolve_management(mergedPolygons, 
-							baseDirectory + "/tidalZonesAutomated.shp",
-							"", "", 
-							"SINGLE_PART", 
-							"")	
+									
+
+# Dissolve the layer									
+dissolvedPolygons = arcpy.Dissolve_management(mergedPolygons, 
+												working_db + "/tidalZonesAutomated",
+												"", "", 
+												"SINGLE_PART", 
+												"")
+							
+# Divide the polygons into a manageable sizes 
+tiledZones = arcpy.Intersect_analysis([dissolvedPolygons, grid],
+										 baseDirectory + "tidalZonesTiled.shp",
+										 "ONLY_FID",
+										 "#",
+										 "INPUT")
+							
+# Add an ID field
+arcpy.AddField_management(tiledZones, "Id", "LONG")
+arcpy.CalculateField_management(tiledZones, "Id", "[FID] + 1", "PYTHON_9.3")	
+
+# Delete extra fields				
+deleteExtraFields(tiledZones, 
+				  ["FID", "Shape", "Id"])							
+							
+		
+

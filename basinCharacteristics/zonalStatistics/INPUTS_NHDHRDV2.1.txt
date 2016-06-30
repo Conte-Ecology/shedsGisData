@@ -2,7 +2,7 @@
 outputName = "NHDHRDV2.1"
 
 # Catchments shapefile name
-catchmentsFileNames = c("Catchments01", "Catchments02", "Catchments03", "Catchments04", "Catchments05", "Catchments06")
+catchmentsFileNames = c("Catchments06")
 
 # Zone field
 zoneField = "FEATUREID"

@@ -9,7 +9,7 @@ library(foreign)
 # ==============
 # Specify inputs
 # ==============
-inputsFilePath <- "C:/KPONEIL/GitHub/projects/shedsData/basinCharacteristics/zonalStatistics/INPUTS_NHDHRDV2.txt"
+inputsFilePath <- "C:/KPONEIL/GitHub/projects/shedsGISData/basinCharacteristics/zonalStatistics/INPUTS_NHDHRDV2.1.txt"
 
 
 # ===========
@@ -41,7 +41,7 @@ for (catchmentsFileName in catchmentsFileNames){
   if( !file.exists( outputFilePath ) ){
     
     # Read the catchment attributes
-    catchmentData <- read.dbf(file.path(baseDirectory, 'gisFiles/vectors', paste0(catchmentsFileName, '.dbf')) )
+    catchmentData <- read.dbf(file.path(baseDirectory, 'gisFiles/vectors/V2.1/', paste0(catchmentsFileName, '.dbf')) )
     
     # --------------------
     # Delineate catchments
