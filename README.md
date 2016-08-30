@@ -1,5 +1,5 @@
-SHEDS Data
-==========
+SHEDS GIS Data
+==============
 
 This repository contains scripts used to generate the supporting data used on 
 the Spatial Hydro-Ecological Decision System (SHEDS). The 
